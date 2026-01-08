@@ -1,5 +1,9 @@
-import { useState, FormEvent } from 'react';
+import { useState } from "react";
+import type { FormEvent } from "react";
+
+
 import { Send } from 'lucide-react';
+
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -18,7 +22,7 @@ export function ContactForm() {
 
     try {
       // Substitua a URL abaixo pela URL do webhook do seu n8n
-      const N8N_WEBHOOK_URL = 'YOUR_N8N_WEBHOOK_URL_HERE';
+      const N8N_WEBHOOK_URL = 'https://matuprocopio.app.n8n.cloud/webhook/08afff31-0973-4e5e-80aa-b44e93420d1c';
       
       const response = await fetch(N8N_WEBHOOK_URL, {
         method: 'POST',
