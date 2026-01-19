@@ -1,9 +1,5 @@
-import { useState } from "react";
-import type { FormEvent } from "react";
-
-
+import { useState, FormEvent } from 'react';
 import { Send } from 'lucide-react';
-
 
 export function ContactForm() {
   const [formData, setFormData] = useState({

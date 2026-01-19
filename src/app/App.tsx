@@ -2,24 +2,25 @@ import { Target, Users, TrendingUp, Award, CheckCircle2, Download, Mail, Phone, 
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import { CountUpCard } from './components/CountUpCard';
 import { ContactForm } from './components/ContactForm';
-import heroImage from '../../src/assets/5a05fef1354e1252a2d6e1a02e241a822ba6dc8f.png';
+import { CompanyMarquee } from './components/CompanyMarquee';
+import heroImage from '../assets/5a05fef1354e1252a2d6e1a02e241a822ba6dc8f.png';
 
 export default function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <nav className="bg-white border-b sticky top-0 z-50" style={{ borderColor: 'rgba(26, 46, 74, 0.1)' }}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl text-gray-900">With</h1>
-              <p className="text-xs text-gray-500">Consultoria de Carreira</p>
+              <h1 className="text-2xl" style={{ color: '#1a2e4a' }}>With</h1>
+              <p className="text-xs" style={{ color: '#1a2e4a', opacity: 0.6 }}>Consultoria de Carreira</p>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <a href="#servicos" className="text-gray-600 hover:text-gray-900">Serviços</a>
-              <a href="#sobre" className="text-gray-600 hover:text-gray-900">Sobre</a>
-              <a href="#blog" className="text-gray-600 hover:text-gray-900">Blog</a>
-              <a href="#contato" className="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-800 transition">Contato</a>
+              <a href="#servicos" style={{ color: '#1a2e4a', opacity: 0.8 }} className="hover:opacity-100 transition">Serviços</a>
+              <a href="#sobre" style={{ color: '#1a2e4a', opacity: 0.8 }} className="hover:opacity-100 transition">Sobre</a>
+              <a href="#blog" style={{ color: '#1a2e4a', opacity: 0.8 }} className="hover:opacity-100 transition">Blog</a>
+              <a href="#contato" className="px-6 py-2 rounded transition" style={{ backgroundColor: '#1a2e4a', color: 'white' }}>Contato</a>
             </div>
           </div>
         </div>
@@ -31,12 +32,10 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-gray-900 mb-6">
-                Quando a carreira avança, as decisões precisam ser mais estratégicas.
+                Avançar na carreira exige estratégia
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                A With é uma consultoria de carreira que atua com profissionais em diferentes momentos de trajetória — especialmente quando avançar deixa de ser uma questão de esforço e passa a exigir clareza, posicionamento e leitura de mercado.
-
-Ajudamos você a organizar decisões, ajustar estratégia e conduzir o próximo passo com mais método e menos tentativa e erro.
+                Em fases de transição, estagnação ou reposicionamento, insistir sem direção costuma gerar desgaste e frustração. Avançar exige estratégia, clareza sobre o momento de carreira e leitura real do mercado. É nesse ponto que a With atua, organizando escolhas e estruturando movimentos profissionais mais conscientes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href="#contato" className="bg-blue-900 text-white px-8 py-4 rounded hover:bg-blue-800 transition text-center">
@@ -49,7 +48,7 @@ Ajudamos você a organizar decisões, ajustar estratégia e conduzir o próximo 
               <div className="mt-8 flex items-center gap-6">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-sm text-gray-600">Mais de 2800 profissionais atendidos</span>
+                  <span className="text-sm text-gray-600">Mais de 2800 profissionais recolocados</span>
                 </div>
               </div>
             </div>
@@ -106,7 +105,7 @@ Ajudamos você a organizar decisões, ajustar estratégia e conduzir o próximo 
               </div>
               <h3 className="text-gray-900 mb-4">Quando o esforço não gera retorno</h3>
               <p className="text-gray-600 mb-6">
-                Para profissionais que estão aplicando para muitas vagas, mas de forma pouco estratégica, com desgaste e baixa previsibilidade de resultado.
+                Para profissionais que estão aplicando para muitas vagas, mas de forma pouco estratégica, com desgaste e resultados inconsistentes.
               </p>
               <a href="#contato" className="text-blue-900 inline-flex items-center gap-2 hover:gap-3 transition-all">
                 Saiba mais <ArrowRight className="w-4 h-4" />
@@ -120,10 +119,10 @@ Ajudamos você a organizar decisões, ajustar estratégia e conduzir o próximo 
       <section className="py-16 bg-blue-900">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-white mb-4">
-            Toda decisão de carreira começa com clareza.
+            Solicitar análise do meu momento profissional
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Nosso trabalho começa entendendo seu contexto antes de propor qualquer solução.
+            Um primeiro contato para entender contexto, objetivos e nível de acompanhamento necessário.
           </p>
           <a href="#contato" className="inline-block bg-white text-blue-900 px-10 py-4 rounded hover:bg-gray-100 transition">
             Próximo passo
@@ -139,10 +138,10 @@ Ajudamos você a organizar decisões, ajustar estratégia e conduzir o próximo 
             <p className="text-xl text-gray-600">Ao longo dos anos, atuamos com profissionais em diferentes contextos, setores e momentos de carreira. Os dados abaixo refletem histórico de atuação</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <CountUpCard end={2800} suffix="+" label="Profissionais atendidos em processos estruturados de carreira" />
-            <CountUpCard end={85} suffix="%" label="Clientes que avançaram em processos seletivos após ajuste de estratégia e posicionamento" />
+            <CountUpCard end={2800} suffix="+" label="Profissionais em processos de recolocação" />
+            <CountUpCard end={85} suffix="%" label="Avançaram em processos seletivos após ajuste de estratégia e posicionamento" />
             <CountUpCard end={30} suffix="%" label="Aumento médio de remuneração entre clientes que mudaram de posição" />
-            <CountUpCard prefix="+" end={6} label="Anos de Experiência de atuação contínua com recrutamento, carreira e processos seletivos" />
+            <CountUpCard prefix="+" end={6} label="Anos de Experiência em recrutamento, carreira e processos seletivos" />
           </div>
         </div>
       </section>
@@ -161,11 +160,11 @@ Ajudamos você a organizar decisões, ajustar estratégia e conduzir o próximo 
             <div>
               <h2 className="text-gray-900 mb-6">Sobre a With</h2>
               <p className="text-gray-600 mb-6">
-  A With é uma consultoria de carreira que atua com profissionais em diferentes momentos de trajetória, especialmente quando avançar exige mais estratégia, clareza e leitura de mercado. Nosso trabalho parte do diagnóstico do contexto profissional e da definição da abordagem mais adequada para cada situação, evitando decisões baseadas em tentativa e erro.
+  A With é uma consultoria de carreira que atua com profissionais em diferentes momentos de carreira, especialmente quando avançar exige mais estratégia, contatos e leitura de mercado. Nosso trabalho se inicia com um diagnóstico do seu momento profissional e da definição da abordagem mais adequada para cada candidatura, evitando decisões baseadas em tentativa e erro.
 </p>
 
 <p className="text-gray-600 mb-6">
-  Atuamos com processos estruturados, sem promessas rápidas ou soluções genéricas. Cada acompanhamento é definido a partir do momento de carreira, dos objetivos e do nível de envolvimento possível no processo.
+  Atuamos com processos estruturados, sem promessas rápidas ou soluções genéricas. Cada acompanhamento é definido a partir do momento de carreira, dos objetivos e da necessidade do cliente.
 </p>
 
 <p className="text-gray-600 mb-6">
@@ -336,10 +335,13 @@ Indicado para quem não tem tempo, margem de erro ou disponibilidade para conduz
                   <span className="text-sm text-blue-900">E-book Gratuito</span>
                 </div>
                 <h2 className="text-gray-900 mb-4">
-                  Guia Completo: 10 Passos para Acelerar sua Carreira
+                  Guia Completo: 30 Dicas para Acelerar sua Recolocação
                 </h2>
                 <p className="text-gray-600 mb-8">
-                  Baixe gratuitamente nosso guia exclusivo com estratégias práticas para impulsionar seu desenvolvimento profissional. Aprenda técnicas validadas por centenas de profissionais bem-sucedidos.
+              
+Este guia gratuito reúne orientações práticas para ajudar você a organizar sua estratégia profissional e se posicionar melhor no mercado.
+
+O material foi desenvolvido a partir de experiências reais em processos de recolocação e desenvolvimento de carreira, com foco em clareza, direcionamento e decisões mais estratégicas.
                 </p>
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center gap-3">
@@ -348,7 +350,7 @@ Indicado para quem não tem tempo, margem de erro ou disponibilidade para conduz
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-green-600" />
-                    <span className="text-gray-700">Estratégias de networking eficaz</span>
+                    <span className="text-gray-700">Estratégias de networking que geram oportunidades</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-green-600" />
@@ -360,14 +362,14 @@ Indicado para quem não tem tempo, margem de erro ou disponibilidade para conduz
                     <div>
                       <input 
                         type="text" 
-                        placeholder="Seu nome completo"
+                        placeholder="Nome"
                         className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-900"
                       />
                     </div>
                     <div>
                       <input 
                         type="email" 
-                        placeholder="Seu melhor e-mail"
+                        placeholder="E-mail"
                         className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-900"
                       />
                     </div>
@@ -388,7 +390,7 @@ Indicado para quem não tem tempo, margem de erro ou disponibilidade para conduz
                 <div className="text-center">
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 mb-6">
                     <BookOpen className="w-32 h-32 text-white mx-auto mb-4" />
-                    <div className="text-white text-6xl mb-2">100+</div>
+                    <div className="text-white text-6xl mb-2">45+</div>
                     <p className="text-blue-100">páginas de conteúdo</p>
                   </div>
                   <div className="flex items-center justify-center gap-8 text-white">
@@ -409,74 +411,106 @@ Indicado para quem não tem tempo, margem de erro ou disponibilidade para conduz
         </div>
       </section>
 
+      {/* Company Marquee */}
+      <CompanyMarquee />
+
       {/* Depoimentos */}
-      <section className="py-20 bg-white">
+      <section className="py-20" style={{ backgroundColor: '#f2e8e0' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-gray-900 mb-4">O que nossos clientes dizem</h2>
-            <p className="text-xl text-gray-600">Histórias reais de transformação profissional</p>
+            <h2 style={{ color: '#1a2e4a' }} className="mb-4">O que nossos clientes dizem</h2>
+            <p className="text-xl" style={{ color: '#1a2e4a', opacity: 0.8 }}>Histórias reais de transformação profissional</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Depoimento 1 */}
-            <div className="bg-gray-50 p-8 rounded-lg shadow-md">
+            <div className="bg-white p-8 rounded-lg">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <div key={i} className="text-yellow-500 text-xl">★</div>
+                  <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
                 ))}
               </div>
-              <p className="text-gray-700 mb-6 italic">
+              <p className="mb-6 italic" style={{ color: '#1a2e4a', opacity: 0.9 }}>
                 "Olá Sté, bom dia! Tinha expectativa de depois que comecei a consultoria com vocês, em até uns 3 meses eu conseguiria uma boa oportunidade. Mas no dia que vocês me mandaram meu currículo pronto até o dia que fechei o contrato, foram só 24 dias. hahahaha muito rápido! Comecei hoje na empresa nova!"
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                  <span className="text-gray-600">RC</span>
-                </div>
+                <img 
+                  src="https://images.unsplash.com/photo-1649589244330-09ca58e4fa64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2ODMxMjE0Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Ana Beatriz"
+                  className="w-12 h-12 rounded-full object-cover"
+                />
                 <div>
-                  <p className="text-gray-900">Ana Beatriz</p>
-                  <p className="text-sm text-gray-500">Advogada Imobiliária</p>
+                  <a 
+                    href="https://www.linkedin.com/in/ana-beatriz" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{ color: '#1a2e4a' }}
+                    className="hover:opacity-70 transition"
+                  >
+                    <p className="font-medium">Ana Beatriz</p>
+                  </a>
+                  <p className="text-sm" style={{ color: '#1a2e4a', opacity: 0.7 }}>Advogada Imobiliária</p>
                 </div>
               </div>
             </div>
 
             {/* Depoimento 2 */}
-            <div className="bg-gray-50 p-8 rounded-lg shadow-md">
+            <div className="bg-white p-8 rounded-lg">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <div key={i} className="text-yellow-500 text-xl">★</div>
+                  <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
                 ))}
               </div>
-              <p className="text-gray-700 mb-6 italic">
+              <p className="mb-6 italic" style={{ color: '#1a2e4a', opacity: 0.9 }}>
                 "Olá Sté, tudo bem? Gostaria de agradecer a sua equipe que me ajudou no processo de entrevistas queei participei. Eu fui aprovado na vaga e começo nesta segunda feira. Vou atuar com Gerente Sênior de Marketing de Produto para a América Latina na Phillips. Muito obrigado!!"
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                  <span className="text-gray-600">AS</span>
-                </div>
+                <img 
+                  src="https://images.unsplash.com/photo-1672685667592-0392f458f46f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBtYW4lMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjgyMTUwMDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Willian Eduardo"
+                  className="w-12 h-12 rounded-full object-cover"
+                />
                 <div>
-                  <p className="text-gray-900">Willian Eduardo</p>
-                  <p className="text-sm text-gray-500">
-Senior Product Marketing Manager</p>
+                  <a 
+                    href="https://www.linkedin.com/in/willian-eduardo" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{ color: '#1a2e4a' }}
+                    className="hover:opacity-70 transition"
+                  >
+                    <p className="font-medium">Willian Eduardo</p>
+                  </a>
+                  <p className="text-sm" style={{ color: '#1a2e4a', opacity: 0.7 }}>Senior Product Marketing Manager</p>
                 </div>
               </div>
             </div>
 
             {/* Depoimento 3 */}
-            <div className="bg-gray-50 p-8 rounded-lg shadow-md">
+            <div className="bg-white p-8 rounded-lg">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <div key={i} className="text-yellow-500 text-xl">★</div>
+                  <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
                 ))}
               </div>
-              <p className="text-gray-700 mb-6 italic">
+              <p className="mb-6 italic" style={{ color: '#1a2e4a', opacity: 0.9 }}>
                 "Boa tarde Stephany, tudo bem? Nós fizemos uma mentoria em Junho. Passando pra agradecer, em Setembro eu fui aprovado no Sicredi e já estou a três meses aqui. Recebi um aumento de 35% mais benefícios. Sua ajuda foi muito importante."
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                  <span className="text-gray-600">LM</span>
-                </div>
+                <img 
+                  src="https://images.unsplash.com/photo-1652471943570-f3590a4e52ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMGhlYWRzaG90fGVufDF8fHx8MTc2ODI2MTI0OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Gustavo"
+                  className="w-12 h-12 rounded-full object-cover"
+                />
                 <div>
-                  <p className="text-gray-900">Gustavo</p>
-                  <p className="text-sm text-gray-500">Desenvolvedor Pleno na DevSolutions</p>
+                  <a 
+                    href="https://www.linkedin.com/in/gustavo" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{ color: '#1a2e4a' }}
+                    className="hover:opacity-70 transition"
+                  >
+                    <p className="font-medium">Gustavo</p>
+                  </a>
+                  <p className="text-sm" style={{ color: '#1a2e4a', opacity: 0.7 }}>Desenvolvedor Pleno na DevSolutions</p>
                 </div>
               </div>
             </div>
@@ -634,7 +668,7 @@ Senior Product Marketing Manager</p>
                 <p className="text-gray-700">
                   <strong>Horário de atendimento:</strong><br />
                   Segunda a sexta: 9h às 18h<br />
-                  Sábado: 9h às 13h
+                
                 </p>
               </div>
             </div>
@@ -647,7 +681,7 @@ Senior Product Marketing Manager</p>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="text-xl mb-4">CareerPath</h3>
+              <h3 className="text-xl mb-4">With Consultoria</h3>
               <p className="text-gray-400 text-sm">
                 Consultoria especializada em desenvolvimento e transição de carreira.
               </p>
@@ -681,7 +715,7 @@ Senior Product Marketing Manager</p>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 CareerPath Consultoria. Todos os direitos reservados.</p>
+            <p>&copy; 2024 With Consultoria. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
