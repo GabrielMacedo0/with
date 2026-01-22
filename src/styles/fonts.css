@@ -1,7 +1,2 @@
-/* With Brand Fonts */
-
-/* Varela Round - For titles, headings, and highlighted text */
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-
-/* Quicksand - For body text and long paragraphs */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+/* Import Google Fonts - Varela Round and Quicksand */
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&family=Quicksand:wght@300;400;500;600;700&display=swap');
