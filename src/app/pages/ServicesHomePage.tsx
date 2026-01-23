@@ -1,11 +1,11 @@
 import { Target, Users, TrendingUp, Award, CheckCircle2, Download, Mail, Phone, MapPin, ArrowRight, Briefcase, BookOpen} from 'lucide-react';
-import { ImageWithFallback } from './../components/figma/ImageWithFallback';
+import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import AnaBeatriz from "@/assets/Ana-beatriz.jfif";
 import Willian from "@/assets/Willian.jfif";
 import Guilherme from "@/assets/Guilherme.jfif";
-import { CountUpCard } from './../components/CountUpCard';
-import { ContactForm } from './../components/ContactForm';
-import { CompanyMarquee } from './../components/CompanyMarquee';
+import { CountUpCard } from '@/app/components/CountUpCard';
+import { ContactForm } from '@/app/components/ContactForm';
+import { CompanyMarquee } from '@/app/components/CompanyMarquee';
 import heroImage from '@/assets/Imagem.png';
 
 interface ServicesHomePageProps {
@@ -641,10 +641,29 @@ O material foi desenvolvido a partir de experiências reais em processos de reco
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Formulário */}
-            <div>
+            <div className="space-y-6">
               <ContactForm />
-            </div>
 
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
+                <h4 className="text-gray-900 mb-2">
+                  Prefere um contato mais formal?
+                </h4>
+                <p className="text-gray-600 mb-4 text-sm">
+                  Utilize nosso formulário institucional para solicitações detalhadas.
+                </p>
+
+                <a
+                  href="https://form.respondi.app/M3PUSAeF"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-blue-900 text-white px-6 py-3 rounded hover:bg-blue-800 transition"
+                >
+                  Acessar formulário formal
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </a>
+              </div>
+            </div>
+            
             {/* Informações */}
             <div>
               <div className="bg-gray-50 p-8 rounded-lg mb-6">
