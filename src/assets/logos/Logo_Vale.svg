@@ -7,19 +7,57 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="700mm"
+   height="700mm"
+   viewBox="0 0 700 700"
    version="1.1"
-   width="593.51489"
-   height="231.44992"
-   id="svg2">
+   id="svg4649"
+   inkscape:export-filename="C:\Users\alex\sites\vale-logo-0.png"
+   inkscape:export-xdpi="148.63"
+   inkscape:export-ydpi="148.63"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="vale-logo.svg">
   <defs
-     id="defs4">
- <style
-   type="text/css"
-   id="style2989" />
-
+     id="defs4643">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath54">
+      <path
+         d="M 0,0 H 878.74 V 595.276 H 0 Z"
+         id="path52"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath30">
+      <path
+         d="M 0,0 H 878.74 V 595.276 H 0 Z"
+         id="path28"
+         inkscape:connector-curvature="0" />
+    </clipPath>
   </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.0875"
+     inkscape:cx="612.42214"
+     inkscape:cy="1737.4665"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="838"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
   <metadata
-     id="metadata7">
+     id="metadata4646">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -31,83 +69,87 @@
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-103.24255,-336.63722)"
-     id="layer1">
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,403)">
     <g
-       transform="matrix(3.543307,0,0,3.543307,18.21062,-59.745045)"
-       id="g3024"
-       style="fill-rule:evenodd">
+       transform="matrix(5.2660112,0,0,-5.2660112,-3700.4228,2600.2924)"
+       id="g24"
+       inkscape:export-xdpi="66.934593"
+       inkscape:export-ydpi="66.934593">
       <g
-         id="Camada_x0020_1">
-  <metadata
-   id="CorelCorpID_0Corel-Layer" />
-
-  <path
-   d="m 102.315,130.445 c -12.8123,12.017 -23.9979,4.4844 -30.1848,-0.5429 -6.9159,-5.6197 -11.8678,-9.7505 -16.2946,-12.8765 -11.7247,-8.2794 -24.594,-5.3673 -31.8374,0.1902 l 41.8043,59.9724 36.5125,-46.7432 z"
-   id="path2993"
-   style="fill:none" />
-
-  <path
-   d="m 102.315,130.445 7.8052,-11.1565 c -7.0089,-6.9588 -14.5054,-3.065 -22.8584,1.0035 -6.5439,3.1873 -12.9242,6.4662 -17.0147,8.0777"
-   id="path2995"
-   style="fill:none" />
-
-  <polygon
-   points="121.166,163.408 113.669,147.004 109.612,147.092 119.843,169.141 122.313,169.141 131.044,147.004 126.987,147.004 "
-   id="polygon2997"
-   style="fill:none" />
-
-  <polygon
-   points="148.242,163.584 138.54,163.496 136.865,168.876 132.631,168.788 141.98,147.092 145.155,147.092 153.71,168.788 149.653,168.788 "
-   id="polygon2999"
-   style="fill:none" />
-
-  <polygon
-   points="146.412,160.299 140.445,160.365 143.545,152.317 "
-   id="polygon3001"
-   style="fill:none" />
-
-  <polygon
-   points="164.205,147.709 160.413,147.665 160.501,168.788 173.862,168.788 173.818,165.348 164.161,165.348 "
-   id="polygon3003"
-   style="fill:none" />
-
-  <polygon
-   points="182.109,158.998 190.62,158.998 190.62,155.823 182.153,155.823 182.153,150.884 188.723,150.884 191.457,148.768 191.501,147.357 179.022,147.313 179.022,168.568 191.501,168.568 191.501,165.304 182.153,165.304 "
-   id="polygon3005"
-   style="fill:none" />
-
-  <path
-   d="m 65.8022,177.188 36.5125,-46.7432 c -12.8123,12.017 -23.9979,4.4844 -30.1848,-0.5429 -0.6444,-0.5236 -1.2717,-1.0343 -1.8831,-1.5324 -5.951,-4.8483 -10.3971,-8.5094 -14.4115,-11.3441 -11.7247,-8.2794 -24.594,-5.3673 -31.8374,0.1902 l 41.8043,59.9724 z"
-   id="path3007"
-   style="fill:#00939a" />
-
-  <path
-   d="m 72.1299,129.902 c 6.1869,5.0273 17.3725,12.5599 30.1848,0.5429 l 7.8052,-11.1565 c -7.0089,-6.9588 -14.5054,-3.065 -22.8584,1.0035 -6.5439,3.1873 -12.9242,6.4662 -17.0147,8.0777 l 1.8831,1.5324 z"
-   id="path3009"
-   style="fill:#ecb833" />
-
-  <polygon
-   points="131.044,147.004 126.987,147.004 121.166,163.408 113.669,147.004 109.612,147.092 119.843,169.141 122.313,169.141 "
-   id="polygon3011"
-   style="fill:#77787b" />
-
-  <path
-   d="m 141.98,147.092 -9.3487,21.6959 4.2334,0.0882 1.6757,-5.3799 9.7014,0.0882 1.4111,5.2035 4.0569,0 -8.5548,-21.6959 -3.175,0 z m 1.5655,5.2256 2.8663,7.9817 -5.9672,0.0658 3.1009,-8.0475 z"
-   id="path3013"
-   style="fill:#77787b" />
-
-  <polygon
-   points="160.413,147.665 160.501,168.788 173.862,168.788 173.818,165.348 164.161,165.348 164.205,147.709 "
-   id="polygon3015"
-   style="fill:#77787b" />
-
-  <polygon
-   points="190.62,158.998 190.62,155.823 182.153,155.823 182.153,150.884 188.723,150.884 191.457,148.768 191.501,147.357 179.022,147.313 179.022,168.568 191.501,168.568 191.501,165.304 182.153,165.304 182.109,158.998 "
-   id="polygon3017"
-   style="fill:#77787b" />
-
- </g>
+         id="g26"
+         clip-path="url(#clipPath30)">
+        <g
+           id="g32"
+           transform="translate(746.0233,514.0734)">
+          <path
+             d="m 0,0 c 3.374,-2.866 6.626,-5.259 10.125,-5.259 6.43,0 9.437,4.025 9.437,4.025 L -2.146,-30.069 -28.744,5.492 c 0,0 4.343,4.135 11.578,4.135 C -10.354,9.627 -5.041,4.284 0,0"
+             style="fill:#008f83;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path34"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           id="g36"
+           transform="translate(771.0339,519.9888)">
+          <path
+             d="m 0,0 c 0,0 -2.481,2.058 -5.788,2.058 -6.617,0 -10.752,-6.616 -19.223,-7.973 3.375,-2.866 6.627,-5.259 10.126,-5.259 6.43,0 9.437,4.025 9.437,4.025 z"
+             style="fill:#f3c108;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path38"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           id="g40"
+           transform="translate(784.1905,503.5073)">
+          <path
+             d="m 0,0 h -2.653 l -3.452,-9.316 c -0.199,-0.539 -0.318,-0.897 -0.318,-0.897 h -0.041 c 0,0 -2.713,6.822 -4.109,10.213 h -2.792 l 4.907,-11.989 c 0.279,-0.698 1.177,-1.855 2.932,-1.855 z"
+             style="fill:#747678;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path42"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g44"
+       transform="matrix(5.2660112,0,0,-5.2660112,562.90332,20.670463)"
+       inkscape:export-xdpi="66.934593"
+       inkscape:export-ydpi="66.934593">
+      <path
+         d="M 0,0 V 2.154 H -6.076 V 13.645 H -8.57 V 0 Z"
+         style="fill:#747678;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(5.2660112,0,0,-5.2660112,-3700.4228,2600.2924)"
+       id="g48"
+       inkscape:export-xdpi="66.934593"
+       inkscape:export-ydpi="66.934593">
+      <g
+         id="g50"
+         clip-path="url(#clipPath54)">
+        <g
+           id="g56"
+           transform="translate(820.7454,489.8626)">
+          <path
+             d="m 0,0 v 2.154 h -5.768 v 3.91 h 4.873 v 2.075 h -4.873 v 3.351 h 3.319 c 2.607,0 2.751,2.155 2.751,2.155 H -8.261 V 0 Z"
+             style="fill:#747678;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path58"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g60"
+       transform="matrix(5.2660112,0,0,-5.2660112,502.42532,20.670463)"
+       inkscape:export-xdpi="66.934593"
+       inkscape:export-ydpi="66.934593">
+      <path
+         d="M 0,0 -5.426,13.645 H -7.799 L -13.445,0 h 2.666 l 1.364,3.471 h 5.266 L -2.792,0 Z m -4.967,5.625 h -3.57 l 1.774,4.608 0.021,0.08 z"
+         style="fill:#747678;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path62"
+         inkscape:connector-curvature="0" />
     </g>
   </g>
 </svg>

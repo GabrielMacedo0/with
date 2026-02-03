@@ -2,53 +2,64 @@ import { Button } from "@/app/components/ui/button";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { CallToAction  } from "@/app/components/CallToAction";
 
-interface ServicesSeniorPageProps {
+interface ServicesJobHunterPageProps {
   onNavigate?: (page: string) => void;
 }
 
-export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
+export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps) {
   const handleNavigate = (sectionId: string) => {
     sessionStorage.setItem("scrollTo", sectionId);
     window.location.assign("/");
   };
   const features = [
     {
-      title: "Currículo Executivo Premium + LinkedIn (Português + Inglês)",
-      description: "Documentos de padrão executivo que destacam liderança estratégica e resultados de alto impacto, com visão de negócio e aderência a empresas nacionais e multinacionais."   },
-    {
-      title: "Treinamento de LinkedIn (Grupo + Individual)",
-      description: "Construa influência e visibilidade como líder de pensamento, usando o LinkedIn como um canal ativo para ampliar oportunidades e acesso a processos seletivos.",
+      title: "Avaliação comportamental",
+      description: "Posicionamento estratégico para acelerar o crescimento com menos desgaste.",
     },
     {
-      title: "Simulações de Entrevistas (Grupo e Individual)",
-      description: "Simulação de entrevista focada em postura executiva, clareza estratégica e leitura de ambiente para entrevistas mais maduras e bem conduzidas.",
+      title: "Planejamento de carreira",
+      description: "Definição estratégica de cargos-alvo, perfil de empresas, faixa salarial e estratégia de movimentação.",
     },
     {
-      title: "Executive Presence & Branding",
-      description: "Desenvolva presença executiva e marca pessoal de alto impacto.",
+      title: "Currículo e LinkedIn estratégicos",
+      description: "Construídos para evidenciar resultados e maturidade profissional.",
     },
     {
-      title: "Transição para C-Level ou Board",
-      description: "Estratégias para posições de alta liderança, conselho ou sucessão executiva.",
+      title: "Circulação ativa do seu perfil na nossa rede",
+      description: "Seu nome passa a chegar a recrutadores, líderes e decisores, indo além da dependência de algoritmos.",
     },
     {
-      title: "Suporte WhatsApp (60 dias)",
-      description: "Acompanhamento estratégico durante a fase mais crítica da busca, com ajustes finos e correções de rota baseadas no retorno do mercado.",
+      title: "Busca ativa de oportunidades",
+      description: "Buscamos oportunidades alinhadas aos seus objetivos, com inteligência de mercado e estratégia.",
+    },
+    {
+      title: "Adequação do currículo a cada candidatura",
+      description: "Nada de currículo genérico. Cada envio é estrategicamente pensado pela nossa equipe para a vaga em questão.",
+    },
+    {
+      title: "Acesso a oportunidades fora do mercado aberto",
+      description: "Oportunidades que não aparecem nos portais, mas circulam nas mesas de decisão",
+    },
+    {
+      title: "Preparação para entrevistas e tomadas de decisão",
+      description: "Para avançar com clareza, segurança e poder de escolha",
     },
   ];
 
   const plans = [
     {
-      name: "Sênior",
-      price: "R$ 990,00",
-      period: "12x de 101,79",
+      name: "Job Hunting",
+      price: "Entre em contato",
+      period: "",
       features: [
-        "Currículo + LinkedIn Executivo (PT + EN)",
-        "Treinamento de LinkedIn",
-        "Simulações de Entrevistas",
-        "Executive Presence & Branding",
-        "Estratégia de Transição para C-Level / Board",
-        "Suporte por 60 dias"
+      "Avaliação comportamental",
+      "Estratégia de carreira",
+      "Currículo + LinkedIn estratégicos",
+      "Ativação do perfil na rede",
+      "Busca ativa de oportunidades",
+      "Candidaturas personalizadas",
+      "Acesso ao mercado oculto",
+      "Preparação para entrevistas"
       ],
       highlight: false,
     },
@@ -69,15 +80,15 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
           </button>
           
           <div className="inline-block px-3 py-1 bg-[#1a2e4a]/10 text-[#1a2e4a] rounded-full text-sm font-medium mb-4" style={{ fontFamily: 'var(--font-body)' }}>
-            Nível Sênior / Executivo
+            Nível JobHunter
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-[#1a2e4a] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-            Serviços para Executivos e C-Level
+            Job hunting estratégico
           </h1>
           
           <p className="text-xl text-[#1a2e4a]/70 max-w-3xl" style={{ fontFamily: 'var(--font-body)' }}>
-            Consultoria estratégica premium para líderes que buscam posições de alto impacto
+            Consultoria premium para posicionamento, performance e avanço em processos seletivos
           </p>
         </div>
       </div>
@@ -87,22 +98,27 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
           <div>
             <h2 className="text-3xl font-bold text-[#1a2e4a] mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
-              Liderança Estratégica de Alto Nível
+              Estratégia para transformar resultado em oportunidade
             </h2>
             
             <p className="text-[#1a2e4a]/70 mb-6" style={{ fontFamily: 'var(--font-body)' }}>
-              Executivos e profissionais sênior enfrentam um mercado cada vez mais restrito, político e exigente, onde avançar exige estratégia, clareza e proteção de carreira.
+              O Job Hunter é para profissionais que já entregam resultados, mas sentem que o mercado não está devolvendo isso em oportunidades.
+              Para quem quer crescer, mas não tem tempo — ou espaço — para conduzir essa estratégia sozinho.
             </p>
             
             <p className="text-[#1a2e4a]/70 mb-8" style={{ fontFamily: 'var(--font-body)' }}>
-              O Plano Sênior oferece orientação estratégica confidencial para reposicionar sua trajetória e conduzir decisões críticas com segurança.
+              Aqui, o foco é assumir a parte estratégica da sua carreira, reposicionar sua experiência e ampliar o acesso às oportunidades certas.
             </p>
+
+            <p className="text-[#1a2e4a]/70 mb-8" style={{ fontFamily: 'var(--font-body)' }}>
+              Nossa atuação funciona como um agente de carreira: cuidamos do posicionamento, da narrativa e da abordagem ao mercado para que seus resultados cheguem a quem decide.
+            </p>            
             <a href="https://form.respondi.app/M3PUSAeF"
               target="_blank"
               rel="noopener noreferrer">
-                
+              
             <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white">
-              Agendar Consulta Executiva
+              Agendar Job Hunting
             </Button></a>
           </div>
           
@@ -118,7 +134,7 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
         {/* What's Included */}
         <div className="mb-20">
           <h2 className="text-3xl font-bold text-[#1a2e4a] text-center mb-12" style={{ fontFamily: 'var(--font-heading)' }}>
-            Serviços Executivos Premium
+            Serviços de Job Hunting
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -201,13 +217,6 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
               ))}
             </div>
           </div>
-        </div>
-
-        {/* Confidentiality Note */}
-        <div className="bg-[#e5d9d1] rounded-2xl p-8 mb-12 text-center max-w-4xl mx-auto">
-          <p className="text-[#1a2e4a]/80" style={{ fontFamily: 'var(--font-body)' }}>
-            <span className="font-semibold text-[#1a2e4a]" style={{ fontFamily: 'var(--font-heading)' }}>Confidencialidade Garantida:</span> Todas as consultorias executivas são conduzidas com total discrição e sigilo profissional. Seu processo é confidencial e personalizado.
-          </p>
         </div>
 
         {/* CTA Section */}

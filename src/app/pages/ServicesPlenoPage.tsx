@@ -1,76 +1,51 @@
 import { Button } from "@/app/components/ui/button";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { CallToAction  } from "@/app/components/CallToAction";
 
 interface ServicesPlenoPageProps {
   onNavigate?: (page: string) => void;
 }
 
 export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
+  const handleNavigate = (sectionId: string) => {
+    sessionStorage.setItem("scrollTo", sectionId);
+    window.location.assign("/");
+  };
   const features = [
     {
-      title: "Revisão Estratégica de Currículo",
-      description: "Destaque suas conquistas e resultados mensuráveis para posições de nível médio e especialista.",
+      title: "Currículo Estratégico com foco em impacto",
+      description: "Transforme sua experiência em conquistas e resultados mensuráveis, posicionando seu currículo no nível pleno.",
     },
     {
-      title: "LinkedIn Avançado com Estratégia de Conteúdo",
-      description: "Fortaleça sua presença digital e construa autoridade na sua área de atuação.",
+      title: "LinkedIn Estratégico Alinhado às Vagas-Alvo",
+      description: "Ajuste seu perfil para refletir sua senioridade real, atrair os recrutadores certos e gerar mais conversas qualificadas.",
     },
     {
-      title: "Planejamento de Carreira de Médio Prazo",
-      description: "Defina metas claras para os próximos 2-5 anos e estratégias para alcançá-las.",
+      title: "Treinamento de LinkedIn em Grupo",
+      description: "Use o LinkedIn como um canal ativo para melhorar suas candidaturas e ampliar o acesso a processos seletivos.",
     },
     {
-      title: "Negociação Salarial e Benefícios",
-      description: "Aprenda técnicas avançadas para negociar pacotes de remuneração competitivos.",
+      title: "Simulação de Entrevista Individual",
+      description: "Ajuste seu discurso, corrija falhas invisíveis e prepare-se para perguntas difíceis, aumentando sua taxa de avanço e segurança nas entrevistas.",
     },
     {
-      title: "Desenvolvimento de Liderança",
-      description: "Prepare-se para assumir posições de liderança com confiança e competência.",
-    },
-    {
-      title: "Transição de Carreira Estruturada",
-      description: "Mude de área ou empresa com estratégia e minimizando riscos profissionais.",
+      title: "Suporte WhatsApp (45 dias)",
+      description: "Acompanhamento estratégico durante a fase mais crítica da busca, com ajustes finos e correções de rota baseadas no retorno do mercado.",
     },
   ];
 
   const plans = [
     {
-      name: "Profissional",
-      price: "R$ 1.297",
-      period: "5 sessões",
+      name: "Pleno",
+      price: "R$ 490",
+      period: "12x de R$ 50,38",
       features: [
-        "Currículo + LinkedIn Avançado",
-        "5 sessões de 1h30",
-        "Planejamento de carreira",
-        "Suporte por 60 dias",
-      ],
-      highlight: false,
-    },
-    {
-      name: "Executivo",
-      price: "R$ 2.497",
-      period: "3 meses",
-      features: [
-        "Tudo do Profissional",
-        "8 sessões de mentoria",
-        "Negociação salarial",
-        "Desenvolvimento de liderança",
-        "Suporte por 90 dias",
+        "Currículo Estratégico + LinkedIn Estratégico",
+        "Treinamento em Grupo",
+        "Simulação de Entrevista Individual",
+        "Suporte por 45 dias",
       ],
       highlight: true,
-    },
-    {
-      name: "Transformação",
-      price: "R$ 3.997",
-      period: "6 meses",
-      features: [
-        "Tudo do Executivo",
-        "12 sessões personalizadas",
-        "Transição de carreira",
-        "Acompanhamento contínuo",
-        "Suporte por 180 dias",
-      ],
-      highlight: false,
     },
   ];
 
@@ -111,14 +86,16 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
             </h2>
             
             <p className="text-[#1a2e4a]/70 mb-6" style={{ fontFamily: 'var(--font-body)' }}>
-              Profissionais de nível pleno enfrentam desafios únicos: como se destacar em um mercado competitivo, preparar-se para posições de liderança, negociar promoções e aumentos salariais, e decidir quando e como fazer uma transição de carreira.
+              O Plano Pleno é para profissionais experientes que sentem que currículo, LinkedIn e entrevistas ainda não refletem seu verdadeiro nível de entrega.
+              Aqui, o foco é reposicionar sua carreira e aumentar sua performance.
             </p>
             
             <p className="text-[#1a2e4a]/70 mb-8" style={{ fontFamily: 'var(--font-body)' }}>
               Nossa consultoria especializada ajuda você a navegar essas questões com estratégias comprovadas, desenvolvendo habilidades de liderança e construindo um plano de carreira sólido para alcançar suas ambições profissionais.
             </p>
             
-            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white">
+            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
+              onClick={() => handleNavigate("contato")}>
               Agendar Avaliação Gratuita
             </Button>
           </div>
@@ -158,76 +135,70 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
         {/* Pricing Plans */}
         <div className="mb-20">
           <h2 className="text-3xl font-bold text-[#1a2e4a] text-center mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-            Planos Disponíveis
+            Plano Disponível
           </h2>
-          <p className="text-center text-[#1a2e4a]/70 mb-12" style={{ fontFamily: 'var(--font-body)' }}>
-            Invista no seu crescimento profissional com o plano ideal
-          </p>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {plans.map((plan, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-2xl p-8 ${
-                  plan.highlight
-                    ? "border-2 border-[#1fa6a8] shadow-xl relative"
-                    : "border border-[#1a2e4a]/10 shadow-lg"
-                }`}
-              >
-                {plan.highlight && (
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <span className="bg-[#f5424a] text-white px-4 py-1 rounded-full text-sm font-medium" style={{ fontFamily: 'var(--font-body)' }}>
-                      Mais Vendido
-                    </span>
-                  </div>
-                )}
-                
-                <h3 className="text-2xl font-bold text-[#1a2e4a] mb-2" style={{ fontFamily: 'var(--font-heading)' }}>{plan.name}</h3>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-[#1a2e4a]" style={{ fontFamily: 'var(--font-heading)' }}>{plan.price}</span>
-                  <span className="text-[#1a2e4a]/60 ml-2" style={{ fontFamily: 'var(--font-body)' }}>{plan.period}</span>
-                </div>
-                
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle2 className="text-[#387ad6] flex-shrink-0 mt-0.5" size={20} />
-                      <span className="text-[#1a2e4a]/70" style={{ fontFamily: 'var(--font-body)' }}>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <Button
-                  className={`w-full ${
+          <div className="flex justify-center">
+            <div className="w-full max-w-sm">
+              {plans.map((plan, index) => (
+                <div
+                  key={index}
+                  className={`bg-white rounded-2xl p-8 ${
                     plan.highlight
-                      ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-                      : "bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20 hover:bg-[#f2e8e0]"
+                      ? "border-2 border-[#1fa6a8] shadow-xl relative"
+                      : "border border-[#1a2e4a]/10 shadow-lg"
                   }`}
                 >
-                  Escolher Plano
-                </Button>
-              </div>
-            ))}
+                  {plan.highlight && (
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <span className="bg-[#f5424a] text-white px-4 py-1 rounded-full text-sm font-medium">
+                        Mais Vendido
+                      </span>
+                    </div>
+                  )}
+
+                  <h3 className="text-2xl font-bold text-[#1a2e4a] mb-2">
+                    {plan.name}
+                  </h3>
+
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold text-[#1a2e4a]">
+                      {plan.price}
+                    </span>
+                    <span className="text-[#1a2e4a]/60 ml-2" style={{ fontFamily: 'var(--font-body)' }}>{plan.period}</span>
+                  </div>
+
+                  <ul className="space-y-3 mb-8">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start gap-3">
+                        <CheckCircle2
+                          className="text-[#1fa6a8] flex-shrink-0 mt-0.5"
+                          size={20}
+                        />
+                        <span className="text-[#1a2e4a]/70">
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Button
+                    className={`w-full ${
+                      plan.highlight
+                        ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] text-white"
+                        : "bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20"
+                    }`}
+                  >
+                    Escolher Plano
+                  </Button>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] rounded-3xl p-12 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-            Pronto para Acelerar sua Carreira?
-          </h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-body)' }}>
-            Agende uma sessão estratégica gratuita de 45 minutos para discutir seus objetivos e criar um plano personalizado.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-[#1fa6a8] hover:bg-white/90">
-              Agendar Sessão Estratégica
-            </Button>
-            <Button className="bg-transparent border-2 border-white text-white hover:bg-white/10">
-              Baixar Guia de Crescimento
-            </Button>
-          </div>
-        </div>
+        <CallToAction />
       </div>
     </div>
   );

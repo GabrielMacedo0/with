@@ -5,14 +5,28 @@ import { ServicesHomePage } from "@/app/pages/ServicesHomePage";
 import { ServicesJuniorPage } from "@/app/pages/ServicesJuniorPage";
 import { ServicesPlenoPage } from "@/app/pages/ServicesPlenoPage";
 import { ServicesSeniorPage } from "@/app/pages/ServicesSeniorPage";
+import { ServicesJobHunterPage } from "@/app/pages/ServicesJobHunterPage";
 import { AboutPage } from "@/app/pages/AboutPage";
 import { ArticlesPage } from "@/app/pages/ArticlesPage";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
-  const handleNavigate = (page: string) => {
+  const handleNavigate = (page: string, sectionId?: string) => {
     setCurrentPage(page);
+
+    if (sectionId) {
+      // Usamos um pequeno delay (0ms ou 100ms) para garantir que o React 
+      // termine de renderizar a Home antes de procurarmos o ID
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
   };
 
   const renderPage = () => {
@@ -25,6 +39,8 @@ export default function App() {
         return <ServicesPlenoPage onNavigate={handleNavigate} />;
       case "services-senior":
         return <ServicesSeniorPage onNavigate={handleNavigate} />;
+      case "services-jobhunter":
+        return <ServicesJobHunterPage onNavigate={handleNavigate} />;
       case "about":
         return <AboutPage onNavigate={handleNavigate} />;
       case "articles":
@@ -40,7 +56,7 @@ export default function App() {
       <main className="flex-1">
         {renderPage()}
       </main>
-      <Footer />
+      <Footer onNavigate={handleNavigate}/>
     </div>
   );
 }

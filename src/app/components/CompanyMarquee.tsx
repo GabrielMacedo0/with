@@ -1,49 +1,49 @@
 import { useEffect, useRef } from "react";
-import Magazineluiza from "@/assets/logos/Logo_Magazineluiza.svg";
-import Ambev from "@/assets/logos/Logo_Ambev.svg";
-import Natura from "@/assets/logos/Logo_Natura.svg";
-import Itau from "@/assets/logos/Logo_Itau.svg";
+import Bauducco from "@/assets/logos/Logo_Bauducco.svg";
 import Bradesco from "@/assets/logos/Logo_Bradesco.svg";
-import Nubank from "@/assets/logos/Logo_Nubank.svg";
-import Google from "@/assets/logos/Logo_Google.svg";
-import Microsoft from "@/assets/logos/Logo_Microsoft.svg";
-import MercadoLivre from "@/assets/logos/Logo_Mercado_Livre.svg";
-import Ifood from "@/assets/logos/Logo_Ifood.svg";
-import Pagbank from "@/assets/logos/Logo_Pagbank.svg";
-import Santander from "@/assets/logos/Logo_Santander.svg";
-import Vivo from "@/assets/logos/Logo_Vivo.svg";
 import Claro from "@/assets/logos/Logo_Claro.svg";
-import Tim from "@/assets/logos/Logo_Tim.svg";
-import Petrobras from "@/assets/logos/Logo_Petrobras.svg";
-import Vale from "@/assets/logos/Logo_Vale.svg";
-import JBS from "@/assets/logos/Logo_JBS.svg";
-import B3 from "@/assets/logos/Logo_B3.svg";
-import XP from "@/assets/logos/Logo_XP_inc.svg";
+import Dhl from "@/assets/logos/Logo_Dhl.svg";
+import Gm from "@/assets/logos/Logo_Gm.svg";
+import Gympass from "@/assets/logos/Logo_Gympass.svg";
+import Heineken from "@/assets/logos/Logo_Heineken.svg";
+import Ibm from "@/assets/logos/Logo_Ibm.svg";
+import Localiza from "@/assets/logos/Logo_Localiza.svg";
+import Byd from "@/assets/logos/Logo_Byd.svg";
+import MercadoLivre from "@/assets/logos/Logo_Mercado_Livre.svg";
+import Natura from "@/assets/logos/Logo_Natura.svg";
+import Nestle from "@/assets/logos/Logo_Nestle.svg";
+import Oracle from "@/assets/logos/Logo_Oracle.svg";
+import RedeDor from "@/assets/logos/Logo_RedeDor.svg";
+import Salesforce from "@/assets/logos/Logo_Salesforce.svg";
+import Santander from "@/assets/logos/Logo_Santander.svg";
+import Sicredi from "@/assets/logos/Logo_Sicredi.svg";
+import Simpar from "@/assets/logos/Logo_Simpar.svg";
+import Votorantim from "@/assets/logos/Logo_Votorantim.svg";
 
 export function CompanyMarquee() {
   const trackRef = useRef<HTMLDivElement>(null);
   // Array de empresas com logos estilizados
   const companies: Company [] = [
-    { name: 'Magazine Luiza', logo: Magazineluiza},
-    { name: 'Ambev', logo: Ambev},
-    { name: 'Natura', logo: Natura},
-    { name: 'Itau', logo: Itau},
+    { name: 'Bauducco', logo: Bauducco},
     { name: 'Bradesco', logo: Bradesco},
-    { name: 'Nubank', logo: Nubank},
-    { name: 'Google', logo: Google},
-    { name: 'Microsoft', logo: Microsoft},
-    { name: 'Mercado Livre', logo: MercadoLivre},
-    { name: 'iFood', logo: Ifood},
-    { name: 'PagBank', logo: Pagbank},
-    { name: 'Santander', logo: Santander},
-    { name: 'Vivo', logo: Vivo},
     { name: 'Claro', logo: Claro},
-    { name: 'TIM', logo: Tim},
-    { name: 'Petrobras', logo: Petrobras},
-    { name: 'Vale', logo: Vale},
-    { name: 'JBS', logo: JBS},
-    { name: 'B3', logo: B3},
-    { name: 'XP Inc', logo: XP},
+    { name: 'Dhl', logo: Dhl},
+    { name: 'Gm', logo: Gm},
+    { name: 'Gympass', logo: Gympass},
+    { name: 'Heineken', logo: Heineken},
+    { name: 'Ibm', logo: Ibm},
+    { name: 'Localiza', logo: Localiza},
+    { name: 'Byd', logo: Byd},
+    { name: 'MercadoLivre', logo: MercadoLivre},
+    { name: 'Natura', logo: Natura},
+    { name: 'Nestle', logo: Nestle},
+    { name: 'Oracle', logo: Oracle},
+    { name: 'RedeDor', logo: RedeDor},
+    { name: 'Salesforce', logo: Salesforce},
+    { name: 'Santander', logo: Santander},
+    { name: 'Sicredi', logo: Sicredi},
+    { name: 'Simpar', logo: Simpar},
+    { name: 'Votorantim', logo: Votorantim},
   ];
 
   interface Company {
@@ -56,13 +56,17 @@ export function CompanyMarquee() {
     if (!track) return;
 
     const firstGroup = track.children[0] as HTMLElement;
+
     let x = 0;
-    const speed = 0.6;
+    let lastTime = performance.now();
+    const speed = 20; // pixels POR SEGUNDO (bem mais intuitivo)
 
-    const animate = () => {
-      x -= speed;
+    const animate = (currentTime: number) => {
+      const deltaTime = (currentTime - lastTime) / 1000; // segundos
+      lastTime = currentTime;
 
-      // quando o 1º grupo saiu totalmente da tela
+      x -= speed * deltaTime;
+
       if (x <= -firstGroup.scrollWidth) {
         x = 0;
       }
@@ -93,11 +97,8 @@ export function CompanyMarquee() {
           <div  className="marquee-group">
             {companies.map((company, index) => (
               <div 
-                key={`first-${index}`}
+                key={`second-${index}`}
                 className="flex items-center justify-center min-w-[160px] h-20 px-4 rounded-lg"
-                style={{ 
-                  backgroundColor: 'white',
-                }}
               >
                 <div className="logo-wrapper">
                   <img
@@ -107,7 +108,7 @@ export function CompanyMarquee() {
                     loading="lazy"
                   />
                 </div>
-                </div>
+              </div>
             ))}
           </div>
           
@@ -117,9 +118,6 @@ export function CompanyMarquee() {
               <div 
                 key={`second-${index}`}
                 className="flex items-center justify-center min-w-[160px] h-20 px-4 rounded-lg"
-                style={{ 
-                  backgroundColor: 'white',
-                }}
               >
                 <div className="logo-wrapper">
                   <img

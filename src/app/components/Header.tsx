@@ -19,6 +19,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
         { label: "Júnior", value: "services-junior" },
         { label: "Pleno", value: "services-pleno" },
         { label: "Sênior", value: "services-senior" },
+        { label: "JobHunter", value: "services-jobhunter" },
       ],
     },
     { label: "Sobre Nós", value: "about" },

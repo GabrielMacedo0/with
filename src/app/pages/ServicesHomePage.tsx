@@ -1,20 +1,30 @@
-import { Target, Users, TrendingUp, Award, CheckCircle2, Download, Mail, Phone, MapPin, ArrowRight, Briefcase, BookOpen} from 'lucide-react';
+import { Target, Users, TrendingUp, Award, CheckCircle2, Download, Monitor, Phone, MapPin, ArrowRight, Briefcase, BookOpen, MessageCircle} from 'lucide-react';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import AnaBeatriz from "@/assets/Ana-beatriz.jfif";
 import Willian from "@/assets/Willian.jfif";
 import Guilherme from "@/assets/Guilherme.jfif";
+import AboutUs from "@/assets/quem-somos.png";
 import { CountUpCard } from '@/app/components/CountUpCard';
 import { ContactForm } from '@/app/components/ContactForm';
 import { CompanyMarquee } from '@/app/components/CompanyMarquee';
 import heroImage from '@/assets/Imagem.png';
+import { useScrollToSection } from "@/app/components/hooks/useScrollToSection";
 
 interface ServicesHomePageProps {
-  onNavigate?: (page: string) => void;
+  // Removendo o '?', o TypeScript entende que essa função SEMPRE existirá
+  onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
+  useScrollToSection();
+  
+  const handleNavigate = (sectionId: string) => {
+    sessionStorage.setItem("scrollTo", sectionId);
+    window.location.assign("/");
+  };
+  
   return (
-    <div className="min-h-screen bg-white">
+    <div className="animate-fade-in min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-gray-50 to-white py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
@@ -70,9 +80,6 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
               <p className="text-gray-600 mb-6">
                 Para profissionais que sentem que precisam avançar, mas ainda não têm clareza sobre direção, prioridades ou o tipo de oportunidade que faz sentido neste momento.
               </p>
-              <a href="#contato" className="text-blue-900 inline-flex items-center gap-2 hover:gap-3 transition-all">
-                Saiba mais <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
 
             <div className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition">
@@ -83,9 +90,6 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
               <p className="text-gray-600 mb-6">
                 Para quem já participa de processos seletivos, mas encontra dificuldade em se posicionar, sustentar o discurso ou converter entrevistas em propostas.
               </p>
-              <a href="#contato" className="text-blue-900 inline-flex items-center gap-2 hover:gap-3 transition-all">
-                Saiba mais <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
 
             <div className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition">
@@ -96,9 +100,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
               <p className="text-gray-600 mb-6">
                 Para profissionais que estão aplicando para muitas vagas, mas de forma pouco estratégica, com desgaste e resultados inconsistentes.
               </p>
-              <a href="#contato" className="text-blue-900 inline-flex items-center gap-2 hover:gap-3 transition-all">
-                Saiba mais <ArrowRight className="w-4 h-4" />
-              </a>
+
             </div>
           </div>
         </div>
@@ -141,7 +143,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1649589244330-09ca58e4fa64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NTY5Nzk2Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src= {AboutUs}
                 alt="Consultora de carreira"
                 className="rounded-lg shadow-lg w-full h-auto"
               />
@@ -149,20 +151,20 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             <div>
               <h2 className="text-gray-900 mb-6">Sobre a With</h2>
               <p className="text-gray-600 mb-6">
-  A With é uma consultoria de carreira que atua com profissionais em diferentes momentos de carreira, especialmente quando avançar exige mais estratégia, contatos e leitura de mercado. Nosso trabalho se inicia com um diagnóstico do seu momento profissional e da definição da abordagem mais adequada para cada candidatura, evitando decisões baseadas em tentativa e erro.
-</p>
+                A With é uma consultoria de carreira que atua com profissionais em diferentes momentos de carreira, especialmente quando avançar exige mais estratégia, contatos e leitura de mercado. Nosso trabalho se inicia com um diagnóstico do seu momento profissional e da definição da abordagem mais adequada para cada candidatura, evitando decisões baseadas em tentativa e erro.
+              </p>
 
-<p className="text-gray-600 mb-6">
-  Atuamos com processos estruturados, sem promessas rápidas ou soluções genéricas. Cada acompanhamento é definido a partir do momento de carreira, dos objetivos e da necessidade do cliente.
-</p>
+              <p className="text-gray-600 mb-6">
+                Atuamos com processos estruturados, sem promessas rápidas ou soluções genéricas. Cada acompanhamento é definido a partir do momento de carreira, dos objetivos e da necessidade do cliente.
+              </p>
 
-<p className="text-gray-600 mb-6">
-  Trabalhamos com profissionais que buscam conduzir a carreira de forma mais consciente e consistente — e não com quem procura atalhos ou garantias de resultado.
-</p>
+              <p className="text-gray-600 mb-6">
+                Trabalhamos com profissionais que buscam conduzir a carreira de forma mais consciente e consistente — e não com quem procura atalhos ou garantias de resultado.
+              </p>
 
-<p className="text-gray-600">
-  A With é liderada por Stephany Borowiec, consultora de carreira com mais de 10 anos de atuação em recrutamento, desenvolvimento profissional e processos seletivos.
-</p>
+              <p className="text-gray-600">
+                A With é liderada por Stephany Borowiec, consultora de carreira com mais de 10 anos de atuação em recrutamento, desenvolvimento profissional e processos seletivos.
+              </p>
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded">
                   <Award className="w-5 h-5 text-blue-900" />
@@ -197,7 +199,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                   <p className="text-gray-600 mb-6">
                     Processo individual voltado para profissionais que precisam de clareza antes de tomar decisões importantes. A imersão analisa trajetória, resultados, competências e contexto de mercado para definir direção, prioridades e próximos passos de forma estratégica.
 
-Indicada quando o principal desafio é entender para onde ir e como estruturar o movimento.
+                    Indicada quando o principal desafio é entender para onde ir e como estruturar o movimento.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
@@ -228,7 +230,7 @@ Indicada quando o principal desafio é entender para onde ir e como estruturar o
                   <p className="text-gray-600 mb-6">
                     Estruturação do currículo e do LinkedIn com foco em posicionamento, senioridade e impacto. O trabalho organiza a narrativa profissional, ajusta linguagem ao mercado e aumenta a clareza para recrutadores e processos seletivos.
 
-Indicada quando o profissional tem experiência, mas não está sendo chamado ou não está sendo bem interpretado pelo mercado.
+                    Indicada quando o profissional tem experiência, mas não está sendo chamado ou não está sendo bem interpretado pelo mercado.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
@@ -259,7 +261,7 @@ Indicada quando o profissional tem experiência, mas não está sendo chamado ou
                   <p className="text-gray-600 mb-6">
                     Preparação focada em discurso, postura e clareza na comunicação de resultados. As simulações ajudam a identificar falhas invisíveis e alinhar o posicionamento ao nível da vaga e às expectativas do recrutador.
 
-Indicada quando o profissional é chamado para entrevistas, mas não avança.
+                    Indicada quando o profissional é chamado para entrevistas, mas não avança.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
@@ -290,7 +292,7 @@ Indicada quando o profissional é chamado para entrevistas, mas não avança.
                   <p className="text-gray-600 mb-6">
                     Acompanhamento completo com execução assistida da busca por oportunidades. A equipe atua na estratégia, nas candidaturas e na leitura do retorno do mercado, ajustando o posicionamento ao longo do processo.
 
-Indicado para quem não tem tempo, margem de erro ou disponibilidade para conduzir a recolocação sozinho.
+                    Indicado para quem não tem tempo, margem de erro ou disponibilidade para conduzir a recolocação sozinho.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
@@ -314,7 +316,7 @@ Indicado para quem não tem tempo, margem de erro ou disponibilidade para conduz
       </section>
 
       {/* Lead Magnet */}
-      <section className="py-20 bg-blue-900">
+      <section className="py-20 bg-blue-900" id="ebook">
         <div className="max-w-5xl mx-auto px-6">
           <div className="bg-white rounded-lg shadow-2xl overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
@@ -328,9 +330,11 @@ Indicado para quem não tem tempo, margem de erro ou disponibilidade para conduz
                 </h2>
                 <p className="text-gray-600 mb-8">
               
-Este guia gratuito reúne orientações práticas para ajudar você a organizar sua estratégia profissional e se posicionar melhor no mercado.
+                  Este guia gratuito reúne orientações práticas para ajudar você a organizar sua estratégia profissional e 
+                  se posicionar melhor no mercado.
 
-O material foi desenvolvido a partir de experiências reais em processos de recolocação e desenvolvimento de carreira, com foco em clareza, direcionamento e decisões mais estratégicas.
+                  O material foi desenvolvido a partir de experiências reais em processos de recolocação e desenvolvimento de carreira, 
+                  com foco em clareza, direcionamento e decisões mais estratégicas.
                 </p>
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center gap-3">
@@ -404,7 +408,7 @@ O material foi desenvolvido a partir de experiências reais em processos de reco
       <CompanyMarquee />
 
       {/* Depoimentos */}
-      <section className="py-20" style={{ backgroundColor: '#f2e8e0' }}>
+      <section className="py-20" style={{ backgroundColor: '#f2e8e0' }} id= "depoimentos">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 style={{ color: '#1a2e4a' }} className="mb-4">O que nossos clientes dizem</h2>
@@ -625,7 +629,15 @@ O material foi desenvolvido a partir de experiências reais em processos de reco
             </div>
           </div>
           <div className="text-center mt-12">
-            <a href="#" className="inline-block border-2 border-gray-300 text-gray-700 px-8 py-3 rounded hover:border-gray-400 transition">
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                // O ?. evita o erro caso a prop venha vazia por algum motivo
+                onNavigate?.("articles"); 
+              }}
+              className="inline-block border-2 border-gray-300 text-gray-700 px-8 py-3 rounded hover:border-gray-400 transition"
+            >
               Ver todos os artigos
             </a>
           </div>
@@ -643,11 +655,67 @@ O material foi desenvolvido a partir de experiências reais em processos de reco
             {/* Formulário */}
             <div className="space-y-6">
               <ContactForm />
+            </div>
+            
+            <div>
+              {/* Informações de contato */}
+              <div className="bg-gray-50 p-8 rounded-lg mb-6">
+                <h3 className="text-gray-900 mb-6">Informações de Contato</h3>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Monitor className="w-5 h-5 text-blue-900" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500 mb-1">Atendimento Online</p>
+                      <p className="text-gray-900">100% digital para todo o Brasil</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 text-blue-900" />
+                    </div>
+                    <a
+                      href="https://api.whatsapp.com/send?phone=5511951598050&text=Olá!%20Gostaria%20de%20mais%20informações."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      <div>
+                        <p className="text-sm text-gray-500 mb-1">WhatsApp</p>
+                        <p className="text-gray-900 hover:underline">(11) 95159-8050</p>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MessageCircle className="w-5 h-5 text-blue-900" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500 mb-1">Fale conosco agora</p>
+                      <p className="text-gray-900">Clique no WhatsApp e fale com um especialista</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Horário */}
+              <div className="mt-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-900">
+                <p className="text-gray-700">
+                  <strong>Horário de atendimento:</strong><br />
+                  Segunda a sexta: 9h às 18h
+                </p>
+              </div>
+
+              {/* Contato formal */}
+              <div className="mt-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-900 text-center">
                 <h4 className="text-gray-900 mb-2">
                   Prefere um contato mais formal?
                 </h4>
+
                 <p className="text-gray-600 mb-4 text-sm">
                   Utilize nosso formulário institucional para solicitações detalhadas.
                 </p>
@@ -661,57 +729,6 @@ O material foi desenvolvido a partir de experiências reais em processos de reco
                   Acessar formulário formal
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </a>
-              </div>
-            </div>
-            
-            {/* Informações */}
-            <div>
-              <div className="bg-gray-50 p-8 rounded-lg mb-6">
-                <h3 className="text-gray-900 mb-6">Informações de Contato</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 text-blue-900" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">E-mail</p>
-                      <p className="text-gray-900">contato@careerpath.com.br</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-blue-900" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">Telefone</p>
-                      <p className="text-gray-900">(11) 98765-4321</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-blue-900" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">Endereço</p>
-                      <p className="text-gray-900">Av. Paulista, 1000 - Sala 201<br />São Paulo, SP - CEP 01310-100</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <MapPin className="w-12 h-12 mx-auto mb-2 text-gray-400" />
-                  <p>Mapa de localização</p>
-                </div>
-              </div>
-
-              <div className="mt-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-900">
-                <p className="text-gray-700">
-                  <strong>Horário de atendimento:</strong><br />
-                  Segunda a sexta: 9h às 18h<br />
-                
-                </p>
               </div>
             </div>
           </div>

@@ -6,6 +6,11 @@ interface AboutPageProps {
 }
 
 export function AboutPage({ onNavigate }: AboutPageProps) {
+    const handleNavigate = (sectionId: string) => {
+    sessionStorage.setItem("scrollTo", sectionId);
+    window.location.assign("/");
+    };
+
   const values = [
     {
       icon: Target,
@@ -48,9 +53,9 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
   ];
 
   const stats = [
-    { number: "2.500+", label: "Clientes Atendidos" },
-    { number: "94%", label: "Taxa de Sucesso" },
-    { number: "15+", label: "Anos de Experiência" },
+    { number: "2.800+", label: "Clientes Atendidos" },
+    { number: "85%", label: "Taxa de Sucesso" },
+    { number: "6+", label: "Anos de Experiência" },
     { number: "4.8/5", label: "Avaliação Média" },
   ];
 
@@ -73,7 +78,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           </h1>
           
           <p className="text-xl text-[#1a2e4a]/70 max-w-3xl" style={{ fontFamily: 'var(--font-body)' }}>
-            Transformando carreiras através de consultoria estratégica e personalizada desde 2011
+            Transformando carreiras através de consultoria estratégica e personalizada desde 2020
           </p>
         </div>
       </div>
@@ -88,7 +93,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             </h2>
             
             <p className="text-[#1a2e4a]/70 mb-6" style={{ fontFamily: 'var(--font-body)' }}>
-              Fundada em 2011, a Consultoria de Carreira nasceu da necessidade de oferecer orientação profissional de qualidade e acessível para profissionais em todos os estágios de suas carreiras.
+              Fundada em 2020, a Consultoria de Carreira nasceu da necessidade de oferecer orientação profissional de qualidade e acessível para profissionais em todos os estágios de suas carreiras.
             </p>
             
             <p className="text-[#1a2e4a]/70 mb-6" style={{ fontFamily: 'var(--font-body)' }}>
@@ -96,10 +101,11 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             </p>
             
             <p className="text-[#1a2e4a]/70 mb-8" style={{ fontFamily: 'var(--font-body)' }}>
-              Hoje, somos orgulhosos de ter ajudado mais de 2.500 profissionais a alcançarem seus objetivos de carreira, desde a primeira oportunidade até transições executivas.
+              Hoje, somos orgulhosos de ter ajudado mais de 2.800 profissionais a alcançarem seus objetivos de carreira, desde a primeira oportunidade até transições executivas.
             </p>
             
-            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white">
+            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
+              onClick={() => handleNavigate("contato")}>
               Agendar Conversa
             </Button>
           </div>
@@ -184,10 +190,13 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             Entre em contato conosco e descubra como podemos ajudar você a alcançar seus objetivos profissionais.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white">
+            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
+                onClick={() => handleNavigate("contato")}>
+              
               Agendar Consulta Gratuita
             </Button>
-            <Button className="bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20 hover:bg-white/50">
+            <Button className="bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20 hover:bg-white/50"
+              onClick={() => handleNavigate("servicos")}>
               Ver Nossos Serviços
             </Button>
           </div>
