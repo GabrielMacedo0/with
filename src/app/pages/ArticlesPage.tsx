@@ -1,15 +1,11 @@
 import { Button } from "@/app/components/ui/button";
 import { Calendar, Clock, ArrowRight, ArrowLeft } from "lucide-react";
 
-interface ArticlesPageProps {
-  onNavigate?: (page: string) => void;
+  interface ArticlesPageProps {
+  onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ArticlesPage({ onNavigate }: ArticlesPageProps) {
-  const handleNavigate = (sectionId: string) => {
-    sessionStorage.setItem("scrollTo", sectionId);
-    window.location.assign("/");
-  };
   const featuredArticle = {
     title: "Como Criar um Currículo que se Destaca em 2026",
     excerpt: "Descubra as estratégias mais eficazes para criar um currículo que chama atenção de recrutadores e passa pelos sistemas ATS.",
@@ -245,11 +241,11 @@ export function ArticlesPage({ onNavigate }: ArticlesPageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-              onClick={() => handleNavigate("contato")}>
+              onClick={(e) => { e.preventDefault(); onNavigate("contact");}}>
               Agendar Consulta Gratuita
             </Button>
             <Button className="bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20 hover:bg-white/50"
-                onClick={() => handleNavigate("ebook")}>
+              onClick={(e) => { e.preventDefault(); onNavigate("home", "ebook");}}>
                 Baixar E-book Grátis
             </Button>
           </div>

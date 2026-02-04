@@ -3,14 +3,11 @@ import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { CallToAction  } from "@/app/components/CallToAction";
 
 interface ServicesJobHunterPageProps {
-  onNavigate?: (page: string) => void;
+  onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps) {
-  const handleNavigate = (sectionId: string) => {
-    sessionStorage.setItem("scrollTo", sectionId);
-    window.location.assign("/");
-  };
+
   const features = [
     {
       title: "Avaliação comportamental",
@@ -113,11 +110,10 @@ export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps
             <p className="text-[#1a2e4a]/70 mb-8" style={{ fontFamily: 'var(--font-body)' }}>
               Nossa atuação funciona como um agente de carreira: cuidamos do posicionamento, da narrativa e da abordagem ao mercado para que seus resultados cheguem a quem decide.
             </p>            
-            <a href="https://form.respondi.app/M3PUSAeF"
-              target="_blank"
-              rel="noopener noreferrer">
+            <a href="#">
               
-            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white">
+            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
+              onClick={(e) => { e.preventDefault(); onNavigate("contact");}}>
               Agendar Job Hunting
             </Button></a>
           </div>
@@ -220,7 +216,7 @@ export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps
         </div>
 
         {/* CTA Section */}
-        <CallToAction />
+        <CallToAction onNavigate={onNavigate}/>
       </div>
     </div>
   );

@@ -3,14 +3,10 @@ import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { CallToAction  } from "@/app/components/CallToAction";
 
 interface ServicesPlenoPageProps {
-  onNavigate?: (page: string) => void;
+  onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
-  const handleNavigate = (sectionId: string) => {
-    sessionStorage.setItem("scrollTo", sectionId);
-    window.location.assign("/");
-  };
   const features = [
     {
       title: "Currículo Estratégico com foco em impacto",
@@ -95,7 +91,7 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
             </p>
             
             <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-              onClick={() => handleNavigate("contato")}>
+              onClick={(e) => { e.preventDefault(); onNavigate("contact");}}>
               Agendar Avaliação Gratuita
             </Button>
           </div>
@@ -198,7 +194,7 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
         </div>
 
         {/* CTA Section */}
-        <CallToAction />
+        <CallToAction onNavigate={onNavigate}/>
       </div>
     </div>
   );

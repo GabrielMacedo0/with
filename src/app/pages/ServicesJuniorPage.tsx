@@ -3,14 +3,10 @@ import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { CallToAction  } from "@/app/components/CallToAction";
 
 interface ServicesJuniorPageProps {
-  onNavigate?: (page: string) => void;
+  onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
-  const handleNavigate = (sectionId: string) => {
-    sessionStorage.setItem("scrollTo", sectionId);
-    window.location.assign("/");
-  };
   const features = [
     {
       title: "Currículo Completo",
@@ -90,7 +86,7 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
               O principal desafio nessa fase não é a falta de esforço, mas a ausência de um posicionamento claro: o profissional faz muita coisa, porém o mercado não consegue identificar exatamente onde ele se encaixa.
             </p>
             <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-              onClick={() => handleNavigate("ebook")}>
+              onClick={(e) => { e.preventDefault(); onNavigate("home", "ebook");}}>
               Baixar E-book Gratuito
             </Button>
           </div>
@@ -193,7 +189,7 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
         </div>
 
         {/* CTA Section */}
-        <CallToAction />
+        <CallToAction onNavigate={onNavigate}/>
       </div>
     </div>
   );

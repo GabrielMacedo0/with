@@ -8,6 +8,7 @@ import { ServicesSeniorPage } from "@/app/pages/ServicesSeniorPage";
 import { ServicesJobHunterPage } from "@/app/pages/ServicesJobHunterPage";
 import { AboutPage } from "@/app/pages/AboutPage";
 import { ArticlesPage } from "@/app/pages/ArticlesPage";
+import { ContactForm } from "@/app/pages/ContactForm";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -45,6 +46,8 @@ export default function App() {
         return <AboutPage onNavigate={handleNavigate} />;
       case "articles":
         return <ArticlesPage onNavigate={handleNavigate} />;
+      case "contact":
+        return <ContactForm onNavigate={handleNavigate} />;
       default:
         return <ServicesHomePage onNavigate={handleNavigate} />;
     }

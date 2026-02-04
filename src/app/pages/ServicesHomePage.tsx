@@ -1,27 +1,49 @@
-import { Target, Users, TrendingUp, Award, CheckCircle2, Download, Monitor, Phone, MapPin, ArrowRight, Briefcase, BookOpen, MessageCircle} from 'lucide-react';
+import { Target, Users, TrendingUp, Award, CheckCircle2, Download, ArrowRight, Briefcase, BookOpen, MessageCircle, Monitor, Phone} from 'lucide-react';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import AnaBeatriz from "@/assets/Ana-beatriz.jfif";
 import Willian from "@/assets/Willian.jfif";
 import Guilherme from "@/assets/Guilherme.jfif";
+import Plano from "@/assets/planoA-planoB.png";
+import HomeOffice from "@/assets/homeoffice.png";
+import networking from "@/assets/networking.png";
 import AboutUs from "@/assets/quem-somos.png";
 import { CountUpCard } from '@/app/components/CountUpCard';
-import { ContactForm } from '@/app/components/ContactForm';
 import { CompanyMarquee } from '@/app/components/CompanyMarquee';
 import heroImage from '@/assets/Imagem.png';
-import { useScrollToSection } from "@/app/components/hooks/useScrollToSection";
 
 interface ServicesHomePageProps {
-  // Removendo o '?', o TypeScript entende que essa função SEMPRE existirá
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
-  useScrollToSection();
-  
-  const handleNavigate = (sectionId: string) => {
-    sessionStorage.setItem("scrollTo", sectionId);
-    window.location.assign("/");
-  };
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const nome = (form.elements.namedItem("nome") as HTMLInputElement).value;
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+
+    try {
+      const response = await fetch("https://SEU-N8N/webhook/ebook-gratis", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ nome, email }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao enviar formulário");
+      }
+
+      alert("✅ eBook enviado! Verifique seu e-mail.");
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      alert("❌ Ocorreu um erro. Tente novamente.");
+    }
+  }
   
   return (
     <div className="animate-fade-in min-h-screen bg-white">
@@ -37,10 +59,9 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                 Em fases de transição, estagnação ou reposicionamento, insistir sem direção costuma gerar desgaste e frustração. Avançar exige estratégia, clareza sobre o momento de carreira e leitura real do mercado. É nesse ponto que a With atua, organizando escolhas e estruturando movimentos profissionais mais conscientes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="#contato" className="bg-blue-900 text-white px-8 py-4 rounded hover:bg-blue-800 transition text-center">
-                  Entre em contato
-                </a>
-                <a href="#servicos" className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded hover:border-gray-400 transition text-center">
+                <a href="#contato"
+                  className="bg-blue-900 text-white px-8 py-4 rounded hover:bg-blue-800 transition text-center">Entre em contato</a>
+                <a href="#services" className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded hover:border-gray-400 transition text-center">
                   Conhecer Serviços
                 </a>
               </div>
@@ -63,7 +84,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
       </section>
 
       {/* O que fazemos */}
-      <section className="py-20 bg-white" id="servicos">
+      <section className="py-20 bg-white" >
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-gray-900 mb-4">Situações comuns em diferentes momentos de carreira</h2>
@@ -181,7 +202,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
       </section>
 
       {/* Serviços Detalhados */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50" id="services">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-gray-900 mb-4">Nossos Serviços em Detalhe</h2>
@@ -351,10 +372,11 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                   </div>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg">
-                  <form className="space-y-4">
+                  <form className="space-y-4" onSubmit={handleSubmit}>
                     <div>
                       <input 
-                        type="text" 
+                        type="text"
+                        name='nome' 
                         placeholder="Nome"
                         className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-900"
                       />
@@ -362,6 +384,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                     <div>
                       <input 
                         type="email" 
+                        name='email'
                         placeholder="E-mail"
                         className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-900"
                       />
@@ -554,75 +577,75 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Artigo 1 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full">
               <img 
-                src="https://images.unsplash.com/photo-1744956581253-abfd023141b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJlZXIlMjBzdWNjZXNzJTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc2NTc1MjUyMnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src={Plano}
                 alt="Artigo 1"
                 className="w-full h-48 object-cover"
               />
-              <div className="p-6">
+              <div className="p-6 flex flex-col h-full">
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                  <span>10 de dezembro, 2024</span>
+                  <span>14 de maio, 2025</span>
                   <span>•</span>
-                  <span>5 min de leitura</span>
+                  <span>4 min de leitura</span>
                 </div>
                 <h3 className="text-gray-900 mb-3">
-                  Como identificar o momento certo para mudar de carreira
+                  E se o seu plano B for, na verdade, o seu verdadeiro plano A?
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Descubra os principais sinais que indicam que está na hora de fazer uma mudança profissional e como se preparar para essa transição...
+                  Descubra os sinais de que está na hora de mudar de carreira, como aproveitar sua experiência acumulada e se preparar para uma transição profissional com mais clareza e propósito.
                 </p>
-                <a href="#" className="text-blue-900 inline-flex items-center gap-2 hover:gap-3 transition-all">
+                <a href="https://www.linkedin.com/pulse/e-se-o-seu-plano-b-na-verdade-verdadeiro-stephany-borowiec-rmmhf/?trackingId=cgAHacyaR3S%2Fzc5EifjWqA%3D%3D" className="mt-auto text-blue-900 inline-flex items-center gap-2 hover:gap-3 transition-all">
                   Ler artigo completo <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </div>
 
             {/* Artigo 2 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full">
               <img 
-                src="https://images.unsplash.com/photo-1551135049-8a33b5883817?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNvbnN1bHRhbnQlMjBvZmZpY2V8ZW58MXx8fHwxNzY1NzY2OTM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src= {HomeOffice}
                 alt="Artigo 2"
                 className="w-full h-48 object-cover"
               />
-              <div className="p-6">
+              <div className="p-6 flex flex-col h-full">
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                  <span>5 de dezembro, 2024</span>
+                  <span>14 de novembro, 2025</span>
                   <span>•</span>
-                  <span>7 min de leitura</span>
+                  <span>2 min de leitura</span>
                 </div>
                 <h3 className="text-gray-900 mb-3">
-                  LinkedIn: 8 estratégias para atrair recrutadores
+                  🧠 Home Office: Ainda faz sentido chamar de “benefício”?
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Otimize seu perfil do LinkedIn e aprenda técnicas comprovadas para aparecer nas buscas dos recrutadores e atrair as melhores oportunidades...
+                  O trabalho remoto deixou de ser privilégio e virou critério de escolha. Entenda o que realmente mudou e por que quem não se adapta está ficando para trás.
                 </p>
-                <a href="#" className="text-blue-900 inline-flex items-center gap-2 hover:gap-3 transition-all">
+                <a href="https://www.linkedin.com/pulse/home-office-ainda-faz-sentido-chamar-de-benefício-stephany-borowiec-qsxzf/?trackingId=x0EoxzLuQBC%2B6QbNknSUFA%3D%3D" className="mt-auto text-blue-900 inline-flex items-center gap-2 hover:gap-3 transition-all">
                   Ler artigo completo <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </div>
 
             {/* Artigo 3 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full">
               <img 
-                src="https://images.unsplash.com/photo-1601509876296-aba16d4c10a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9ufGVufDF8fHx8MTc2NTY0ODMzMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src= {networking}
                 alt="Artigo 3"
                 className="w-full h-48 object-cover"
               />
-              <div className="p-6">
+              <div className="p-6 flex flex-col h-full">
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                  <span>1 de dezembro, 2024</span>
+                  <span>27 de agosto, 2025</span>
                   <span>•</span>
-                  <span>6 min de leitura</span>
+                  <span>3 min de leitura</span>
                 </div>
                 <h3 className="text-gray-900 mb-3">
-                  Negociação salarial: técnicas para conseguir o que você merece
+                  O poder invisível do networking (e por que o Netwaving pode transformar sua carreira)
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Aprenda a se preparar para negociações salariais, conheça as melhores estratégias e descubra como argumentar com confiança...
+                  As melhores oportunidades raramente estão nos anúncios de vaga. Descubra o que realmente abre portas nos bastidores do mercado.
                 </p>
-                <a href="#" className="text-blue-900 inline-flex items-center gap-2 hover:gap-3 transition-all">
+                <a href="https://www.linkedin.com/pulse/o-poder-invisível-do-networking-e-por-que-netwaving-pode-borowiec-ugmrf/?trackingId=R3n9Rh5hR6OWUN5dI%2Fyb7A%3D%3D" className="mt-auto text-blue-900 inline-flex items-center gap-2 hover:gap-3 transition-all">
                   Ler artigo completo <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -645,95 +668,115 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
       </section>
 
       {/* Contato Final */}
-      <section className="py-20 bg-white" id="contato">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-gray-900 mb-4">Entre em contato</h2>
-            <p className="text-xl text-gray-600">Pronto para transformar sua carreira? Fale conosco agora mesmo</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Formulário */}
-            <div className="space-y-6">
-              <ContactForm />
-            </div>
-            
-            <div>
-              {/* Informações de contato */}
-              <div className="bg-gray-50 p-8 rounded-lg mb-6">
-                <h3 className="text-gray-900 mb-6">Informações de Contato</h3>
+  <section className="py-20 bg-white" id="contato">
+    <div className="max-w-5xl mx-auto px-6">
+      
+      {/* Cabeçalho */}
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Entre em contato
+        </h2>
 
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Monitor className="w-5 h-5 text-blue-900" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">Atendimento Online</p>
-                      <p className="text-gray-900">100% digital para todo o Brasil</p>
-                    </div>
-                  </div>
+        <p className="text-lg text-gray-600 max-w-xl mx-auto">
+          Fale com um especialista e tire suas dúvidas sem compromisso.
+        </p>
+      </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-blue-900" />
-                    </div>
-                    <a
-                      href="https://api.whatsapp.com/send?phone=5511951598050&text=Olá!%20Gostaria%20de%20mais%20informações."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                    >
-                      <div>
-                        <p className="text-sm text-gray-500 mb-1">WhatsApp</p>
-                        <p className="text-gray-900 hover:underline">(11) 95159-8050</p>
-                      </div>
-                    </a>
-                  </div>
+      {/* Conteúdo */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MessageCircle className="w-5 h-5 text-blue-900" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">Fale conosco agora</p>
-                      <p className="text-gray-900">Clique no WhatsApp e fale com um especialista</p>
-                    </div>
-                  </div>
+        {/* CTA principal */}
+        <div className="flex flex-col items-center justify-center text-center bg-blue-900 rounded-xl p-10 text-white">
+          <h3 className="text-2xl font-semibold mb-4">
+            Atendimento rápido e personalizado
+          </h3>
+
+          <p className="text-blue-100 mb-8">
+            Clique abaixo e vá direto para nossa página de contato.
+          </p>
+
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate?.("contact");
+            }}
+            className="w-full max-w-sm bg-white text-blue-900 font-semibold py-4 rounded-lg hover:bg-blue-50 transition flex items-center justify-center gap-2"
+          >
+            Ir para a página de contato
+          </a>
+        </div>
+
+        {/* Informações de contato */}
+        <div>
+
+          <div className="bg-gray-50 p-8 rounded-xl mb-6">
+            <h3 className="text-xl font-semibold text-gray-900 mb-6">
+              Informações de contato
+            </h3>
+
+            <div className="space-y-5">
+
+              {/* Atendimento */}
+              <div className="flex items-start gap-4">
+                <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center">
+                  <Monitor className="w-5 h-5 text-blue-900" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Atendimento online</p>
+                  <p className="text-gray-900 font-medium">
+                    100% digital para todo o Brasil
+                  </p>
                 </div>
               </div>
 
-              {/* Horário */}
-              <div className="mt-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-900">
-                <p className="text-gray-700">
-                  <strong>Horário de atendimento:</strong><br />
-                  Segunda a sexta: 9h às 18h
-                </p>
+              {/* WhatsApp */}
+              <a
+                href="https://api.whatsapp.com/send?phone=5511951598050&text=Olá!%20Gostaria%20de%20mais%20informações."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 group"
+              >
+                <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center">
+                  <Phone className="w-5 h-5 text-blue-900" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">WhatsApp</p>
+                  <p className="text-gray-900 font-medium group-hover:underline">
+                    (11) 95159-8050
+                  </p>
+                </div>
+              </a>
+
+              {/* Chamada */}
+              <div className="flex items-start gap-4">
+                <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-blue-900" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Fale conosco agora</p>
+                  <p className="text-gray-900 font-medium">
+                    Atendimento direto com um especialista
+                  </p>
+                </div>
               </div>
 
-              {/* Contato formal */}
-              <div className="mt-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-900 text-center">
-                <h4 className="text-gray-900 mb-2">
-                  Prefere um contato mais formal?
-                </h4>
-
-                <p className="text-gray-600 mb-4 text-sm">
-                  Utilize nosso formulário institucional para solicitações detalhadas.
-                </p>
-
-                <a
-                  href="https://form.respondi.app/M3PUSAeF"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-blue-900 text-white px-6 py-3 rounded hover:bg-blue-800 transition"
-                >
-                  Acessar formulário formal
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </a>
-              </div>
             </div>
           </div>
+
+          {/* Horário */}
+          <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-900 mb-6">
+            <p className="text-gray-700">
+              <strong>Horário de atendimento</strong><br />
+              Segunda a sexta, das 9h às 18h
+            </p>
+          </div>
+
         </div>
-      </section>  
+      </div>
+    </div>
+  </section>
+
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import { Button } from "@/app/components/ui/button";
 
-export function CallToAction() {
-    const handleNavigate = (sectionId: string) => {
-    sessionStorage.setItem("scrollTo", sectionId);
-    window.location.assign("/");
-    };
+interface CalltoActionProps {
+  onNavigate: (page: string, sectionId?: string) => void;
+}
+
+export function CallToAction({ onNavigate }: CalltoActionProps) {
   return (
     <div className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] rounded-3xl p-12 text-center text-white">
       <h2 className="text-3xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
@@ -16,18 +16,29 @@ export function CallToAction() {
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button className="bg-white text-[#1fa6a8] hover:bg-white/90"
-            onClick={() => handleNavigate("contato")}>
+        
+        {/* BOTÃO 1: Vai para a página de Contato */}
+        <Button 
+          className="bg-white text-[#1fa6a8] hover:bg-white/90"
+          onClick={(e) => { 
+            e.preventDefault(); 
+            onNavigate("contact"); 
+          }}
+        >
             Agendar Conversa Gratuita
         </Button>
 
-        <Button className="bg-transparent border-2 border-white text-white hover:bg-white/10"
-            onClick={() => handleNavigate("ebook")}>
+        {/* BOTÃO 2: Vai para Home na seção Ebook */}
+        <Button 
+          className="bg-transparent border-2 border-white text-white hover:bg-white/10"
+          onClick={(e) => { 
+            e.preventDefault(); 
+            onNavigate("home", "ebook"); 
+          }}
+        >
             Baixar E-book Gratuito
         </Button>
       </div>
     </div>
   );
 }
-
-

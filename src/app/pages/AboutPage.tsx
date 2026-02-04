@@ -2,14 +2,10 @@ import { Button } from "@/app/components/ui/button";
 import { Target, Users, Award, TrendingUp, ArrowLeft } from "lucide-react";
 
 interface AboutPageProps {
-  onNavigate?: (page: string) => void;
+  onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function AboutPage({ onNavigate }: AboutPageProps) {
-    const handleNavigate = (sectionId: string) => {
-    sessionStorage.setItem("scrollTo", sectionId);
-    window.location.assign("/");
-    };
 
   const values = [
     {
@@ -105,7 +101,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             </p>
             
             <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-              onClick={() => handleNavigate("contato")}>
+              onClick={(e) => { e.preventDefault(); onNavigate("contact");}}>
               Agendar Conversa
             </Button>
           </div>
@@ -191,12 +187,11 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-                onClick={() => handleNavigate("contato")}>
-              
-              Agendar Consulta Gratuita
+                onClick={(e) => { e.preventDefault(); onNavigate("services"); }}>
+                Agendar Consulta Gratuita
             </Button>
             <Button className="bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20 hover:bg-white/50"
-              onClick={() => handleNavigate("servicos")}>
+              onClick={() => onNavigate && onNavigate("home", "services")}>
               Ver Nossos Serviços
             </Button>
           </div>

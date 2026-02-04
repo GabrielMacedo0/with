@@ -5,10 +5,6 @@
 }
 
 export function Footer({ onNavigate }: FooterProps) {
-    const handleNavigate = (sectionId: string) => {
-    sessionStorage.setItem("scrollTo", sectionId);
-    window.location.assign("/");
-  };
 
   return (
     <footer className="bg-gray-900 text-white py-12">
@@ -56,10 +52,8 @@ export function Footer({ onNavigate }: FooterProps) {
                         onNavigate("home", "depoimentos"); 
                       }} className="hover:text-white transition">Depoimentos</a></li>
                 <li><a href="#" 
-                      onClick={(e) => { 
-                        e.preventDefault(); 
-                        onNavigate("home", "contato"); 
-                      }} className="hover:text-white transition">Contato</a></li>
+	                  onClick={(e) => { e.preventDefault(); onNavigate("contact"); }}
+                    className="hover:text-white transition">Contato</a></li>
               </ul>
             </div>
             <div>

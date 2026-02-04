@@ -3,14 +3,10 @@ import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { CallToAction  } from "@/app/components/CallToAction";
 
 interface ServicesSeniorPageProps {
-  onNavigate?: (page: string) => void;
+  onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
-  const handleNavigate = (sectionId: string) => {
-    sessionStorage.setItem("scrollTo", sectionId);
-    window.location.assign("/");
-  };
   const features = [
     {
       title: "Currículo Executivo Premium + LinkedIn (Português + Inglês)",
@@ -97,11 +93,9 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
             <p className="text-[#1a2e4a]/70 mb-8" style={{ fontFamily: 'var(--font-body)' }}>
               O Plano Sênior oferece orientação estratégica confidencial para reposicionar sua trajetória e conduzir decisões críticas com segurança.
             </p>
-            <a href="https://form.respondi.app/M3PUSAeF"
-              target="_blank"
-              rel="noopener noreferrer">
-                
-            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white">
+            <a href="#">                
+            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
+              onClick={(e) => { e.preventDefault(); onNavigate("contact");}}>
               Agendar Consulta Executiva
             </Button></a>
           </div>
@@ -211,7 +205,7 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
         </div>
 
         {/* CTA Section */}
-        <CallToAction />
+        <CallToAction onNavigate={onNavigate}/>
       </div>
     </div>
   );
