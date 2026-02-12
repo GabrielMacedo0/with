@@ -1,5 +1,6 @@
 import { Button } from "@/app/components/ui/button";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
+import Junior from "@/assets/junior.png";
 import { CallToAction  } from "@/app/components/CallToAction";
 
 interface ServicesJuniorPageProps {
@@ -30,8 +31,9 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
 
     {
       name: "Júnior",
-      price: "R$ 270",
-      period: "12x de R$ 27,76",
+      price: "R$ 270,00",
+      period: "12x de R$ 22,50",
+      link: "https://www.asaas.com/c/v34qe6mdygsfrgrq",
       features: [
         "Currículo + LinkedIn",
         "Treinamento em Grupo",
@@ -93,9 +95,9 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
           
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1603195827187-459ab02554a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmclMjBsYXB0b3B8ZW58MXx8fHwxNzY4OTU3MzY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              src= {Junior}
               alt="Consultoria de Carreira"
-              className="rounded-2xl shadow-2xl w-full"
+              className="rounded-2xl shadow-2xl w-full max-h-[420px] object-cover"
             />
           </div>
         </div>
@@ -174,13 +176,20 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
                   </ul>
 
                   <Button
-                    className={`w-full ${
+                    asChild
+                    className={`w-full mt-auto ${
                       plan.highlight
                         ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] text-white"
                         : "bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20"
                     }`}
                   >
-                    Escolher Plano
+                    <a
+                      href={plan.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Escolher Plano
+                    </a>
                   </Button>
                 </div>
               ))}

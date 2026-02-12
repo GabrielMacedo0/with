@@ -9,7 +9,7 @@ interface ServicesSeniorPageProps {
 export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
   const features = [
     {
-      title: "Currículo Executivo Premium + LinkedIn (Português + Inglês)",
+      title: "Currículo Executivo Premium + LinkedIn ",
       description: "Documentos de padrão executivo que destacam liderança estratégica e resultados de alto impacto, com visão de negócio e aderência a empresas nacionais e multinacionais."   },
     {
       title: "Treinamento de LinkedIn (Grupo + Individual)",
@@ -36,8 +36,24 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
   const plans = [
     {
       name: "Sênior",
-      price: "R$ 990,00",
-      period: "12x de 101,79",
+      price: "R$ 990,90",
+      period: "12x de 82,57",
+      link: "https://www.asaas.com/c/pzlql9fbpm28j1y9",
+      features: [
+        "Currículo + LinkedIn Executivo",
+        "Treinamento de LinkedIn",
+        "Simulações de Entrevistas",
+        "Executive Presence & Branding",
+        "Estratégia de Transição para C-Level / Board",
+        "Suporte por 60 dias"
+      ],
+      highlight: false,
+    },
+    {
+      name: "Sênior Tradução",
+      price: "R$ 1.299,90",
+      period: "12x de 108,32",
+      link: "https://www.asaas.com/c/3hylysgh01dnakep",
       features: [
         "Currículo + LinkedIn Executivo (PT + EN)",
         "Treinamento de LinkedIn",
@@ -139,14 +155,14 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
           </h2>
           
           <div className="flex justify-center">
-            <div className="w-full max-w-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-fit mx-auto">
               {plans.map((plan, index) => (
                 <div
                   key={index}
-                  className={`bg-white rounded-2xl p-8 ${
-                    plan.highlight
-                      ? "border-2 border-[#1fa6a8] shadow-xl relative"
-                      : "border border-[#1a2e4a]/10 shadow-lg"
+                  className={`bg-white rounded-2xl p-8 w-[320px] flex flex-col ${
+                      plan.highlight
+                        ? "border-2 border-[#1fa6a8] shadow-xl relative"
+                        : "border border-[#1a2e4a]/10 shadow-lg"
                   }`}
                 >
                   {plan.highlight && (
@@ -161,14 +177,15 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
                     {plan.name}
                   </h3>
 
-                  <div className="mb-6">
-                    <span className="text-4xl font-bold text-[#1a2e4a]">
+                  <div className="mb-6 min-h-[88px]">
+                    <span className="text-4xl font-bold text-[#1a2e4a] block">
                       {plan.price}
                     </span>
-                    <span className="text-[#1a2e4a]/60 ml-2" style={{ fontFamily: 'var(--font-body)' }}>{plan.period}</span>
+                    <span className="text-[#1a2e4a]/60 text-sm">
+                      12x de {plan.period}
+                    </span>
                   </div>
-
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3 mb-8 min-h-[220px]">
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start gap-3">
                         <CheckCircle2
@@ -181,15 +198,21 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
                       </li>
                     ))}
                   </ul>
-
                   <Button
-                    className={`w-full ${
+                    asChild
+                    className={`w-full mt-auto ${
                       plan.highlight
                         ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] text-white"
                         : "bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20"
                     }`}
                   >
-                    Escolher Plano
+                    <a
+                      href={plan.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Escolher Plano
+                    </a>
                   </Button>
                 </div>
               ))}

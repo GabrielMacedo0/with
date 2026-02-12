@@ -59,7 +59,8 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                 Em fases de transição, estagnação ou reposicionamento, insistir sem direção costuma gerar desgaste e frustração. Avançar exige estratégia, clareza sobre o momento de carreira e leitura real do mercado. É nesse ponto que a With atua, organizando escolhas e estruturando movimentos profissionais mais conscientes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="#contato"
+                <a href="#"
+                  onClick={(e) => { e.preventDefault(); onNavigate("contact");}}
                   className="bg-blue-900 text-white px-8 py-4 rounded hover:bg-blue-800 transition text-center">Entre em contato</a>
                 <a href="#services" className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded hover:border-gray-400 transition text-center">
                   Conhecer Serviços

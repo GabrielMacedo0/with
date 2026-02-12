@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { Monitor, Phone, MessageCircle, ArrowRight, Send} from 'lucide-react';
+import { Monitor, Phone, MessageCircle, ArrowLeft, Send} from 'lucide-react';
 
 interface ServicesContactFormPageProps {
   onNavigate?: (page: string) => void;
@@ -82,10 +82,40 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
   return (
     <section className="py-20 bg-white" id="contactform">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-gray-900 mb-4">Entre em contato</h2>
-          <p className="text-xl text-gray-600">Pronto para transformar sua carreira? Fale conosco agora mesmo</p>
+        {/* Hero / Header da página */}
+        <div className="mb-20">
+          {/* Breadcrumb / Voltar */}
+          <div className="flex items-center justify-between mb-10">
+            <button
+              onClick={() => onNavigate?.("home")}
+              className="
+                inline-flex items-center gap-2
+                text-sm text-[#1a2e4a]/60
+                hover:text-[#1a2e4a]
+                transition-all
+                hover:-translate-x-0.5">
+              <ArrowLeft size={16} />
+              Início
+            </button>
+          </div>
+
+          {/* Conteúdo do Hero */}
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl font-semibold text-[#1a2e4a] leading-tight">
+              Vamos conversar sobre<br />
+              o próximo passo da sua carreira
+            </h1>
+
+            <p className="mt-4 text-lg text-[#1a2e4a]/70">
+              Preencha o formulário abaixo e um especialista entrará em contato para
+              entender sua situação e orientar você com clareza e estratégia.
+            </p>
+          </div>
+
+          {/* Divider elegante */}
+          <div className="mt-12 h-px w-full bg-gradient-to-r from-transparent via-[#1a2e4a]/15 to-transparent" />
         </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="space-y-6">
           <form className="space-y-6" onSubmit={handleSubmit}>
@@ -126,7 +156,7 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
               />
             </div>
             <div>
-              <RadioGroup
+              <SelectField 
                 label="Qual seu maior desafio hoje?"
                 name="desafio"
                 options={[
@@ -142,7 +172,7 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
               />
             </div>
             <div>
-              <RadioGroup
+              <SelectField 
                 label="Sua última remuneração fina na faixa de:"
                 name="remuneracao"
                 options={[
@@ -160,7 +190,7 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
               />
             </div>
             <div>
-              <RadioGroup
+              <SelectField 
                 label="Em quanto tempo você gostaria de estar em uma nova posição?"
                 name="prazo"
                 options={[
@@ -176,7 +206,7 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
               />
             </div>
             <div>
-              <RadioGroup
+              <SelectField 
                 label="Como prefere ser contatado(a)?"
                 name="contato"
                 options={["Ligação", "WhatsApp"]}
@@ -273,27 +303,6 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
                       Segunda a sexta: 9h às 18h
             </p>
           </div>
-
-          {/* Contato formal */}
-          <div className="mt-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-900 text-center">
-            <h4 className="text-gray-900 mb-2">
-                Prefere um contato mais formal?
-            </h4>
-
-            <p className="text-gray-600 mb-4 text-sm">
-              Utilize nosso formulário institucional para solicitações detalhadas.
-            </p>
-
-            <a
-              href="https://form.respondi.app/M3PUSAeF"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-blue-900 text-white px-6 py-3 rounded hover:bg-blue-800 transition"
-            >
-              Acessar formulário formal
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
-          </div>
         </div>
       </div>
       </div>
@@ -301,7 +310,7 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
   );
 }
 
-type RadioGroupProps = {
+type SelectFieldProps = {
   label: string
   name: string
   options: string[]
@@ -309,56 +318,52 @@ type RadioGroupProps = {
   onChange: (value: string) => void
 }
 
-const RadioGroup = ({
+const SelectField = ({
   label,
   name,
   options,
   value,
   onChange,
-}: RadioGroupProps) => (
+}: SelectFieldProps) => (
   <div>
     <label className="block text-gray-700 mb-3">
       {label}
     </label>
 
-    <div className="flex flex-col gap-3">
-      {options.map((option, index) => (
-        <label
-          key={index}
-          className="flex items-center gap-3 cursor-pointer group"
-        >
-          <div className="relative flex items-center">
-            <input
-              type="radio"
-              name={name}
-              value={option}
-              checked={value === option}
-              onChange={() => onChange(option)}
-              required
-              className="
-                appearance-none w-5 h-5
-                border-2 border-[#e5d9d1]
-                rounded-full cursor-pointer
-                transition-all duration-200
-                hover:border-[#387ad6]
-                focus:outline-none
-                focus:ring-2 focus:ring-[#3d8cc9]/30
-                checked:border-[#387ad6]
-                checked:bg-[#387ad6]
-              "
-            />
-            {value === option && (
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-2 h-2 bg-white rounded-full" />
-              </div>
-            )}
-          </div>
+    <div className="relative">
+      <select
+        name={name}
+        value={value}
+        required
+        onChange={(e) => onChange(e.target.value)}
+        className="
+          w-full px-4 py-3 pr-10
+          border-2 border-[#e5d9d1]
+          rounded
+          bg-white
+          text-[#1a2e4a]
+          cursor-pointer
+          transition-all duration-200
+          hover:border-[#387ad6]
+          focus:outline-none
+          focus:ring-2 focus:ring-[#3d8cc9]/30
+        "
+      >
+        <option value="" disabled>
+          Selecione uma opção
+        </option>
 
-          <span className="text-[#1a2e4a] group-hover:text-[#387ad6] transition-colors duration-200">
+        {options.map((option, index) => (
+          <option key={index} value={option}>
             {option}
-          </span>
-        </label>
-      ))}
+          </option>
+        ))}
+      </select>
+
+      {/* seta do select (estilizada) */}
+      <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[#387ad6]">
+        ▼
+      </div>
     </div>
   </div>
 )

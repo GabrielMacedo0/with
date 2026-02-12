@@ -1,5 +1,12 @@
-import { Button } from "@/app/components/ui/button";
 import { Target, Users, Award, TrendingUp, ArrowLeft } from "lucide-react";
+import { Button } from "@/app/components/ui/button";
+import Stephany  from "@/assets/Stephany.jpg";
+import Matheus  from "@/assets/Matheus.jpg";
+import Brina  from "@/assets/Brina.jpg";
+import Guilherme  from "@/assets/Guilherme.jpg";
+import Vitor  from "@/assets/Vitor.png";
+import Macedo  from "@/assets/Macedo.jpg";
+import Aline  from "@/assets/Aline.png";
 
 interface AboutPageProps {
   onNavigate: (page: string, sectionId?: string) => void;
@@ -11,40 +18,67 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
     {
       icon: Target,
       title: "Missão",
-      description: "Capacitar profissionais a alcançarem seus objetivos de carreira através de consultoria personalizada e estratégica.",
+      description: "Transformar carreiras com estratégias personalizadas e foco em execução, conectando talentos às oportunidades que realmente fazem sentido para seus objetivos e propósito profissional.",
     },
     {
       icon: Users,
-      title: "Compromisso",
-      description: "Oferecemos suporte individual focado nas necessidades únicas de cada cliente para garantir resultados reais.",
+      title: "Visão",
+      description: "Ser referência nacional em reposicionamento estratégico de carreira, autoridade digital e geração real de entrevistas, ampliando nossa atuação para o mercado internacional.",
     },
     {
       icon: Award,
-      title: "Excelência",
-      description: "Mantemos os mais altos padrões de qualidade em todos os nossos serviços e processos de consultoria.",
+      title: "Valores",
+      description: "Acreditamos que a informação transforma carreiras e que é nosso dever compartilhar aquilo que o mercado muitas vezes não revela.",
     },
     {
       icon: TrendingUp,
       title: "Crescimento",
-      description: "Acreditamos no desenvolvimento contínuo, tanto dos nossos clientes quanto da nossa equipe.",
+      description: "Acreditamos que cada profissional tem uma trajetória única e merece uma estratégia personalizada, construída com disciplina, foco e visibilidade orientada a resultados.",
     },
   ];
 
   const team = [
     {
-      name: "Ana Silva",
-      role: "Consultora Sênior de Carreira",
-      bio: "15+ anos de experiência em RH e desenvolvimento profissional em multinacionais.",
+      image: Stephany,
+      name: "Stephany Borowiec",
+      role: "Founder e Diretora Executiva (CEO)",
+      bio: "Profissional com mais de 12 anos de experiência em Recursos Humanos e desenvolvimento profissional, com atuação em multinacionais e forte expertise em estratégia de carreira, posicionamento, recrutamento e empregabilidade.",
     },
     {
-      name: "Carlos Mendes",
-      role: "Especialista em LinkedIn",
-      bio: "Expert em personal branding digital com mais de 5.000 profissionais assessorados.",
+      image: Matheus,
+      name: "Matheus Procópio",
+      role: "Co-founder e Diretor de Marketing e Vendas (CMO/Head Comercial)",
+      bio: "Responsável pela estratégia comercial e de posicionamento da With, com foco em crescimento, comunicação, processos de aquisição e relacionamento com clientes. Atua na construção de estratégias práticas para aumentar visibilidade, gerar oportunidades e acelerar resultados.",
     },
     {
-      name: "Marina Costa",
+      image: Brina,
+      name: "Gabriel Brina",
+      role: "Jobhunter Operations",
+      bio: "Responsável pela gestão dos clientes do Jobhunter, garantindo organização, execução e acompanhamento do processo ponta a ponta. Atua em parceria direta com a Stephany na condução estratégica dos casos, garantindo consistência, qualidade e evolução do cliente ao longo do programa.",
+    },
+    {
+      image: Guilherme,
+      name: "Guilherme Domingues",
+      role: "Executivo de Desenvolvimento de Negócios (Business Development Executive)",
+      bio: "Atua no time comercial da With, com foco em relacionamento, qualificação estratégica e condução consultiva de oportunidades. Responsável por apoiar o crescimento da empresa com abordagem orientada a valor e resultado.",
+    },
+    {
+      image: Vitor,
+      name: "Vitor Hugo",
       role: "Coach de Entrevistas",
-      bio: "Ex-recrutadora executiva, especializada em preparação para processos seletivos.",
+      bio: "Responsável pela estrutura digital da With, atuando com tráfego pago, CRM, automações, páginas e funis de conversão. Trabalha para transformar demanda em oportunidades reais, com processos, dados e previsibilidade comercial.",
+    },
+    {
+      image: Macedo,
+      name: "Gabriel Macedo",
+      role: "Especialista em Tecnologia e Infraestrutura (IT & Systems Specialist)",
+      bio: "Responsável pelo suporte tecnológico e infraestrutura da With, garantindo estabilidade, organização de ferramentas, integrações e segurança operacional para que o time consiga executar com fluidez.",
+    },
+    {
+      image: Aline,
+      name: "Aline Santos",
+      role: "Atendimento e Sucesso do Cliente (Customer Success)",
+      bio: "Responsável pela experiência do cliente na With, com foco em acolhimento, organização da jornada, acompanhamento e suporte. Atua para garantir clareza, alinhamento e excelência em cada etapa do processo.",
     },
   ];
 
@@ -74,7 +108,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           </h1>
           
           <p className="text-xl text-[#1a2e4a]/70 max-w-3xl" style={{ fontFamily: 'var(--font-body)' }}>
-            Transformando carreiras através de consultoria estratégica e personalizada desde 2020
+            Transformando carreiras com estratégia personalizada, experiência de mercado e foco em resultados reais.
           </p>
         </div>
       </div>
@@ -89,15 +123,19 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             </h2>
             
             <p className="text-[#1a2e4a]/70 mb-6" style={{ fontFamily: 'var(--font-body)' }}>
-              Fundada em 2020, a Consultoria de Carreira nasceu da necessidade de oferecer orientação profissional de qualidade e acessível para profissionais em todos os estágios de suas carreiras.
+              A With nasceu de um sonho da Stephany: fazer diferença de verdade na vida das pessoas. No meio da pandemia de COVID-19, ela e seu sócio viram uma demanda explodir.
             </p>
             
             <p className="text-[#1a2e4a]/70 mb-6" style={{ fontFamily: 'var(--font-body)' }}>
-              Ao longo dos anos, desenvolvemos metodologias comprovadas que combinam as melhores práticas de recursos humanos, coaching e desenvolvimento profissional para entregar resultados reais.
+              Milhares de profissionais ficaram desamparados. E, ao mesmo tempo, empresas aceleraram substituições, mudanças de estrutura e contratações mais criteriosas.
             </p>
             
+            <p className="text-[#1a2e4a]/70 mb-6" style={{ fontFamily: 'var(--font-body)' }}>
+              Foi nesse cenário que a With se consolidou. Ao longo dos anos, desenvolvemos metodologias testadas e aprimoradas na prática, combinando estratégia com as melhores práticas do mercado para fazer o perfil chegar onde importa, inclusive passando por plataformas ATS, que usam filtros e inteligência artificial.
+            </p>
+
             <p className="text-[#1a2e4a]/70 mb-8" style={{ fontFamily: 'var(--font-body)' }}>
-              Hoje, somos orgulhosos de ter ajudado mais de 2.800 profissionais a alcançarem seus objetivos de carreira, desde a primeira oportunidade até transições executivas.
+              Hoje, a gente tem orgulho de já ter ajudado milhares de profissionais, de diferentes níveis e áreas, a retomarem o controle da própria carreira e conquistarem oportunidades mais alinhadas com o que merecem.
             </p>
             
             <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
@@ -161,14 +199,16 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             Conheça os especialistas que vão ajudar você a transformar sua carreira
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {team.map((member, index) => (
               <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-[#1a2e4a]/10 text-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-[#1fa6a8] to-[#45bab0] rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-white text-3xl font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
-                    {member.name.charAt(0)}
-                  </span>
-                </div>
+              <div className="w-24 h-24 mx-auto mb-4">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-24 h-24 rounded-full object-cover border-4 border-[#1fa6a8] shadow-md"
+                />
+              </div>
                 <h3 className="text-xl font-bold text-[#1a2e4a] mb-1" style={{ fontFamily: 'var(--font-heading)' }}>{member.name}</h3>
                 <p className="text-[#1fa6a8] font-medium mb-3" style={{ fontFamily: 'var(--font-body)' }}>{member.role}</p>
                 <p className="text-[#1a2e4a]/70" style={{ fontFamily: 'var(--font-body)' }}>{member.bio}</p>

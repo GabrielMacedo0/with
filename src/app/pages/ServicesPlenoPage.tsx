@@ -33,8 +33,9 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
   const plans = [
     {
       name: "Pleno",
-      price: "R$ 490",
-      period: "12x de R$ 50,38",
+      price: "R$ 629,90",
+      period: "12x de R$ 52,49",
+      link: "https://www.asaas.com/c/ti8gi68gacwlx6ka",
       features: [
         "Currículo Estratégico + LinkedIn Estratégico",
         "Treinamento em Grupo",
@@ -179,13 +180,20 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
                   </ul>
 
                   <Button
-                    className={`w-full ${
+                    asChild
+                    className={`w-full mt-auto ${
                       plan.highlight
                         ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] text-white"
                         : "bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20"
                     }`}
                   >
-                    Escolher Plano
+                    <a
+                      href={plan.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Escolher Plano
+                    </a>
                   </Button>
                 </div>
               ))}

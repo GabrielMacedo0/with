@@ -39,13 +39,12 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16">
           {/* Logo */}
-          <div className="flex flex-col shrink-0">
-            <h1 className="text-2xl text-[#1a2e4a]">With</h1>
-            <p className="text-xs text-[#1a2e4a]/60">
-              Consultoria de Carreira
-            </p>
-          </div>
-
+          <a href="/" className="flex flex-col shrink-0 cursor-pointer">
+          <h1 className="text-2xl text-[#1a2e4a]">With</h1>
+          <p className="text-xs text-[#1a2e4a]/60">
+            Consultoria de Carreira
+          </p>
+          </a>
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 ml-auto">
             {navItems.map((item) => (
