@@ -25,7 +25,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
     const email = (form.elements.namedItem("email") as HTMLInputElement).value;
 
     try {
-      const response = await fetch("https://SEU-N8N/webhook/ebook-gratis", {
+      const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK_URL_EBOOK, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
         throw new Error("Erro ao enviar formulário");
       }
 
-      alert("✅ eBook enviado! Verifique seu e-mail.");
+      alert("✅ Verifique seu e-mail! O eBook foi enviado.");
       form.reset();
     } catch (error) {
       console.error(error);

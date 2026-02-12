@@ -25,8 +25,15 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
     setSubmitStatus('idle');
 
     try {
-      // Substitua a URL abaixo pela URL do webhook do seu n8n
-      const N8N_WEBHOOK_URL = 'https://matuprocopio.app.n8n.cloud/webhook/08afff31-0973-4e5e-80aa-b44e93420d1c';
+      const N8N_WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL;
+      const SECRET = import.meta.env.VITE_N8N_SECRET;
+
+    if (!N8N_WEBHOOK_URL) {
+      console.error('Webhook URL não definida no .env');
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
       
       const response = await fetch(N8N_WEBHOOK_URL, {
         method: 'POST',
@@ -47,22 +54,25 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
         }),
       });
 
-      if (response.ok) {
-        setSubmitStatus('success');
-        // Limpar formulário
-        setFormData({
-          nome: '',
-          email: '',
-          telefone: '',
-          desafio: '',
-          remuneracao: '',
-          prazo: '',
-          contato: '',
-          mensagem: ''
-        });
-      } else {
-        setSubmitStatus('error');
-      }
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Erro retornado pelo servidor:', errorText);
+      throw new Error('Erro no webhook');
+    } 
+      setSubmitStatus('success');
+
+    // Limpar formulário
+    setFormData({
+      nome: '',
+      email: '',
+      telefone: '',
+      desafio: '',
+      remuneracao: '',
+      prazo: '',
+      contato: '',
+      mensagem: ''
+    });
+
     } catch (error) {
       console.error('Erro ao enviar formulário:', error);
       setSubmitStatus('error');
@@ -173,7 +183,7 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
             </div>
             <div>
               <SelectField 
-                label="Sua última remuneração fina na faixa de:"
+                label="Sua última remuneração na faixa de:"
                 name="remuneracao"
                 options={[
                   "Até R$5.000",
