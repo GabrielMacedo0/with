@@ -23,7 +23,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
       ],
     },
     { label: "Sobre Nós", value: "about" },
-    { label: "Artigos", value: "articles" },
+/*     { label: "Artigos", value: "articles" }, */
   ];
 
   const handleNavClick = (value: string) => {

@@ -10,6 +10,7 @@ import AboutUs from "@/assets/quem-somos.png";
 import { CountUpCard } from '@/app/components/CountUpCard';
 import { CompanyMarquee } from '@/app/components/CompanyMarquee';
 import heroImage from '@/assets/Imagem.png';
+import { useState } from 'react';
 
 interface ServicesHomePageProps {
   onNavigate: (page: string, sectionId?: string) => void;
@@ -23,6 +24,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
     const form = e.currentTarget;
     const nome = (form.elements.namedItem("nome") as HTMLInputElement).value;
     const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+    const [message, setMessage] = useState<string | null>(null);
 
     try {
       const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK_URL_EBOOK, {
@@ -37,7 +39,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
         throw new Error("Erro ao enviar formulário");
       }
 
-      alert("✅ Verifique seu e-mail! O eBook foi enviado.");
+    setMessage("✅ Verifique seu e-mail! O eBook foi enviado.");
       form.reset();
     } catch (error) {
       console.error(error);
@@ -338,7 +340,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
       </section>
 
       {/* Lead Magnet */}
-      <section className="py-20 bg-blue-900" id="ebook">
+      {/* <section className="py-20 bg-blue-900" id="ebook">
         <div className="max-w-5xl mx-auto px-6">
           <div className="bg-white rounded-lg shadow-2xl overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
@@ -426,7 +428,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Company Marquee */}
       <CompanyMarquee />
@@ -467,7 +469,6 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                 />
                 <div>
                   <a 
-                    href="https://www.linkedin.com/in/ana-beatriz-fernandes-peres-036916141/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     style={{ color: '#1a2e4a' }}
@@ -510,7 +511,6 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                 />
                 <div>
                   <a 
-                    href="https://www.linkedin.com/in/willian-eduardo-ramos-53022728/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     style={{ color: '#1a2e4a' }}
@@ -553,7 +553,6 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                 />
                 <div>
                   <a 
-                    href="https://www.linkedin.com/in/guilhermesilveira4904061/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     style={{ color: '#1a2e4a' }}
@@ -570,15 +569,15 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
       </section>
 
       {/* Blog */}
-      <section className="py-20 bg-gray-50" id="blog">
+     {/*  <section className="py-20 bg-gray-50" id="blog">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-gray-900 mb-4">Blog e Conteúdos</h2>
             <p className="text-xl text-gray-600">Dicas e estratégias para alavancar sua carreira</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8"> */}
             {/* Artigo 1 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full">
+           {/*  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full">
               <img 
                 src={Plano}
                 alt="Artigo 1"
@@ -600,10 +599,10 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                   Ler artigo completo <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-            </div>
+            </div> */}
 
             {/* Artigo 2 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full">
+         {/*    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full">
               <img 
                 src= {HomeOffice}
                 alt="Artigo 2"
@@ -625,10 +624,10 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                   Ler artigo completo <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-            </div>
+            </div> */}
 
             {/* Artigo 3 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full">
+           {/*  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full">
               <img 
                 src= {networking}
                 alt="Artigo 3"
@@ -666,7 +665,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contato Final */}
   <section className="py-20 bg-white" id="contato">

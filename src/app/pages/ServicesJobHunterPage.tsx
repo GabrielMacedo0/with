@@ -201,6 +201,7 @@ export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps
                   </ul>
 
                   <Button
+                   onClick={(e) => { e.preventDefault(); onNavigate("contact");}}
                     className={`w-full ${
                       plan.highlight
                         ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] text-white"

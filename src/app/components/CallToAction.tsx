@@ -29,7 +29,7 @@ export function CallToAction({ onNavigate }: CalltoActionProps) {
         </Button>
 
         {/* BOTÃO 2: Vai para Home na seção Ebook */}
-        <Button 
+{/*         <Button 
           className="bg-transparent border-2 border-white text-white hover:bg-white/10"
           onClick={(e) => { 
             e.preventDefault(); 
@@ -37,7 +37,7 @@ export function CallToAction({ onNavigate }: CalltoActionProps) {
           }}
         >
             Baixar E-book Gratuito
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
