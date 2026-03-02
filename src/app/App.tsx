@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
 import { ServicesHomePage } from "@/app/pages/ServicesHomePage";
@@ -12,19 +12,17 @@ import { ContactForm } from "@/app/pages/ContactForm";
 import { ArticlesPageOne } from "@/app/pages/ArticlesPageOne";
 import { Policy } from "@/app/pages/Policy";
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+function AppContent() {
+  const navigate = useNavigate();
 
-  const handleNavigate = (page: string, sectionId?: string) => {
-    setCurrentPage(page);
+  const handleNavigate = (path: string, sectionId?: string) => {
+    navigate(path);
 
     if (sectionId) {
-      // Usamos um pequeno delay (0ms ou 100ms) para garantir que o React 
-      // termine de renderizar a Home antes de procurarmos o ID
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: "smooth" });
         }
       }, 100);
     } else {
@@ -32,40 +30,34 @@ export default function App() {
     }
   };
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case "home":
-        return <ServicesHomePage onNavigate={handleNavigate} />;
-      case "services-junior":
-        return <ServicesJuniorPage onNavigate={handleNavigate} />;
-      case "services-pleno":
-        return <ServicesPlenoPage onNavigate={handleNavigate} />;
-      case "services-senior":
-        return <ServicesSeniorPage onNavigate={handleNavigate} />;
-      case "services-jobhunter":
-        return <ServicesJobHunterPage onNavigate={handleNavigate} />;
-      case "about":
-        return <AboutPage onNavigate={handleNavigate} />;
-      case "articles":
-        return <ArticlesPage onNavigate={handleNavigate} />;
-      case "contact":
-        return <ContactForm onNavigate={handleNavigate} />;
-      case "ArticlesPageOne":
-        return <ArticlesPageOne onNavigate={handleNavigate} />;
-      case "Policy":
-        return <Policy onNavigate={handleNavigate} />;
-      default:
-        return <ServicesHomePage onNavigate={handleNavigate} />;
-    }
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
-      <Header currentPage={currentPage} onNavigate={handleNavigate} />
+      <Header onNavigate={handleNavigate} />
+
       <main className="flex-1">
-        {renderPage()}
+        <Routes>
+          <Route path="/" element={<ServicesHomePage onNavigate={handleNavigate} />} />
+          <Route path="/services-junior" element={<ServicesJuniorPage onNavigate={handleNavigate} />} />
+          <Route path="/services-pleno" element={<ServicesPlenoPage onNavigate={handleNavigate} />} />
+          <Route path="/services-senior" element={<ServicesSeniorPage onNavigate={handleNavigate} />} />
+          <Route path="/services-jobhunter" element={<ServicesJobHunterPage onNavigate={handleNavigate} />} />
+          <Route path="/about" element={<AboutPage onNavigate={handleNavigate} />} />
+          <Route path="/articles" element={<ArticlesPage onNavigate={handleNavigate} />} />
+          <Route path="/articles/1" element={<ArticlesPageOne onNavigate={handleNavigate} />} />
+          <Route path="/contact" element={<ContactForm onNavigate={handleNavigate} />} />
+          <Route path="/policy" element={<Policy onNavigate={handleNavigate} />} />
+        </Routes>
       </main>
-      <Footer onNavigate={handleNavigate}/>
+
+      <Footer onNavigate={handleNavigate} />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
