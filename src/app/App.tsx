@@ -9,6 +9,8 @@ import { ServicesJobHunterPage } from "@/app/pages/ServicesJobHunterPage";
 import { AboutPage } from "@/app/pages/AboutPage";
 import { ArticlesPage } from "@/app/pages/ArticlesPage";
 import { ContactForm } from "@/app/pages/ContactForm";
+import { ArticlesPageOne } from "@/app/pages/ArticlesPageOne";
+import { Policy } from "@/app/pages/Policy";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -48,6 +50,10 @@ export default function App() {
         return <ArticlesPage onNavigate={handleNavigate} />;
       case "contact":
         return <ContactForm onNavigate={handleNavigate} />;
+      case "ArticlesPageOne":
+        return <ArticlesPageOne onNavigate={handleNavigate} />;
+      case "Policy":
+        return <Policy onNavigate={handleNavigate} />;
       default:
         return <ServicesHomePage onNavigate={handleNavigate} />;
     }

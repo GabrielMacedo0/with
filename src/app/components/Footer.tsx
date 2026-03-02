@@ -54,6 +54,9 @@ export function Footer({ onNavigate }: FooterProps) {
                 <li><a href="#" 
 	                  onClick={(e) => { e.preventDefault(); onNavigate("contact"); }}
                     className="hover:text-white transition">Contato</a></li>
+                <li><a href="#" 
+	                  onClick={(e) => { e.preventDefault(); onNavigate("Policy"); }}
+                    className="hover:text-white transition">Política</a></li>
               </ul>
             </div>
             <div>
