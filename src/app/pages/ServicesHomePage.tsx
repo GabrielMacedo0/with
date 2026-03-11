@@ -153,7 +153,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             <p className="text-xl text-gray-600">Ao longo dos anos, atuamos com profissionais em diferentes contextos, setores e momentos de carreira. Os dados abaixo refletem histórico de atuação</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <CountUpCard end={2800} suffix="+" label="Profissionais em processos de recolocação" />
+            <CountUpCard end={2800} suffix="+" label="Profissionais em novas posições" />
             <CountUpCard end={85} suffix="%" label="Avançaram em processos seletivos após ajuste de estratégia e posicionamento" />
             <CountUpCard end={30} suffix="%" label="Aumento médio de remuneração entre clientes que mudaram de posição" />
             <CountUpCard prefix="+" end={6} label="Anos de Experiência em recrutamento, carreira e processos seletivos" />
@@ -216,7 +216,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
                 <div className="bg-blue-50 p-8 flex items-center justify-center">
-                  <Target className="w-24 h-24 text-blue-900" />
+                  <Target className="w-24 h-24 text-blue-900" onClick={(e) => { e.preventDefault(); onNavigate?.("services-jobhunter");}}/>
                 </div>
                 <div className="md:col-span-2 p-8">
                   <h3 className="text-gray-900 mb-4">Imersão de Carreira</h3>
@@ -247,7 +247,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
                 <div className="bg-blue-50 p-8 flex items-center justify-center">
-                  <Users className="w-24 h-24 text-blue-900" />
+                  <Users className="w-24 h-24 text-blue-900" onClick={(e) => { e.preventDefault(); onNavigate?.("services-jobhunter");}}/>
                 </div>
                 <div className="md:col-span-2 p-8">
                   <h3 className="text-gray-900 mb-4">Currículo e LinkedIn Estratégicos</h3>
@@ -278,7 +278,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
                 <div className="bg-blue-50 p-8 flex items-center justify-center">
-                  <TrendingUp className="w-24 h-24 text-blue-900" />
+                  <TrendingUp className="w-24 h-24 text-blue-900" onClick={(e) => { e.preventDefault(); onNavigate?.("services-jobhunter");}}/>
                 </div>
                 <div className="md:col-span-2 p-8">
                   <h3 className="text-gray-900 mb-4">Simulação de Entrevistas</h3>
@@ -309,7 +309,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
                 <div className="bg-blue-50 p-8 flex items-center justify-center">
-                  <Briefcase className="w-24 h-24 text-blue-900" />
+                  <Briefcase className="w-24 h-24 text-blue-900" onClick={(e) => { e.preventDefault(); onNavigate?.("services-jobhunter");}}/>
                 </div>
                 <div className="md:col-span-2 p-8">
                   <h3 className="text-gray-900 mb-4">Job Hunter</h3>

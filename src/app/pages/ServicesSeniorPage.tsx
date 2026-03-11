@@ -36,8 +36,8 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
   const plans = [
     {
       name: "Sênior",
-      price: "R$ 990,90",
-      period: "12x de 82,57",
+      price: "R$ 1.100,00",
+      period: "12x de 91,66",
       link: "https://www.asaas.com/c/pzlql9fbpm28j1y9",
       features: [
         "Currículo + LinkedIn Executivo",
