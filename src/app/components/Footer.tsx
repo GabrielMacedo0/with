@@ -1,8 +1,13 @@
+import { useState } from 'react';
+import { Button } from "@/app/components/ui/button";
+import { CareerConsultationForm } from '@/app/components/career-consultation-form';
+
 interface FooterProps {
   onNavigate: (path: string, sectionId?: string) => void;
 }
 
 export function Footer({ onNavigate }: FooterProps) {
+    const [isFormOpen, setIsFormOpen] = useState(false);
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-6">
@@ -69,9 +74,17 @@ export function Footer({ onNavigate }: FooterProps) {
                   className="hover:text-white transition">Depoimentos</a>
               </li>
               <li>
-                <a href="#"
-                  onClick={(e) => { e.preventDefault(); onNavigate("/contact"); }}
-                  className="hover:text-white transition">Contato</a>
+                <a
+                  onClick={() => setIsFormOpen(true)}
+                  className="hover:text-white transition cursor-pointer"
+                >
+                  Contato
+                </a>
+
+                <CareerConsultationForm
+                  open={isFormOpen}
+                  onOpenChange={setIsFormOpen}
+                />
               </li>
               <li>
                 <a href="#"

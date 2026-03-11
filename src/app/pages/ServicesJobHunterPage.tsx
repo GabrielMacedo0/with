@@ -1,12 +1,16 @@
 import { Button } from "@/app/components/ui/button";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { CallToAction  } from "@/app/components/CallToAction";
+import { useState } from 'react';
+import { MessageSquare } from "lucide-react";
+import { CareerConsultationForm } from '@/app/components/career-consultation-form';
 
 interface ServicesJobHunterPageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps) {
+    const [isFormOpen, setIsFormOpen] = useState(false);
 
   const features = [
     {
@@ -110,12 +114,17 @@ export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps
             <p className="text-[#1a2e4a]/70 mb-8" style={{ fontFamily: 'var(--font-body)' }}>
               Nossa atuação funciona como um agente de carreira: cuidamos do posicionamento, da narrativa e da abordagem ao mercado para que seus resultados cheguem a quem decide.
             </p>            
-            <a href="#">
-              
-            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-              onClick={(e) => { e.preventDefault(); onNavigate("contact");}}>
-              Agendar Job Hunting
-            </Button></a>
+            <Button
+              onClick={() => setIsFormOpen(true)}
+              className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white cursor-pointer"
+            >
+              <MessageSquare className="w-4 h-4" />
+                Agendar Job Hunting
+            </Button>
+            <CareerConsultationForm
+              open={isFormOpen}
+              onOpenChange={setIsFormOpen}
+            />
           </div>
           
           <div className="relative">

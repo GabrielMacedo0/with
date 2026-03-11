@@ -1,5 +1,7 @@
 import { Target, Users, TrendingUp, Award, CheckCircle2, Download, ArrowRight, Briefcase, BookOpen, MessageCircle, Monitor, Phone} from 'lucide-react';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import { CareerConsultationForm } from '@/app/components/career-consultation-form';
+import { Button } from "@/app/components/ui/button";
 import AnaBeatriz from "@/assets/Ana-beatriz.jfif";
 import Willian from "@/assets/Willian.jfif";
 import Guilherme from "@/assets/Guilherme.jfif";
@@ -11,13 +13,14 @@ import { CountUpCard } from '@/app/components/CountUpCard';
 import { CompanyMarquee } from '@/app/components/CompanyMarquee';
 import heroImage from '@/assets/Imagem.png';
 import { useState } from 'react';
+import { MessageSquare } from "lucide-react";
 
 interface ServicesHomePageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
-
+  const [isFormOpen, setIsFormOpen] = useState(false);
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -61,9 +64,17 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                 Em fases de transição, estagnação ou reposicionamento, insistir sem direção costuma gerar desgaste e frustração. Avançar exige estratégia, clareza sobre o momento de carreira e leitura real do mercado. É nesse ponto que a With atua, organizando escolhas e estruturando movimentos profissionais mais conscientes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="#"
-                  onClick={(e) => { e.preventDefault(); onNavigate("contact");}}
-                  className="bg-blue-900 text-white px-8 py-4 rounded hover:bg-blue-800 transition text-center">Entre em contato</a>
+                <Button
+                  onClick={() => setIsFormOpen(true)}
+                  className="bg-blue-900 text-white px-8 py-4 h-auto text-base font-medium rounded-md hover:bg-blue-800 transition flex items-center gap-2 cursor-pointer"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  Entre em contato
+                </Button>
+                <CareerConsultationForm
+                  open={isFormOpen}
+                  onOpenChange={setIsFormOpen}
+                />
                 <a href="#services" className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded hover:border-gray-400 transition text-center">
                   Conhecer Serviços
                 </a>
@@ -696,16 +707,17 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             Clique abaixo e vá direto para nossa página de contato.
           </p>
 
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate?.("contact");
-            }}
-            className="w-full max-w-sm bg-white text-blue-900 font-semibold py-4 rounded-lg hover:bg-blue-50 transition flex items-center justify-center gap-2"
+          <Button
+            onClick={() => setIsFormOpen(true)}
+            className="w-full max-w-sm bg-white text-blue-900 font-semibold py-4 rounded-lg hover:bg-blue-50 transition flex items-center justify-center gap-2 cursor-pointer"
           >
-            Ir para a página de contato
-          </a>
+            <MessageSquare className="w-4 h-4" />
+              Ir para a página de contato
+          </Button>
+          <CareerConsultationForm
+            open={isFormOpen}
+            onOpenChange={setIsFormOpen}
+          />
         </div>
 
         {/* Informações de contato */}

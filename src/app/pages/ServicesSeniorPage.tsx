@@ -1,12 +1,16 @@
 import { Button } from "@/app/components/ui/button";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { CallToAction  } from "@/app/components/CallToAction";
+import { useState } from 'react';
+import { MessageSquare } from "lucide-react";
+import { CareerConsultationForm } from '@/app/components/career-consultation-form';
 
 interface ServicesSeniorPageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
+   const [isFormOpen, setIsFormOpen] = useState(false);
   const features = [
     {
       title: "Currículo Executivo Premium + LinkedIn ",
@@ -109,11 +113,17 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
             <p className="text-[#1a2e4a]/70 mb-8" style={{ fontFamily: 'var(--font-body)' }}>
               O Plano Sênior oferece orientação estratégica confidencial para reposicionar sua trajetória e conduzir decisões críticas com segurança.
             </p>
-            <a href="#">                
-            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-              onClick={(e) => { e.preventDefault(); onNavigate("contact");}}>
-              Agendar Consulta Executiva
-            </Button></a>
+            <Button
+              onClick={() => setIsFormOpen(true)}
+              className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white cursor-pointer"
+            >
+              <MessageSquare className="w-4 h-4" />
+                Agendar Consulta Executiva
+            </Button>
+              <CareerConsultationForm
+                open={isFormOpen}
+                onOpenChange={setIsFormOpen}
+            />
           </div>
           
           <div className="relative">

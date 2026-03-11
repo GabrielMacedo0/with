@@ -1,4 +1,8 @@
 import { Target, Users, Award, TrendingUp, ArrowLeft } from "lucide-react";
+import { CallToAction  } from "@/app/components/CallToAction";
+import { useState } from 'react';
+import { MessageSquare } from "lucide-react";
+import { CareerConsultationForm } from '@/app/components/career-consultation-form';
 import { Button } from "@/app/components/ui/button";
 import Stephany  from "@/assets/Stephany.jpg";
 import Matheus  from "@/assets/Matheus.jpg";
@@ -13,6 +17,7 @@ interface AboutPageProps {
 }
 
 export function AboutPage({ onNavigate }: AboutPageProps) {
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const values = [
     {
@@ -138,10 +143,17 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               Hoje, a gente tem orgulho de já ter ajudado milhares de profissionais, de diferentes níveis e áreas, a retomarem o controle da própria carreira e conquistarem oportunidades mais alinhadas com o que merecem.
             </p>
             
-            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-              onClick={(e) => { e.preventDefault(); onNavigate("contact");}}>
-              Agendar Conversa
+            <Button
+              onClick={() => setIsFormOpen(true)}
+              className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
+            >
+              <MessageSquare className="w-4 h-4" />
+                Agendar Conversa
             </Button>
+              <CareerConsultationForm
+                open={isFormOpen}
+                onOpenChange={setIsFormOpen}
+              />
           </div>
           
           <div className="relative">
@@ -226,11 +238,18 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             Entre em contato conosco e descubra como podemos ajudar você a alcançar seus objetivos profissionais.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-                onClick={(e) => { e.preventDefault(); onNavigate("services"); }}>
-                Agendar Consulta Gratuita
-            </Button>
-            <Button className="bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20 hover:bg-white/50"
+            <Button
+              onClick={() => setIsFormOpen(true)}
+              className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white cursor-pointer"
+            >
+            <MessageSquare className="w-4 h-4" />
+              Agendar Conversa
+          </Button>
+            <CareerConsultationForm
+              open={isFormOpen}
+              onOpenChange={setIsFormOpen}
+            />
+          <Button className="bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20 hover:bg-white/50"
               onClick={() => onNavigate && onNavigate("home", "services")}>
               Ver Nossos Serviços
             </Button>
