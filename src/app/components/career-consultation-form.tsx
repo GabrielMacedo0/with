@@ -45,7 +45,7 @@ export function CareerConsultationForm({
   e.preventDefault();
 
   try {
-    const response = await fetch("https://matuprocopio.app.n8n.cloud/webhook-test/08afff31-0973-4e5e-80aa-b44e93420d1c", {
+    const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
