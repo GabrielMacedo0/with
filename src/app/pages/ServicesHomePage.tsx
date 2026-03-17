@@ -29,7 +29,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
     const email = (form.elements.namedItem("email") as HTMLInputElement).value;
     const [message, setMessage] = useState<string | null>(null);
 
-    try {
+/*     try {
       const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK_URL_EBOOK, {
         method: "POST",
         headers: {
@@ -47,7 +47,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
     } catch (error) {
       console.error(error);
       alert("❌ Ocorreu um erro. Tente novamente.");
-    }
+    } */
   }
   
   return (

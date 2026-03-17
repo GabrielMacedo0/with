@@ -19,6 +19,7 @@ import {
 import { Textarea } from "./ui/textarea";
 import { Send, Monitor, MessageSquare, Clock, ChevronLeft } from "lucide-react";
 
+
 interface CareerConsultationFormProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -38,13 +39,32 @@ export function CareerConsultationForm({
     contactMethod: "",
     message: "",
   });
+  const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Aqui você pode adicionar a lógica de envio do formulário
-    onOpenChange(false);
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("https://matuprocopio.app.n8n.cloud/webhook-test/08afff31-0973-4e5e-80aa-b44e93420d1c", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...formData,
+        createdAt: new Date().toISOString(),
+      }),
+    });
+
+    if (!response.ok) throw new Error();
+
+    setSuccess(true); // 👈 aqui muda a tela
+
+  } catch (error) {
+    alert("Erro ao enviar formulário");
+  }
+};
+
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -71,7 +91,20 @@ export function CareerConsultationForm({
               </DialogDescription>
             </DialogHeader><br />
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {success ? (
+              <div className="flex flex-col items-center justify-center text-center py-20">
+                <h2 className="text-2xl font-bold text-green-600 mb-4">
+                  ✅ Mensagem enviada com sucesso!
+                </h2>
+                <p className="text-gray-600 mb-6">
+                  Em breve um especialista entrará em contato com você.
+                </p>
+
+                <Button onClick={() => onOpenChange(false)}>
+                  Fechar
+                </Button>
+              </div>
+            ) : ( <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Nome completo</Label>
                 <Input
@@ -218,7 +251,7 @@ export function CareerConsultationForm({
                 <Send className="w-4 h-4 mr-2" />
                 Enviar Mensagem
               </Button>
-            </form>
+            </form>)}
           </div>
 
           {/* Painel de Informações */}
