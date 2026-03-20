@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
 import { ServicesHomePage } from "@/app/pages/ServicesHomePage";
@@ -14,6 +15,16 @@ import { Policy } from "@/app/pages/Policy";
 
 function AppContent() {
   const navigate = useNavigate();
+  const location = useLocation(); // 👈 AQUI
+
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer.push({
+      event: "pageview",
+      page: location.pathname
+    });
+  }, [location]);
 
   const handleNavigate = (path: string, sectionId?: string) => {
     navigate(path);
