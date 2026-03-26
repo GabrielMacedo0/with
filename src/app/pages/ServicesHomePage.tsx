@@ -19,18 +19,22 @@ import { MessageSquare } from "lucide-react";
 interface ServicesHomePageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
-const location = useLocation();
-const [isFormOpen, setIsFormOpen] = useState(false);
+let utms = {};
 
-const params = new URLSearchParams(location.search);
+try {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
 
-const utms = {
-  utm_source: params.get("utm_source"),
-  utm_campaign: params.get("utm_campaign"),
-  utm_medium: params.get("utm_medium"),
-  utm_content: params.get("utm_content"),
-  utm_term: params.get("utm_term"),
-};
+  utms = {
+    utm_source: params.get("utm_source"),
+    utm_campaign: params.get("utm_campaign"),
+    utm_medium: params.get("utm_medium"),
+    utm_content: params.get("utm_content"),
+    utm_term: params.get("utm_term"),
+  };
+} catch (e) {
+  console.log("Router ainda não disponível");
+}
 
 export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
   const [isFormOpen, setIsFormOpen] = useState(false);
