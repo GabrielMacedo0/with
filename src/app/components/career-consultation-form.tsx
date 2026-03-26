@@ -23,11 +23,19 @@ import { Send, Monitor, MessageSquare, Clock, ChevronLeft } from "lucide-react";
 interface CareerConsultationFormProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+    utms?: {
+    utm_source?: string | null;
+    utm_campaign?: string | null;
+    utm_medium?: string | null;
+    utm_content?: string | null;
+    utm_term?: string | null;
+    };
 }
 
 export function CareerConsultationForm({
   open,
   onOpenChange,
+  utms,
 }: CareerConsultationFormProps) {
   const [formData, setFormData] = useState({
     name: "",
@@ -40,11 +48,26 @@ export function CareerConsultationForm({
     message: "",
   });
   const [success, setSuccess] = useState(false);
+  const getStoredUtms = () => {
+  const saved = localStorage.getItem("utms");
+  if (!saved) return {};
+
+  const params = new URLSearchParams(saved);
+
+  return {
+    utm_source: params.get("utm_source"),
+    utm_campaign: params.get("utm_campaign"),
+    utm_medium: params.get("utm_medium"),
+    utm_content: params.get("utm_content"),
+    utm_term: params.get("utm_term"),
+  };
+};
 
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
   try {
+    const finalUtms = utms?.utm_source ? utms : getStoredUtms();
     const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK_URL, {
       method: "POST",
       headers: {
@@ -52,6 +75,7 @@ export function CareerConsultationForm({
       },
       body: JSON.stringify({
         ...formData,
+        ...finalUtms, // 👈 troca aqui
         createdAt: new Date().toISOString(),
       }),
     });

@@ -41,6 +41,9 @@ function AppContent() {
       page_search: location.search,
       page_location: window.location.href
     });
+      if (location.search.includes("utm_")) {
+    localStorage.setItem("utms", location.search);
+  }
   }, [location]);
 
   const handleNavigate = (path: string, sectionId?: string) => {
@@ -79,37 +82,42 @@ function AppContent() {
           {/* 🔗 REDIRECIONAMENTOS DA PLANILHA (MAPEAMENTO DE UTMs) */}
           
           {/* Instagram Bio */}
+
+                    <Route 
+            path="/junior-v1" 
+            element={<UtmRedirect destination="/services-junior" utms="utm_source=Instagram_Org&utm_campaign=JUNIORV2&utm_medium=Bio&utm_content=organico&utm_term=QUENTE" />} 
+          />
           <Route 
-            path="/brjunior-v1-bio" 
+            path="/junior-v1-bio" 
             element={<UtmRedirect destination="/services-junior" utms="utm_source=Instagram_Org&utm_campaign=JUNIORV2&utm_medium=Bio&utm_content=organico&utm_term=QUENTE" />} 
           />
 
           {/* Instagram Stories */}
           <Route 
-            path="/brjunior-v1-stories" 
+            path="/junior-v1-stories" 
             element={<UtmRedirect destination="/services-junior" utms="utm_source=Instagram_Org&utm_campaign=JUNIORV2&utm_medium=Stories&utm_content=organico&utm_term=QUENTE" />} 
           />
 
           {/* Instagram Direct */}
           <Route 
-            path="/brjunior-v1-direct" 
+            path="/junior-v1-direct" 
             element={<UtmRedirect destination="/services-junior" utms="utm_source=Instagram_Org&utm_campaign=JUNIORV2&utm_medium=Direct&utm_content=organico&utm_term=QUENTE" />} 
           />
 
           {/* LinkedIn Bio */}
           <Route 
-            path="/brjunior-v1-linkedin-capa" 
+            path="/junior-v1-linkedin-capa" 
             element={<UtmRedirect destination="/services-junior" utms="utm_source=LinkedIn_Org&utm_campaign=JUNIORV2&utm_medium=Bio&utm_content=organico&utm_term=QUENTE" />} 
           />
 
           {/* E-mail Automação Boas Vindas */}
           <Route 
-            path="/brjunior-v1-email-boas-vindas" 
+            path="/junior-v1-email-boas-vindas" 
             element={<UtmRedirect destination="/services-junior" utms="utm_source=Automacao_Email&utm_campaign=JUNIORV2&utm_medium=Email_BoasVindas&utm_content=organico&utm_term=QUENTE" />} 
           />
 
           {/* Rota de fallback (Opcional): Se digitar algo errado, volta pra Home */}
-          <Route path="/brjunior-v1-*" element={<Navigate to="/services-junior" replace />} />
+          <Route path="/junior-v1-*" element={<Navigate to="/services-junior" replace />} />
 
         </Routes>
       </main>
