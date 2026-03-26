@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation, Navigate } from "react-router-dom";
 import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
 import { ServicesHomePage } from "@/app/pages/ServicesHomePage";
@@ -13,16 +13,33 @@ import { ContactForm } from "@/app/pages/ContactForm";
 import { ArticlesPageOne } from "@/app/pages/ArticlesPageOne";
 import { Policy } from "@/app/pages/Policy";
 
+// 🛠️ Interface para o TypeScript reconhecer o Google Tag Manager
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
+
+// 🎯 Componente Auxiliar de Redirecionamento com UTMs
+// Ele transforma "/junior-v1-bio" em "/services-junior?utm_source=..."
+function UtmRedirect({ destination, utms }: { destination: string; utms: string }) {
+  return <Navigate to={`${destination}?${utms}`} replace />;
+}
+
 function AppContent() {
   const navigate = useNavigate();
-  const location = useLocation(); // 👈 AQUI
+  const location = useLocation();
 
+  // 📊 Monitoramento Automático para o Google Analytics
   useEffect(() => {
     window.dataLayer = window.dataLayer || [];
-
+    
+    // Envia o pageview sempre que a URL mudar (incluindo as UTMs)
     window.dataLayer.push({
       event: "pageview",
-      page: location.pathname
+      page_path: location.pathname,
+      page_search: location.search,
+      page_location: window.location.href
     });
   }, [location]);
 
@@ -47,6 +64,7 @@ function AppContent() {
 
       <main className="flex-1">
         <Routes>
+          {/* 🏠 Rotas Originais do Seu Site */}
           <Route path="/" element={<ServicesHomePage onNavigate={handleNavigate} />} />
           <Route path="/services-junior" element={<ServicesJuniorPage onNavigate={handleNavigate} />} />
           <Route path="/services-pleno" element={<ServicesPlenoPage onNavigate={handleNavigate} />} />
@@ -57,6 +75,42 @@ function AppContent() {
           <Route path="/articles/1" element={<ArticlesPageOne onNavigate={handleNavigate} />} />
           <Route path="/contact" element={<ContactForm onNavigate={handleNavigate} />} />
           <Route path="/policy" element={<Policy onNavigate={handleNavigate} />} />
+
+          {/* 🔗 REDIRECIONAMENTOS DA PLANILHA (MAPEAMENTO DE UTMs) */}
+          
+          {/* Instagram Bio */}
+          <Route 
+            path="/brjunior-v1-bio" 
+            element={<UtmRedirect destination="/services-junior" utms="utm_source=Instagram_Org&utm_campaign=JUNIORV2&utm_medium=Bio&utm_content=organico&utm_term=QUENTE" />} 
+          />
+
+          {/* Instagram Stories */}
+          <Route 
+            path="/brjunior-v1-stories" 
+            element={<UtmRedirect destination="/services-junior" utms="utm_source=Instagram_Org&utm_campaign=JUNIORV2&utm_medium=Stories&utm_content=organico&utm_term=QUENTE" />} 
+          />
+
+          {/* Instagram Direct */}
+          <Route 
+            path="/brjunior-v1-direct" 
+            element={<UtmRedirect destination="/services-junior" utms="utm_source=Instagram_Org&utm_campaign=JUNIORV2&utm_medium=Direct&utm_content=organico&utm_term=QUENTE" />} 
+          />
+
+          {/* LinkedIn Bio */}
+          <Route 
+            path="/brjunior-v1-linkedin-capa" 
+            element={<UtmRedirect destination="/services-junior" utms="utm_source=LinkedIn_Org&utm_campaign=JUNIORV2&utm_medium=Bio&utm_content=organico&utm_term=QUENTE" />} 
+          />
+
+          {/* E-mail Automação Boas Vindas */}
+          <Route 
+            path="/brjunior-v1-email-boas-vindas" 
+            element={<UtmRedirect destination="/services-junior" utms="utm_source=Automacao_Email&utm_campaign=JUNIORV2&utm_medium=Email_BoasVindas&utm_content=organico&utm_term=QUENTE" />} 
+          />
+
+          {/* Rota de fallback (Opcional): Se digitar algo errado, volta pra Home */}
+          <Route path="/brjunior-v1-*" element={<Navigate to="/services-junior" replace />} />
+
         </Routes>
       </main>
 
