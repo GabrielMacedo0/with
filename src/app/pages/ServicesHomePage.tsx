@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { Target, Users, TrendingUp, Award, CheckCircle2, Download, ArrowRight, Briefcase, BookOpen, MessageCircle, Monitor, Phone} from 'lucide-react';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import { CareerConsultationForm } from '@/app/components/career-consultation-form';
@@ -12,22 +13,45 @@ import AboutUs from "@/assets/quem-somos.png";
 import { CountUpCard } from '@/app/components/CountUpCard';
 import { CompanyMarquee } from '@/app/components/CompanyMarquee';
 import heroImage from '@/assets/Imagem.png';
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 import { MessageSquare } from "lucide-react";
 
 interface ServicesHomePageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
+const location = useLocation();
+const [isFormOpen, setIsFormOpen] = useState(false);
+
+const params = new URLSearchParams(location.search);
+
+const utms = {
+  utm_source: params.get("utm_source"),
+  utm_campaign: params.get("utm_campaign"),
+  utm_medium: params.get("utm_medium"),
+  utm_content: params.get("utm_content"),
+  utm_term: params.get("utm_term"),
+};
 
 export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [message, setMessage] = useState<string | null>(null); // 👈 aqui
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+
+  useEffect(() => {
+    if (params.get("openForm") === "true") {
+      setIsFormOpen(true);
+    }
+  }, [location.search]);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const form = e.currentTarget;
     const nome = (form.elements.namedItem("nome") as HTMLInputElement).value;
     const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-    const [message, setMessage] = useState<string | null>(null);
+
 
 /*     try {
       const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK_URL_EBOOK, {
@@ -49,6 +73,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
       alert("❌ Ocorreu um erro. Tente novamente.");
     } */
   }
+  
   
   return (
     <div className="animate-fade-in min-h-screen bg-white">
@@ -74,6 +99,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                 <CareerConsultationForm
                   open={isFormOpen}
                   onOpenChange={setIsFormOpen}
+                  utms={utms}
                 />
                 <a href="#services" className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded hover:border-gray-400 transition text-center">
                   Conhecer Serviços
