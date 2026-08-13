@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { Target, Users, TrendingUp, Award, CheckCircle2, Download, ArrowRight, Briefcase, BookOpen, MessageCircle, Monitor, Phone} from 'lucide-react';
+import { Target, Users, TrendingUp, Award, CheckCircle2, ArrowRight, Briefcase, MessageCircle, Monitor, Phone} from 'lucide-react';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import { CareerConsultationForm } from '@/app/components/career-consultation-form';
 import { Button } from "@/app/components/ui/button";
@@ -19,65 +19,25 @@ import { MessageSquare } from "lucide-react";
 interface ServicesHomePageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
-let utms = {};
 
-try {
+export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-
-  utms = {
+  const utms = {
     utm_source: params.get("utm_source"),
     utm_campaign: params.get("utm_campaign"),
     utm_medium: params.get("utm_medium"),
     utm_content: params.get("utm_content"),
     utm_term: params.get("utm_term"),
   };
-} catch (e) {
-  console.log("Router ainda não disponível");
-}
-
-export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [message, setMessage] = useState<string | null>(null); // 👈 aqui
-
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
 
   useEffect(() => {
     if (params.get("openForm") === "true") {
       setIsFormOpen(true);
     }
-  }, [location.search]);
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    const form = e.currentTarget;
-    const nome = (form.elements.namedItem("nome") as HTMLInputElement).value;
-    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-
-
-/*     try {
-      const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK_URL_EBOOK, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ nome, email }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Erro ao enviar formulário");
-      }
-
-    setMessage("✅ Verifique seu e-mail! O eBook foi enviado.");
-      form.reset();
-    } catch (error) {
-      console.error(error);
-      alert("❌ Ocorreu um erro. Tente novamente.");
-    } */
-  }
-  
+  }, [location.search]);  
   
   return (
     <div className="animate-fade-in min-h-screen bg-white">
@@ -87,7 +47,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-gray-900 mb-6">
-                Avançar na carreira exige estratégia
+                Sua carreira não precisa de sorte. Precisa de estratégia.
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Em fases de transição, estagnação ou reposicionamento, insistir sem direção costuma gerar desgaste e frustração. Avançar exige estratégia, clareza sobre o momento de carreira e leitura real do mercado. É nesse ponto que a With atua, organizando escolhas e estruturando movimentos profissionais mais conscientes.
@@ -181,7 +141,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             Um primeiro contato para entender contexto, objetivos e nível de acompanhamento necessário.
           </p>
           <a href="#contato" className="inline-block bg-white text-blue-900 px-10 py-4 rounded hover:bg-gray-100 transition">
-            Próximo passo
+            Falar com um especialista
           </a>
         </div>
       </section>
@@ -484,24 +444,6 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Depoimento 1 */}
             <div className="bg-white p-8 rounded-lg flex flex-col h-full">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
-                ))}
-              </div>
-                <p className="mb-6 italic" style={{ color: '#1a2e4a', opacity: 0.9 }}>
-                  "Olá Sté, bom dia!
-                  <br /><br />
-                  Tinha expectativa de depois que comecei a consultoria com vocês, em até uns 3 meses eu conseguiria uma boa oportunidade.{' '}
-                  <br /><br />
-                  Mas no dia que vocês me mandaram meu currículo pronto até o dia que fechei o contrato,{' '} 
-                  <span style={{ color: '#f5424a', fontWeight: 600 }}>
-                   foram só 24 dias
-                  </span>{' '}
-                  .hahahaha muito rápido!
-                  <br /><br />
-                  Comecei hoje na empresa nova!"
-                </p>
               <div className="flex items-center gap-4 mt-auto">
                 <img 
                   src={AnaBeatriz}
@@ -517,9 +459,29 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                   >
                     <p className="font-medium">Ana Beatriz</p>
                   </a>
+                  
                   <p className="text-sm" style={{ color: '#1a2e4a', opacity: 0.7 }}>Analista Financeiro</p>
                 </div>
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
+                ))}
               </div>
+              </div>
+
+                <p className="mb-6 italic" style={{ color: '#1a2e4a', opacity: 0.9 }}><br/>
+                  "Olá Sté, bom dia!
+                  <br /><br />
+                  Tinha expectativa de depois que comecei a consultoria com vocês, em até uns 3 meses eu conseguiria uma boa oportunidade.{' '}
+                  <br /><br />
+                  Mas no dia que vocês me mandaram meu currículo pronto até o dia que fechei o contrato,{' '} 
+                  <span style={{ color: '#f5424a', fontWeight: 600 }}>
+                   foram só 24 dias
+                  </span>{' '}
+                  .hahahaha muito rápido!
+                  <br /><br />
+                  Comecei hoje na empresa nova!"
+                </p>
             </div>
 
             {/* Depoimento 2 */}

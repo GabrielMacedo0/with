@@ -40,8 +40,7 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
   const plans = [
     {
       name: "Sênior",
-      price: "R$ 1.100,00",
-      period: "12x de 91,66",
+      price: "Solicitar análise da carreira",
       link: "https://www.asaas.com/c/pzlql9fbpm28j1y9",
       features: [
         "Currículo + LinkedIn Executivo",
@@ -55,8 +54,7 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
     },
     {
       name: "Sênior Tradução",
-      price: "R$ 1.299,90",
-      period: "12x de 108,32",
+      price: "Solicitar análise da carreira",
       link: "https://www.asaas.com/c/3hylysgh01dnakep",
       features: [
         "Currículo + LinkedIn Executivo (PT + EN)",
@@ -190,9 +188,6 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
                   <div className="mb-6 min-h-[88px]">
                     <span className="text-4xl font-bold text-[#1a2e4a] block">
                       {plan.price}
-                    </span>
-                    <span className="text-[#1a2e4a]/60 text-sm">
-                      12x de {plan.period}
                     </span>
                   </div>
                   <ul className="space-y-3 mb-8 min-h-[220px]">

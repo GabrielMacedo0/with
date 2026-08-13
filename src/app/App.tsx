@@ -117,7 +117,7 @@ function AppContent() {
           />
 
           {/* Rota de fallback (Opcional): Se digitar algo errado, volta pra Home */}
-          <Route path="/junior-v1-*" element={<Navigate to="/" replace />} />
+          <Route path="/junior-v1-/*" element={<Navigate to="/" replace />} />
 
         </Routes>
       </main>

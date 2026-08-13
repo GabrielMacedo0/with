@@ -37,8 +37,7 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
   const plans = [
     {
       name: "Pleno",
-      price: "R$ 629,90",
-      period: "12x de R$ 52,49",
+      price: "Solicitar análise da carreira",
       link: "https://www.asaas.com/c/ti8gi68gacwlx6ka",
       features: [
         "Currículo Estratégico + LinkedIn Estratégico",
@@ -172,7 +171,6 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
                     <span className="text-4xl font-bold text-[#1a2e4a]">
                       {plan.price}
                     </span>
-                    <span className="text-[#1a2e4a]/60 ml-2" style={{ fontFamily: 'var(--font-body)' }}>{plan.period}</span>
                   </div>
 
                   <ul className="space-y-3 mb-8">

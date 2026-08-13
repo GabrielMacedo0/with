@@ -50,7 +50,7 @@ export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps
   const plans = [
     {
       name: "Job Hunting",
-      price: "Entre em contato",
+      price: "Solicitar análise da carreira",
       period: "",
       features: [
       "Avaliação comportamental",

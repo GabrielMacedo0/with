@@ -31,8 +31,7 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
 
     {
       name: "Júnior",
-      price: "R$ 270,00",
-      period: "12x de R$ 22,50",
+      price: "Solicitar análise da carreira",
       link: "https://www.asaas.com/c/v34qe6mdygsfrgrq",
       features: [
         "Currículo + LinkedIn",
@@ -158,7 +157,6 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
                     <span className="text-4xl font-bold text-[#1a2e4a]">
                       {plan.price}
                     </span>
-                    <span className="text-[#1a2e4a]/60 ml-2" style={{ fontFamily: 'var(--font-body)' }}>{plan.period}</span>
                   </div>
 
                   <ul className="space-y-3 mb-8">
