@@ -9,11 +9,11 @@ import HomeOffice from "@/assets/homeoffice.png";
 import networking from "@/assets/networking.png";
 import Stephany  from "@/assets/Stephany.jpg";
 
-interface ArticlesPageOne {
+interface ArticlesPageOneProps  {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
-export function ArticlesPageOne ({ onNavigate }: ArticlesPageOne) {
+export function ArticlesPageOne ({ onNavigate }: ArticlesPageOneProps ) {
     const tocItems = [
     { id: 'introduction', title: 'Introdução' },
     { id: 'company-was-born', title: 'Nascimento da empresa' },

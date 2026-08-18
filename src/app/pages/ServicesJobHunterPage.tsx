@@ -72,7 +72,7 @@ export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps
       <div className="bg-white border-b border-[#1a2e4a]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <button
-            onClick={() => onNavigate && onNavigate("home")}
+            onClick={() => onNavigate && onNavigate("/")}
             className="flex items-center gap-2 text-[#1a2e4a]/70 hover:text-[#1a2e4a] mb-6 transition-colors"
             style={{ fontFamily: 'var(--font-body)' }}
           >

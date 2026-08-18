@@ -1,5 +1,4 @@
 import { Target, Users, Award, TrendingUp, ArrowLeft } from "lucide-react";
-import { CallToAction  } from "@/app/components/CallToAction";
 import { useState } from 'react';
 import { MessageSquare } from "lucide-react";
 import { CareerConsultationForm } from '@/app/components/career-consultation-form';
@@ -100,7 +99,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
       <div className="bg-white border-b border-[#1a2e4a]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <button
-            onClick={() => onNavigate && onNavigate("home")}
+            onClick={() => onNavigate && onNavigate("/")}
             className="flex items-center gap-2 text-[#1a2e4a]/70 hover:text-[#1a2e4a] mb-6 transition-colors"
             style={{ fontFamily: 'var(--font-body)' }}
           >
@@ -250,7 +249,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               onOpenChange={setIsFormOpen}
             />
           <Button className="bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20 hover:bg-white/50"
-              onClick={() => onNavigate && onNavigate("home", "services")}>
+              onClick={() => onNavigate && onNavigate("/", "services")}>
               Ver Nossos Serviços
             </Button>
           </div>

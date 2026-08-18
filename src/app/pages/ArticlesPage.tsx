@@ -83,7 +83,7 @@ export function ArticlesPage({ onNavigate }: ArticlesPageProps) {
       <div className="bg-white border-b border-[#1a2e4a]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <button
-            onClick={() => onNavigate && onNavigate("home")}
+            onClick={() => onNavigate && onNavigate("/")}
             className="flex items-center gap-2 text-[#1a2e4a]/70 hover:text-[#1a2e4a] mb-6 transition-colors"
             style={{ fontFamily: 'var(--font-body)' }}
           >
@@ -210,27 +210,6 @@ export function ArticlesPage({ onNavigate }: ArticlesPageProps) {
           ))}
         </div>
 
-        {/* Newsletter Section */}
-        <div className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] rounded-3xl p-12 text-center text-white mb-16">
-          <h2 className="text-3xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-            Receba Novos Artigos Direto no seu E-mail
-          </h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-body)' }}>
-            Cadastre-se em nossa newsletter e receba semanalmente conteúdo exclusivo sobre desenvolvimento de carreira.
-          </p>
-          <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-            <input
-              type="email"
-              placeholder="Seu melhor e-mail"
-              className="flex-1 px-6 py-3 rounded-full text-[#1a2e4a] focus:outline-none focus:ring-2 focus:ring-white"
-              style={{ fontFamily: 'var(--font-body)' }}
-            />
-            <Button className="bg-white text-[#1fa6a8] hover:bg-white/90 rounded-full px-8">
-              Inscrever-se
-            </Button>
-          </div>
-        </div>
-
         {/* CTA Section */}
         <div className="bg-[#e5d9d1] rounded-3xl p-12 text-center">
           <h2 className="text-3xl font-bold text-[#1a2e4a] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
@@ -243,10 +222,6 @@ export function ArticlesPage({ onNavigate }: ArticlesPageProps) {
             <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
               onClick={(e) => { e.preventDefault(); onNavigate("contact");}}>
               Agendar Consulta Gratuita
-            </Button>
-            <Button className="bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20 hover:bg-white/50"
-              onClick={(e) => { e.preventDefault(); onNavigate("home", "ebook");}}>
-                Baixar E-book Grátis
             </Button>
           </div>
         </div>

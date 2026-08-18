@@ -1,15 +1,21 @@
-interface Policy {
+import { ArrowLeft } from "lucide-react";
+interface PolicyProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
-export function Policy ({ onNavigate }: Policy) {
+export function Policy ({ onNavigate }: PolicyProps ) {
   return (
     <div className="min-h-screen bg-white">
       {/* Article Hero Section */}
       <section className="w-full bg-white py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-3xl">
-            
+            <button onClick={() => onNavigate("/")}
+              className="flex items-center gap-2 text-[#1a2e4a]/70 hover:text-[#1a2e4a] mb-6 transition-colors font-['Quicksand']"
+              >
+                <ArrowLeft size={20} />
+                  Voltar ao Início
+            </button>
             <h1 className="font-['Varela_Round'] text-4xl md:text-5xl text-[#1a2e4a] ">
               POLÍTICA DE PRIVACIDADE
             </h1>
@@ -41,7 +47,7 @@ export function Policy ({ onNavigate }: Policy) {
               </div>
 
               <div className="mb-12">
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   1. CONTROLADOR
                 </h2>
@@ -49,7 +55,7 @@ export function Policy ({ onNavigate }: Policy) {
                   A Procopio e Borowiec Consultoria e Serviços em RH LTDA atua como Controladora dos dados pessoais tratados por meio deste site, nos termos da Lei nº 13.709/2018 (Lei Geral de Proteção de Dados – LGPD).
                 </p>
                
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   2. DADOS PESSOAIS TRATADOS
                 </h2>
@@ -98,7 +104,7 @@ export function Policy ({ onNavigate }: Policy) {
                   Quando contratado pacote que envolva inscrição em vagas, poderão ser tratados dados pessoais sensíveis, como informações sobre deficiência, gênero ou raça, exclusivamente para fins de recrutamento e encaminhamento profissional.
                 </p>
                 
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   3. FINALIDADES DO TRATAMENTO
                 </h2>
@@ -136,7 +142,7 @@ export function Policy ({ onNavigate }: Policy) {
                     </li>
                   </ul>
                
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   4. BASES LEGAIS
                 </h2>
@@ -169,7 +175,7 @@ export function Policy ({ onNavigate }: Policy) {
                   Observação importante: dados sensíveis somente são tratados quando estritamente necessários para fins de recrutamento e mediante consentimento específico.
                 </p>
                 
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   5. COMPARTILHAMENTO DE DADOS
                 </h2>
@@ -199,7 +205,7 @@ export function Policy ({ onNavigate }: Policy) {
                     </li>
                   </ul>
 
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   6. TRANSFERÊNCIA INTERNACIONAL DE DADOS
                 </h2>
@@ -210,7 +216,7 @@ export function Policy ({ onNavigate }: Policy) {
                   Nesses casos, a empresa adota mecanismos contratuais e salvaguardas adequadas para garantir o cumprimento da LGPD e a proteção dos dados pessoais.
                 </p>
 
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   7. RETENÇÃO E ARMAZENAMENTO
                 </h2>
@@ -235,7 +241,7 @@ export function Policy ({ onNavigate }: Policy) {
                   Após esses prazos, os dados poderão ser eliminados ou anonimizados, salvo obrigação legal que exija retenção por período superior.
                 </p>
                 
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   8. SEGURANÇA DA INFORMAÇÃO
                 </h2>
@@ -261,7 +267,7 @@ export function Policy ({ onNavigate }: Policy) {
                     </li>
                   </ul>
                 
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   9. COOKIES E TECNOLOGIAS DE RASTREAMENTO
                 </h2>
@@ -293,7 +299,7 @@ export function Policy ({ onNavigate }: Policy) {
                   O usuário poderá configurar seu navegador para bloquear ou excluir cookies a qualquer momento.
                 </p>
 
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   10. DIREITOS DO TITULAR
                 </h2>
@@ -334,7 +340,7 @@ export function Policy ({ onNavigate }: Policy) {
                   Solicitações devem ser encaminhadas para: contato@withconsultoria.com
                 </p>
                 
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   11. DADOS DE MENORES
                 </h2>
@@ -342,7 +348,7 @@ export function Policy ({ onNavigate }: Policy) {
                   A empresa não direciona seus serviços a menores de 18 anos e não realiza tratamento intencional de dados de crianças ou adolescentes.
                 </p>
 
-                <hr className="  border: none;  height: 1px;  background-color: #444; margin: 30px 0; mb-6"></hr>
+                <hr className="my-8 border-t border-[#1a2e4a]/10"></hr>
                 <h2 className="font-['Varela_Round'] text-3xl text-[#1a2e4a] mb-4">
                   12. ATUALIZAÇÕES DESTA POLÍTICA
                 </h2>

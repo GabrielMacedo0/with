@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Button } from "@/app/components/ui/button";
 import { CareerConsultationForm } from '@/app/components/career-consultation-form';
 
 interface FooterProps {
@@ -99,10 +98,14 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <a href="https://www.linkedin.com/in/stephany-borowiec/"
-                   className="hover:text-white transition">LinkedIn</a>
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition">LinkedIn</a>
               </li>
               <li>
                 <a href="https://www.instagram.com/withconsultoria/"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    className="hover:text-white transition">Instagram</a>
               </li>
             </ul>

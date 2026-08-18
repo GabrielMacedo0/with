@@ -49,7 +49,7 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
       <div className="bg-white border-b border-[#1a2e4a]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <button
-            onClick={() => onNavigate && onNavigate("home")}
+            onClick={() => onNavigate && onNavigate("/")}
             className="flex items-center gap-2 text-[#1a2e4a]/70 hover:text-[#1a2e4a] mb-6 transition-colors"
             style={{ fontFamily: 'var(--font-body)' }}
           >
@@ -86,10 +86,6 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
             <p className="text-[#1a2e4a]/70 mb-8" style={{ fontFamily: 'var(--font-body)' }}>
               O principal desafio nessa fase não é a falta de esforço, mas a ausência de um posicionamento claro: o profissional faz muita coisa, porém o mercado não consegue identificar exatamente onde ele se encaixa.
             </p>
-{/*             <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-              onClick={(e) => { e.preventDefault(); onNavigate("home", "ebook");}}>
-              Baixar E-book Gratuito
-            </Button> */}
           </div>
           
           <div className="relative">

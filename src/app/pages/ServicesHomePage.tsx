@@ -339,7 +339,6 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
           </div>
         </div>
       </section>
-
       {/* Company Marquee */}
       <CompanyMarquee />
 

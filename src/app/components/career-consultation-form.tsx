@@ -1,24 +1,11 @@
-import { useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "./ui/dialog";
+import { useState, useEffect } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription} from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "./ui/select";
 import { Textarea } from "./ui/textarea";
 import { Send, Monitor, MessageSquare, Clock, ChevronLeft } from "lucide-react";
-
 
 interface CareerConsultationFormProps {
   open: boolean;
@@ -48,7 +35,24 @@ export function CareerConsultationForm({
     message: "",
   });
   const [success, setSuccess] = useState(false);
-  const getStoredUtms = () => {
+
+  useEffect(() => {
+    if (!open) {
+      setSuccess(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        challenge: "",
+        lastSalary: "",
+        timeframe: "",
+        contactMethod: "",
+        message: "",
+      });
+    }
+  }, [open]);
+
+const getStoredUtms = () => {
   const saved = localStorage.getItem("utms");
   if (!saved) return {};
 
@@ -68,21 +72,23 @@ export function CareerConsultationForm({
 
   try {
     const finalUtms = utms?.utm_source ? utms : getStoredUtms();
+    const SECRET = import.meta.env.VITE_N8N_SECRET;
     const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "X-Webhook-Secret": SECRET,
       },
       body: JSON.stringify({
         ...formData,
-        ...finalUtms, // 👈 troca aqui
+        ...finalUtms,
         createdAt: new Date().toISOString(),
       }),
     });
 
     if (!response.ok) throw new Error();
 
-    setSuccess(true); // 👈 aqui muda a tela
+    setSuccess(true);
 
   } catch (error) {
     alert("Erro ao enviar formulário");

@@ -1,4 +1,5 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 import { Monitor, Phone, MessageCircle, ArrowLeft, Send} from 'lucide-react';
 
 interface ServicesContactFormPageProps {
@@ -39,6 +40,7 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-Webhook-Secret': SECRET,
         },
         body: JSON.stringify({
           nome: formData.nome,
@@ -97,7 +99,7 @@ export function ContactForm ({ onNavigate }: ServicesContactFormPageProps)  {
           {/* Breadcrumb / Voltar */}
           <div className="flex items-center justify-between mb-10">
             <button
-              onClick={() => onNavigate?.("home")}
+              onClick={() => onNavigate?.("/")}
               className="
                 inline-flex items-center gap-2
                 text-sm text-[#1a2e4a]/60
