@@ -1,17 +1,19 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate, useLocation, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
-import { ServicesHomePage } from "@/app/pages/ServicesHomePage";
-import { ServicesJuniorPage } from "@/app/pages/ServicesJuniorPage";
-import { ServicesPlenoPage } from "@/app/pages/ServicesPlenoPage";
-import { ServicesSeniorPage } from "@/app/pages/ServicesSeniorPage";
-import { ServicesJobHunterPage } from "@/app/pages/ServicesJobHunterPage";
-import { AboutPage } from "@/app/pages/AboutPage";
-import { ArticlesPage } from "@/app/pages/ArticlesPage";
-import { ContactForm } from "@/app/pages/ContactForm";
-import { ArticlesPageOne } from "@/app/pages/ArticlesPageOne";
-import { Policy } from "@/app/pages/Policy";
+import { FloatingWhatsAppButton } from "@/app/components/FloatingWhatsAppButton";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation, Navigate } from "react-router-dom";
+const Policy = lazy(() => import("@/app/pages/Policy").then(m => ({ default: m.Policy })));
+const AboutPage = lazy(() => import("@/app/pages/AboutPage").then(m => ({ default: m.AboutPage })));
+const ContactForm = lazy(() => import("@/app/pages/ContactForm").then(m => ({ default: m.ContactForm })));
+const ArticlesPage = lazy(() => import("@/app/pages/ArticlesPage").then(m => ({ default: m.ArticlesPage })));
+const ServicesHomePage = lazy(() => import("@/app/pages/ServicesHomePage").then(m => ({ default: m.ServicesHomePage })));
+const ArticleDetailPage = lazy(() => import("@/app/pages/ArticleDetailPage").then(m => ({ default: m.ArticleDetailPage })));
+const ServicesPlenoPage = lazy(() => import("@/app/pages/ServicesPlenoPage").then(m => ({ default: m.ServicesPlenoPage })));
+const ServicesJuniorPage = lazy(() => import("@/app/pages/ServicesJuniorPage").then(m => ({ default: m.ServicesJuniorPage })));
+const ServicesSeniorPage = lazy(() => import("@/app/pages/ServicesSeniorPage").then(m => ({ default: m.ServicesSeniorPage })));
+const ServicesJobHunterPage = lazy(() => import("@/app/pages/ServicesJobHunterPage").then(m => ({ default: m.ServicesJobHunterPage })));
 
 // 🛠️ Interface para o TypeScript reconhecer o Google Tag Manager
 declare global {
@@ -66,6 +68,7 @@ function AppContent() {
       <Header onNavigate={handleNavigate} />
 
       <main className="flex-1">
+        <Suspense fallback={<div>Carregando...</div>}>
         <Routes>
           {/* 🏠 Rotas Originais do Seu Site */}
           <Route path="/" element={<ServicesHomePage onNavigate={handleNavigate} />} />
@@ -75,15 +78,14 @@ function AppContent() {
           <Route path="/services-jobhunter" element={<ServicesJobHunterPage onNavigate={handleNavigate} />} />
           <Route path="/about" element={<AboutPage onNavigate={handleNavigate} />} />
           <Route path="/articles" element={<ArticlesPage onNavigate={handleNavigate} />} />
-          <Route path="/articles/1" element={<ArticlesPageOne onNavigate={handleNavigate} />} />
+          <Route path="/articles/:id" element={<ArticleDetailPage onNavigate={handleNavigate} />} />
           <Route path="/contact" element={<ContactForm onNavigate={handleNavigate} />} />
           <Route path="/policy" element={<Policy onNavigate={handleNavigate} />} />
 
           {/* 🔗 REDIRECIONAMENTOS DA PLANILHA (MAPEAMENTO DE UTMs) */}
           
           {/* Instagram Bio */}
-
-                    <Route 
+          <Route 
             path="/junior-v1" 
             element={<UtmRedirect destination="/" utms="utm_source=Instagram_Org&utm_campaign=JUNIORV2&utm_medium=Bio&utm_content=organico&utm_term=QUENTE" />} 
           />
@@ -120,9 +122,11 @@ function AppContent() {
           <Route path="/junior-v1-/*" element={<Navigate to="/" replace />} />
 
         </Routes>
+        </Suspense>
       </main>
 
       <Footer onNavigate={handleNavigate} />
+      <FloatingWhatsAppButton />
     </div>
   );
 }

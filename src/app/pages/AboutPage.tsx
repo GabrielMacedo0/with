@@ -1,22 +1,19 @@
-import { Target, Users, Award, TrendingUp, ArrowLeft } from "lucide-react";
-import { useState } from 'react';
-import { MessageSquare } from "lucide-react";
-import { CareerConsultationForm } from '@/app/components/career-consultation-form';
+import { Target, Users, Award, TrendingUp, ArrowLeft, MessageSquare } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
-import Stephany  from "@/assets/Stephany.jpg";
-import Matheus  from "@/assets/Matheus.jpg";
+import Aline  from "@/assets/Aline.png";
 import Brina  from "@/assets/Brina.jpg";
-import Guilherme  from "@/assets/Guilherme.jpg";
 import Vitor  from "@/assets/Vitor.png";
 import Macedo  from "@/assets/Macedo.jpg";
-import Aline  from "@/assets/Aline.png";
+import Matheus  from "@/assets/Matheus.jpg";
+import Stephany  from "@/assets/Stephany.jpg";
+import Guilherme  from "@/assets/Guilherme.jpg";
+import { openTypeformPopup } from "@/app/components/TypeformPopup";
 
 interface AboutPageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function AboutPage({ onNavigate }: AboutPageProps) {
-  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const values = [
     {
@@ -143,16 +140,12 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             </p>
             
             <Button
-              onClick={() => setIsFormOpen(true)}
+              onClick={openTypeformPopup}
               className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
             >
               <MessageSquare className="w-4 h-4" />
                 Agendar Conversa
             </Button>
-              <CareerConsultationForm
-                open={isFormOpen}
-                onOpenChange={setIsFormOpen}
-              />
           </div>
           
           <div className="relative">
@@ -238,16 +231,12 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              onClick={() => setIsFormOpen(true)}
+              onClick={openTypeformPopup}
               className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white cursor-pointer"
             >
             <MessageSquare className="w-4 h-4" />
               Agendar Conversa
           </Button>
-            <CareerConsultationForm
-              open={isFormOpen}
-              onOpenChange={setIsFormOpen}
-            />
           <Button className="bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20 hover:bg-white/50"
               onClick={() => onNavigate && onNavigate("/", "services")}>
               Ver Nossos Serviços

@@ -1,16 +1,14 @@
-import { useState } from 'react';
+import { CheckCircle2, ArrowLeft, MessageSquare } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
-import { CheckCircle2, ArrowLeft } from "lucide-react";
-import { CallToAction  } from "@/app/components/CallToAction";
-import { MessageSquare } from "lucide-react";
-import { CareerConsultationForm } from '@/app/components/career-consultation-form';
+import { CallToAction } from "@/app/components/CallToAction";
+import { openTypeformPopup } from "@/app/components/TypeformPopup";
 
 interface ServicesPlenoPageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+
   const features = [
     {
       title: "Currículo Estratégico com foco em impacto",
@@ -94,16 +92,12 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
               Nossa consultoria especializada ajuda você a navegar essas questões com estratégias comprovadas, desenvolvendo habilidades de liderança e construindo um plano de carreira sólido para alcançar suas ambições profissionais.
             </p>
             <Button
-              onClick={() => setIsFormOpen(true)}
+              onClick={openTypeformPopup}
               className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white cursor-pointer"
             >
               <MessageSquare className="w-4 h-4" />
               Agendar Avaliação Gratuita
             </Button>
-              <CareerConsultationForm
-                open={isFormOpen}
-                onOpenChange={setIsFormOpen}
-              />
           </div>
           
           <div className="relative">
@@ -188,20 +182,14 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
                   </ul>
 
                   <Button
-                    asChild
-                    className={`w-full mt-auto ${
-                      plan.highlight
+                    onClick={openTypeformPopup}
+                      className={`w-full ${
+                        plan.highlight
                         ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] text-white"
                         : "bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20"
-                    }`}
+                      }`}
                   >
-                    <a
-                      href={plan.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Escolher Plano
-                    </a>
+                    Agendar Conversa
                   </Button>
                 </div>
               ))}
@@ -210,7 +198,7 @@ export function ServicesPlenoPage({ onNavigate }: ServicesPlenoPageProps) {
         </div>
 
         {/* CTA Section */}
-        <CallToAction onNavigate={onNavigate}/>
+        <CallToAction />
       </div>
     </div>
   );

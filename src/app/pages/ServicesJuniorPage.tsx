@@ -1,7 +1,8 @@
-import { Button } from "@/app/components/ui/button";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
 import Junior from "@/assets/junior.png";
+import { Button } from "@/app/components/ui/button";
 import { CallToAction  } from "@/app/components/CallToAction";
+import { openTypeformPopup } from "@/app/components/TypeformPopup";
 
 interface ServicesJuniorPageProps {
   onNavigate: (page: string, sectionId?: string) => void;
@@ -168,22 +169,15 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
                       </li>
                     ))}
                   </ul>
-
                   <Button
-                    asChild
-                    className={`w-full mt-auto ${
-                      plan.highlight
+                    onClick={openTypeformPopup}
+                      className={`w-full ${
+                        plan.highlight
                         ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] text-white"
                         : "bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20"
-                    }`}
+                      }`}
                   >
-                    <a
-                      href={plan.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Escolher Plano
-                    </a>
+                    Agendar Conversa
                   </Button>
                 </div>
               ))}
@@ -192,7 +186,7 @@ export function ServicesJuniorPage({ onNavigate }: ServicesJuniorPageProps) {
         </div>
 
         {/* CTA Section */}
-        <CallToAction onNavigate={onNavigate}/>
+        <CallToAction />
       </div>
     </div>
   );

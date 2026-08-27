@@ -1,16 +1,12 @@
+import { CheckCircle2, ArrowLeft, MessageSquare } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
-import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { CallToAction  } from "@/app/components/CallToAction";
-import { useState } from 'react';
-import { MessageSquare } from "lucide-react";
-import { CareerConsultationForm } from '@/app/components/career-consultation-form';
-
+import { openTypeformPopup } from "@/app/components/TypeformPopup";
 interface ServicesJobHunterPageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps) {
-    const [isFormOpen, setIsFormOpen] = useState(false);
 
   const features = [
     {
@@ -115,16 +111,12 @@ export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps
               Nossa atuação funciona como um agente de carreira: cuidamos do posicionamento, da narrativa e da abordagem ao mercado para que seus resultados cheguem a quem decide.
             </p>            
             <Button
-              onClick={() => setIsFormOpen(true)}
+              onClick={openTypeformPopup}
               className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white cursor-pointer"
             >
               <MessageSquare className="w-4 h-4" />
                 Agendar Job Hunting
             </Button>
-            <CareerConsultationForm
-              open={isFormOpen}
-              onOpenChange={setIsFormOpen}
-            />
           </div>
           
           <div className="relative">
@@ -210,14 +202,14 @@ export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps
                   </ul>
 
                   <Button
-                   onClick={(e) => { e.preventDefault(); onNavigate("contact");}}
+                   onClick={openTypeformPopup}
                     className={`w-full ${
                       plan.highlight
                         ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] text-white"
                         : "bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20"
                     }`}
                   >
-                    Escolher Plano
+                    Agendar Conversa
                   </Button>
                 </div>
               ))}
@@ -226,7 +218,7 @@ export function ServicesJobHunterPage({ onNavigate }: ServicesJobHunterPageProps
         </div>
 
         {/* CTA Section */}
-        <CallToAction onNavigate={onNavigate}/>
+        <CallToAction/>
       </div>
     </div>
   );

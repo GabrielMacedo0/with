@@ -1,23 +1,10 @@
-import { useState } from 'react';
 import { MessageSquare } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
-import { CareerConsultationForm } from '@/app/components/career-consultation-form';
-import { ArrowLeft } from "lucide-react";
-interface CalltoActionProps {
-  onNavigate: (page: string, sectionId?: string) => void;
-}
+import { openTypeformPopup } from "@/app/components/TypeformPopup";
 
-export function CallToAction({ onNavigate }: CalltoActionProps) {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+export function CallToAction() {
   return (
-    <div className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] rounded-3xl p-12 text-center text-white">
-      <button onClick={() => onNavigate("/")}
-        className="flex items-center gap-2 text-[#1a2e4a]/70 hover:text-[#1a2e4a] mb-6 transition-colors font-['Quicksand']"
-        >
-          <ArrowLeft size={20} />
-            Voltar ao Início
-      </button>
-      
+    <div className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] rounded-3xl p-12 text-center text-white">      
       <h2 className="text-3xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
         Pronto para Começar sua Jornada?
       </h2>
@@ -30,16 +17,12 @@ export function CallToAction({ onNavigate }: CalltoActionProps) {
         
         {/* BOTÃO 1: Vai para a página de Contato */}
         <Button
-          onClick={() => setIsFormOpen(true)}
+          onClick={openTypeformPopup}
           className="bg-white text-[#1fa6a8] hover:bg-white/90 cursor-pointer"
         >
           <MessageSquare className="w-4 h-4" />
            Ir para a página de contato
         </Button>
-          <CareerConsultationForm
-            open={isFormOpen}
-            onOpenChange={setIsFormOpen}
-          />
       </div>
     </div>
   );

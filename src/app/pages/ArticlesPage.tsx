@@ -1,81 +1,20 @@
-import { Button } from "@/app/components/ui/button";
+import { useState } from "react";
 import { Calendar, Clock, ArrowRight, ArrowLeft } from "lucide-react";
+import { Button } from "@/app/components/ui/button";
+import { articles as allArticles } from "@/app/data/articles";
+import { openTypeformPopup } from "@/app/components/TypeformPopup";
+
 
   interface ArticlesPageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ArticlesPage({ onNavigate }: ArticlesPageProps) {
-  const featuredArticle = {
-    title: "Como Criar um Currículo que se Destaca em 2026",
-    excerpt: "Descubra as estratégias mais eficazes para criar um currículo que chama atenção de recrutadores e passa pelos sistemas ATS.",
-    image: "https://images.unsplash.com/photo-1767190041030-f2f3a6654c5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3cml0aW5nJTIwYXJ0aWNsZSUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3Njg5NTc0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    date: "15 de Janeiro, 2026",
-    readTime: "8 min",
-    category: "Currículo",
-  };
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
 
-  const articles = [
-    {
-      title: "10 Dicas para Otimizar seu Perfil no LinkedIn",
-      excerpt: "Aprenda a transformar seu perfil do LinkedIn em uma ferramenta poderosa para atrair oportunidades.",
-      image: "https://images.unsplash.com/photo-1765438869297-6fa4b627906a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHN0cmF0ZWd5JTIwcGxhbm5pbmd8ZW58MXx8fHwxNzY4OTE0ODgzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      date: "12 de Janeiro, 2026",
-      readTime: "6 min",
-      category: "LinkedIn",
-    },
-    {
-      title: "Preparação para Entrevistas: O Guia Completo",
-      excerpt: "Tudo o que você precisa saber para se preparar e ter sucesso em qualquer tipo de entrevista de emprego.",
-      image: "https://images.unsplash.com/photo-1758520144417-e1c432042dec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqb2IlMjBpbnRlcnZpZXclMjBwcmVwYXJhdGlvbnxlbnwxfHx8fDE3Njg5NTc0NzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      date: "8 de Janeiro, 2026",
-      readTime: "10 min",
-      category: "Entrevistas",
-    },
-    {
-      title: "Como Fazer uma Transição de Carreira Bem-Sucedida",
-      excerpt: "Estratégias comprovadas para mudar de área ou setor sem perder momentum na sua carreira.",
-      image: "https://images.unsplash.com/photo-1603195827187-459ab02554a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmclMjBsYXB0b3B8ZW58MXx8fHwxNzY4OTU3MzY3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      date: "5 de Janeiro, 2026",
-      readTime: "7 min",
-      category: "Transição",
-    },
-    {
-      title: "Personal Branding: Construindo sua Marca Profissional",
-      excerpt: "Aprenda a se posicionar como especialista e atrair as oportunidades certas através do personal branding.",
-      image: "https://images.unsplash.com/photo-1683770997177-0603bd44d070?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWFtJTIwb2ZmaWNlfGVufDF8fHx8MTc2ODk0NjAxMnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      date: "2 de Janeiro, 2026",
-      readTime: "9 min",
-      category: "Branding",
-    },
-    {
-      title: "Networking Estratégico: Como Fazer da Forma Certa",
-      excerpt: "Descubra como construir relacionamentos profissionais autênticos que geram oportunidades reais.",
-      image: "https://images.unsplash.com/photo-1758518731027-78a22c8852ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJlZXIlMjBzdWNjZXNzJTIwY2VsZWJyYXRpb258ZW58MXx8fHwxNzY4OTU3NDM2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      date: "28 de Dezembro, 2025",
-      readTime: "5 min",
-      category: "Networking",
-    },
-    {
-      title: "Salário: Como Negociar e Conseguir o que Você Merece",
-      excerpt: "Técnicas e estratégias para negociar salário com confiança e conseguir a remuneração adequada.",
-      image: "https://images.unsplash.com/photo-1765438869297-6fa4b627906a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHN0cmF0ZWd5JTIwcGxhbm5pbmd8ZW58MXx8fHwxNzY4OTE0ODgzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      date: "22 de Dezembro, 2025",
-      readTime: "8 min",
-      category: "Negociação",
-    },
-  ];
-
-  const categories = [
-    "Todos",
-    "Currículo",
-    "LinkedIn",
-    "Entrevistas",
-    "Transição",
-    "Branding",
-    "Networking",
-    "Negociação",
-  ];
+  const featuredArticle = allArticles.find((a) => a.id === "curriculo-destaca-2026")!;
+  const articles = allArticles.filter((a) => a.id !== featuredArticle.id);
+  const categories = ["Todos", ...Array.from(new Set(articles.map((a) => a.category)))];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f2e8e0] to-white" id= "ArticlesPage">
@@ -141,7 +80,8 @@ export function ArticlesPage({ onNavigate }: ArticlesPageProps) {
                     <span>{featuredArticle.readTime} de leitura</span>
                   </div>
                 </div>
-                <Button className="w-fit bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white">
+                <Button onClick={() => onNavigate(`/articles/${featuredArticle.id}`)}
+                  className="w-fit bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white">
                   Ler Artigo Completo
                   <ArrowRight size={16} className="ml-2" />
                 </Button>
@@ -156,8 +96,9 @@ export function ArticlesPage({ onNavigate }: ArticlesPageProps) {
             {categories.map((category, index) => (
               <button
                 key={index}
+                onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full transition-colors ${
-                  index === 0
+                  selectedCategory === category
                     ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] text-white"
                     : "bg-white text-[#1a2e4a]/70 hover:bg-[#f2e8e0] border border-[#1a2e4a]/10"
                 }`}
@@ -171,9 +112,12 @@ export function ArticlesPage({ onNavigate }: ArticlesPageProps) {
 
         {/* Articles Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {articles.map((article, index) => (
+          {articles
+            .filter((article) => selectedCategory === "Todos" || article.category === selectedCategory)
+            .map((article) => (
             <div
-              key={index}
+              key={article.id}
+              onClick={() => onNavigate(`/articles/${article.id}`)}
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group cursor-pointer border border-[#1a2e4a]/10"
             >
               <div className="relative h-48 overflow-hidden">
@@ -220,7 +164,7 @@ export function ArticlesPage({ onNavigate }: ArticlesPageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white"
-              onClick={(e) => { e.preventDefault(); onNavigate("contact");}}>
+              onClick={(e) => { e.preventDefault(); openTypeformPopup(); }}>
               Agendar Consulta Gratuita
             </Button>
           </div>

@@ -1,16 +1,14 @@
 import { Button } from "@/app/components/ui/button";
-import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { CheckCircle2, ArrowLeft, MessageSquare } from "lucide-react";
 import { CallToAction  } from "@/app/components/CallToAction";
-import { useState } from 'react';
-import { MessageSquare } from "lucide-react";
-import { CareerConsultationForm } from '@/app/components/career-consultation-form';
+import { openTypeformPopup } from "@/app/components/TypeformPopup";
 
 interface ServicesSeniorPageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
-   const [isFormOpen, setIsFormOpen] = useState(false);
+
   const features = [
     {
       title: "Currículo Executivo Premium + LinkedIn ",
@@ -112,16 +110,12 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
               O Plano Sênior oferece orientação estratégica confidencial para reposicionar sua trajetória e conduzir decisões críticas com segurança.
             </p>
             <Button
-              onClick={() => setIsFormOpen(true)}
+              onClick={openTypeformPopup}
               className="bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] hover:from-[#1fa6a8]/90 hover:to-[#45bab0]/90 text-white cursor-pointer"
             >
               <MessageSquare className="w-4 h-4" />
                 Agendar Consulta Executiva
             </Button>
-              <CareerConsultationForm
-                open={isFormOpen}
-                onOpenChange={setIsFormOpen}
-            />
           </div>
           
           <div className="relative">
@@ -167,7 +161,7 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
               {plans.map((plan, index) => (
                 <div
                   key={index}
-                  className={`bg-white rounded-2xl p-8 w-[320px] flex flex-col ${
+                  className={`bg-white rounded-2xl p-8 w-full max-w-[320px] flex flex-col ${
                       plan.highlight
                         ? "border-2 border-[#1fa6a8] shadow-xl relative"
                         : "border border-[#1a2e4a]/10 shadow-lg"
@@ -204,20 +198,14 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
                     ))}
                   </ul>
                   <Button
-                    asChild
-                    className={`w-full mt-auto ${
+                   onClick={openTypeformPopup}
+                    className={`w-full ${
                       plan.highlight
                         ? "bg-gradient-to-r from-[#1fa6a8] to-[#45bab0] text-white"
                         : "bg-white text-[#1a2e4a] border-2 border-[#1a2e4a]/20"
                     }`}
                   >
-                    <a
-                      href={plan.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Escolher Plano
-                    </a>
+                    Agendar Conversa
                   </Button>
                 </div>
               ))}
@@ -233,7 +221,7 @@ export function ServicesSeniorPage({ onNavigate }: ServicesSeniorPageProps) {
         </div>
 
         {/* CTA Section */}
-        <CallToAction onNavigate={onNavigate}/>
+        <CallToAction/>
       </div>
     </div>
   );

@@ -1,43 +1,34 @@
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Target, Users, TrendingUp, Award, CheckCircle2, ArrowRight, Briefcase, MessageCircle, Monitor, Phone} from 'lucide-react';
-import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
-import { CareerConsultationForm } from '@/app/components/career-consultation-form';
-import { Button } from "@/app/components/ui/button";
-import AnaBeatriz from "@/assets/Ana-beatriz.jfif";
+import { Target, Users, TrendingUp, Award, CheckCircle2, ArrowRight, Briefcase, MessageCircle, Monitor, Phone, MessageSquare} from 'lucide-react';
 import Willian from "@/assets/Willian.jfif";
 import Guilherme from "@/assets/Guilherme.jfif";
-import Plano from "@/assets/planoA-planoB.png";
-import HomeOffice from "@/assets/homeoffice.png";
-import networking from "@/assets/networking.png";
+import AnaBeatriz from "@/assets/Ana-beatriz.jfif";
+import heroImage from '@/assets/Imagem.png';
 import AboutUs from "@/assets/quem-somos.png";
+import Plano from "@/assets/planoA-planoB.png";
+import networking from "@/assets/networking.png";
+import HomeOffice from "@/assets/homeoffice.png";
+import { Button } from "@/app/components/ui/button";
 import { CountUpCard } from '@/app/components/CountUpCard';
 import { CompanyMarquee } from '@/app/components/CompanyMarquee';
-import heroImage from '@/assets/Imagem.png';
-import { useState, useEffect } from "react";
-import { MessageSquare } from "lucide-react";
+import { openTypeformPopup } from "@/app/components/TypeformPopup";
+import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 
 interface ServicesHomePageProps {
   onNavigate: (page: string, sectionId?: string) => void;
 }
 
 export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
-  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const utms = {
-    utm_source: params.get("utm_source"),
-    utm_campaign: params.get("utm_campaign"),
-    utm_medium: params.get("utm_medium"),
-    utm_content: params.get("utm_content"),
-    utm_term: params.get("utm_term"),
-  };
 
   useEffect(() => {
     if (params.get("openForm") === "true") {
-      setIsFormOpen(true);
+      openTypeformPopup();
     }
-  }, [location.search]);  
+  }, [location.search]); 
   
   return (
     <div className="animate-fade-in min-h-screen bg-white">
@@ -50,29 +41,26 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                 Sua carreira não precisa de sorte. Precisa de estratégia.
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Em fases de transição, estagnação ou reposicionamento, insistir sem direção costuma gerar desgaste e frustração. Avançar exige estratégia, clareza sobre o momento de carreira e leitura real do mercado. É nesse ponto que a With atua, organizando escolhas e estruturando movimentos profissionais mais conscientes.
+                Avançar exige mais do que esforço: exige estratégia e leitura real do mercado. A With é conduzida por quem viveu processos seletivos dos dois lados — como recrutadora e como consultora de carreira — e ajuda você a tomar decisões mais conscientes, sem fórmulas prontas.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
-                  onClick={() => setIsFormOpen(true)}
+                  onClick={openTypeformPopup}
                   className="bg-blue-900 text-white px-8 py-4 h-auto text-base font-medium rounded-md hover:bg-blue-800 transition flex items-center gap-2 cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4" />
                   Entre em contato
                 </Button>
-                <CareerConsultationForm
-                  open={isFormOpen}
-                  onOpenChange={setIsFormOpen}
-                  utms={utms}
-                />
                 <a href="#services" className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded hover:border-gray-400 transition text-center">
                   Conhecer Serviços
                 </a>
               </div>
               <div className="mt-8 flex items-center gap-6">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-sm text-gray-600">Mais de 2800 profissionais recolocados</span>
+                <div className="mt-8 flex items-center gap-3 bg-green-50 border border-green-100 rounded-lg px-5 py-3 w-fit">
+                  <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0" />
+                  <span className="text-gray-800">
+                    <strong className="text-lg">+2.800</strong> profissionais recolocados com a metodologia With
+                  </span>
                 </div>
               </div>
             </div>
@@ -176,20 +164,13 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
             <div>
               <h2 className="text-gray-900 mb-6">Sobre a With</h2>
               <p className="text-gray-600 mb-6">
-                A With é uma consultoria de carreira que atua com profissionais em diferentes momentos de carreira, especialmente quando avançar exige mais estratégia, contatos e leitura de mercado. Nosso trabalho se inicia com um diagnóstico do seu momento profissional e da definição da abordagem mais adequada para cada candidatura, evitando decisões baseadas em tentativa e erro.
+                A With é uma consultoria de carreira para profissionais que precisam de mais estratégia, direção e leitura de mercado para avançar. Começamos com um diagnóstico real do seu momento — sem fórmulas prontas ou promessas rápidas — e definimos juntos a abordagem mais adequada para cada objetivo." 
               </p>
 
               <p className="text-gray-600 mb-6">
-                Atuamos com processos estruturados, sem promessas rápidas ou soluções genéricas. Cada acompanhamento é definido a partir do momento de carreira, dos objetivos e da necessidade do cliente.
+                É liderada por Stephany Borowiec, consultora de carreira com mais de 10 anos de atuação em recrutamento, desenvolvimento profissional e processos seletivos — com certificação internacional em Career Coaching.
               </p>
 
-              <p className="text-gray-600 mb-6">
-                Trabalhamos com profissionais que buscam conduzir a carreira de forma mais consciente e consistente — e não com quem procura atalhos ou garantias de resultado.
-              </p>
-
-              <p className="text-gray-600">
-                A With é liderada por Stephany Borowiec, consultora de carreira com mais de 10 anos de atuação em recrutamento, desenvolvimento profissional e processos seletivos.
-              </p>
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded">
                   <Award className="w-5 h-5 text-blue-900" />
@@ -343,7 +324,7 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
       <CompanyMarquee />
 
       {/* Depoimentos */}
-      <section className="py-20" style={{ backgroundColor: '#f2e8e0' }} id= "depoimentos">
+            <section className="py-20" style={{ backgroundColor: '#f2e8e0' }} id="depoimentos">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 style={{ color: '#1a2e4a' }} className="mb-4">O que nossos clientes dizem</h2>
@@ -352,32 +333,25 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Depoimento 1 */}
             <div className="bg-white p-8 rounded-lg flex flex-col h-full">
-              <div className="flex items-center gap-4 mt-auto">
-                <img 
-                  src={AnaBeatriz}
-                  alt="Ana-Beatriz"
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <a 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{ color: '#1a2e4a' }}
-                    className="hover:opacity-70 transition"
-                  >
-                    <p className="font-medium">Ana Beatriz</p>
-                  </a>
-                  
-                  <p className="text-sm" style={{ color: '#1a2e4a', opacity: 0.7 }}>Analista Financeiro</p>
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <div className="flex items-center gap-4">
+                  <img 
+                    src={AnaBeatriz}
+                    alt="Ana-Beatriz"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-medium" style={{ color: '#1a2e4a' }}>Ana Beatriz</p>
+                    <p className="text-sm" style={{ color: '#1a2e4a', opacity: 0.7 }}>Analista Financeiro</p>
+                  </div>
                 </div>
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
-                ))}
+                <div className="flex gap-1 shrink-0">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
+                  ))}
+                </div>
               </div>
-              </div>
-
-                <p className="mb-6 italic" style={{ color: '#1a2e4a', opacity: 0.9 }}><br/>
+                <p className="mb-6 italic" style={{ color: '#1a2e4a', opacity: 0.9 }}>
                   "Olá Sté, bom dia!
                   <br /><br />
                   Tinha expectativa de depois que comecei a consultoria com vocês, em até uns 3 meses eu conseguiria uma boa oportunidade.{' '}
@@ -394,10 +368,23 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
 
             {/* Depoimento 2 */}
             <div className="bg-white p-8 rounded-lg flex flex-col h-full">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
-                ))}
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <div className="flex items-center gap-4">
+                  <img 
+                    src={Willian}
+                    alt="Willian-Eduardo"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-medium" style={{ color: '#1a2e4a' }}>Willian Eduardo</p>
+                    <p className="text-sm" style={{ color: '#1a2e4a', opacity: 0.7 }}>Gerente Sênior de Marketing</p>
+                  </div>
+                </div>
+                <div className="flex gap-1 shrink-0">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
+                  ))}
+                </div>
               </div>
                 <p className="mb-6 italic" style={{ color: '#1a2e4a', opacity: 0.9 }}>
                     "Olá Sté, tudo bem?
@@ -414,32 +401,27 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                   </span>{' '}
                     Muito Obrigado!!"
                 </p>
-              <div className="flex items-center gap-4 mt-auto">
-                <img 
-                  src={Willian}
-                  alt="Willian-Eduardo"
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <a 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{ color: '#1a2e4a' }}
-                    className="hover:opacity-70 transition"
-                  >
-                    <p className="font-medium">Willian Eduardo</p>
-                  </a>
-                  <p className="text-sm" style={{ color: '#1a2e4a', opacity: 0.7 }}>Gerente Sênior de Marketing</p>
-                </div>
-              </div>
             </div>
 
             {/* Depoimento 3 */}
             <div className="bg-white p-8 rounded-lg flex flex-col h-full">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
-                ))}
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <div className="flex items-center gap-4">
+                  <img 
+                    src={Guilherme}
+                    alt="Guilherme-Silveira"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-medium" style={{ color: '#1a2e4a' }}>Guilherme Silveira</p>
+                    <p className="text-sm" style={{ color: '#1a2e4a', opacity: 0.7 }}>Analista de Business Inteligence II</p>
+                  </div>
+                </div>
+                <div className="flex gap-1 shrink-0">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} style={{ color: '#f5424a' }} className="text-xl">★</div>
+                  ))}
+                </div>
               </div>
                 <p className="mb-6 italic" style={{ color: '#1a2e4a', opacity: 0.9 }}>
                   "Boa tarde Stephany, tudo bem?
@@ -456,24 +438,6 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
                   </span>{' '}
                   mais benefícios. Sua ajuda foi muito importante!"
                 </p>
-              <div className="flex items-center gap-4 mt-auto">
-                <img 
-                  src={Guilherme}
-                  alt="Guilherme-Silveira"
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <a 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{ color: '#1a2e4a' }}
-                    className="hover:opacity-70 transition"
-                  >
-                    <p className="font-medium">Guilherme Silveira</p>
-                  </a>
-                  <p className="text-sm" style={{ color: '#1a2e4a', opacity: 0.7 }}>Analista de Business Inteligence II</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -608,16 +572,12 @@ export function ServicesHomePage({ onNavigate }: ServicesHomePageProps) {
           </p>
 
           <Button
-            onClick={() => setIsFormOpen(true)}
+            onClick={openTypeformPopup}
             className="w-full max-w-sm bg-white text-blue-900 font-semibold py-4 rounded-lg hover:bg-blue-50 transition flex items-center justify-center gap-2 cursor-pointer"
           >
             <MessageSquare className="w-4 h-4" />
               Ir para a página de contato
           </Button>
-          <CareerConsultationForm
-            open={isFormOpen}
-            onOpenChange={setIsFormOpen}
-          />
         </div>
 
         {/* Informações de contato */}
